@@ -100,9 +100,43 @@
 <div class="expertise-section">
     <div class="expertise-container">
         <div class="expertise-header">
-            <h2 class="expertise-title">What I Do</h2>
+            <h2 class="expertise-title" style="position: relative; margin-bottom: 2rem;">What I Do
+
+                <svg class="underline-svg" viewBox="0 0 186 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 16.9998C30.4988 9.39999 91.2223 -6.38075 193 11.0002"/>
+                </svg>
+            </h2>
             <p class="expertise-subtitle">Crafting digital solutions that drive business growth and user engagement</p>
         </div>
+
+
+        <style>
+            .underline-svg {
+    position: absolute;
+    bottom: -15px;
+    left: -5%;
+    width: 110%;
+    height: 25px;
+    overflow: visible;
+  }
+
+  .underline-svg path {
+    stroke: #000;
+    stroke-width: 5;
+    stroke-linecap: round;
+    fill: none;
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: draw 1.5s ease-out 0.5s forwards;
+  }
+
+   @keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+  }
+
+        </style>
         
         <div class="expertise-grid">
             <!-- Frontend Development -->
@@ -252,28 +286,24 @@
     max-width: 1200px;
     width: 100%;
     position: relative;
+    backface-visibility: visible;
 }
 
 .floating-nav-link {
     text-decoration: none;
-    color: #333;
+    color: #000000;
     font-weight: 500;
     font-size: 14px;
     padding: 11px 16px;
     border-radius: 50px;
     position: relative;
     white-space: nowrap;
+    backface-visibility: visible;
 }
 
 .floating-nav-link:hover {
     color: #000;
     background: #e8e8e8;
-}
-
-.floating-nav-link.active {
-    color: #000;
-    background: #000;
-    color: white;
 }
 
 .floating-nav-contact {
@@ -2255,7 +2285,6 @@ document.addEventListener('DOMContentLoaded', function() {
 .footer-right {
     display: flex;
     justify-content: flex-end;
-    padding-top: 4rem;
 }
 
 .footer-links {
@@ -2332,7 +2361,7 @@ document.addEventListener('DOMContentLoaded', function() {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 1px;
+    padding-top: 15px;
     border-top: 1px solid #333;
 }
 

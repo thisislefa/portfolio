@@ -9,7 +9,9 @@
                     <span class="blog-card-date">Jul 18 — 2024</span>
                     <span class="blog-card-author">By Michael</span>
                 </div>
-                <h3 class="blog-card-title">The Psychology of UI: Why Your Brain Decides in 0.2 Seconds Whether a Website Looks Trustworthy</h3>
+                <a href="psych-of-ui.html" class="blog-title-link">
+                    <h3 class="blog-card-title">The Psychology of UI: Why Your Brain Decides in 0.2 Seconds Whether a Website Looks Trustworthy</h3>
+                </a>
             </div>
         </article>
 
@@ -103,6 +105,12 @@
     margin: 4rem 0;
 }
 
+.blog-title-link {
+    text-decoration: none;      /* removes underline */
+    color: inherit;             /* keeps same text color as the H3 */
+    display: inline-block;      /* avoids weird spacing issues */
+}
+
 /*
     Individual Blog Card Item
 */
@@ -173,6 +181,7 @@
     line-height: 1.4; /* Improved readability for title */
     margin: 0; /* Remove default margin from h3 */
     color: #000000; /* Darker color for the title */
+    text-decoration: none;
 }
 
 /*
