@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificates - IT Pursuit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Base Reset and Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Black, White, and Gray Theme */
+            --primary-color: #444444; /* Dark Gray for accent/progress */
+            --primary-dark: #000000; /* True Black for main emphasis/CTA */
+            --background-color: #f7f7f7; /* Off-White background */
+            --surface-color: #ffffff; /* Pure White card background */
+            --text-color: #333333; /* Standard Dark Gray Text */
+            --text-light: #777777; /* Muted Light Gray Text */
+            --border-color: #cccccc; /* Light border color */
+            --shadow-subtle: 0 4px 10px rgba(0, 0, 0, 0.05); /* Soft gray shadow */
+        }
+
+        /* The custom root tag for the entire page */
+        cert-showcase {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        /* Utility Container for centering content */
+        .showcase-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 0;
+        }
+
+        /* Page Header Styling */
+        page-header {
+            background-color: var(--surface-color);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .page-headline {
+            font-size: 2.5rem;
+            font-weight: 900; /* Bolder headline */
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+
+        .page-intro {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Navigation Links */
+        nav-links {
+            display: flex;
+            align-items: center;
+            font-size: 0.875rem;
+            margin-bottom: 0.75rem;
+        }
+        .nav-link {
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.25rem 0;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+        .nav-separator, .nav-current {
+            color: var(--text-light);
+            margin: 0 0.5rem;
+        }
+        .nav-current {
+            font-weight: 500;
+        }
+
+        /* Main Content Area */
+        main-content {
+            flex-grow: 1;
+            padding: 3rem 0;
+        }
+
+        /* Certificate Grid Layout */
+        cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Individual Certificate Card */
+        cert-card {
+            display: flex;
+            flex-direction: column;
+            background-color: var(--surface-color);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: var(--shadow-subtle);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: var(--primary-color); /* Give the icon a subtle gray accent */
+        }
+
+        .cert-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-issuer {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Progress Bar Styling */
+        .progress-track {
+            height: 8px;
+            background-color: #e5e5e5; /* Very light gray for the track */
+            border-radius: 9999px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%; /* Will be set by JavaScript */
+            background-color: var(--primary-color); /* Dark Gray fill */
+            transition: width 1s ease-out;
+            border-radius: 9999px;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-label {
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .progress-value {
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        /* Call-to-Action Link (Button Style) */
+        .cert-cta {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            background-color: var(--primary-dark);
+            color: var(--surface-color);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            text-align: center;
+            letter-spacing: 0.5px;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            align-self: flex-start;
+            border: 1px solid var(--primary-dark);
+        }
+
+        .cert-cta:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .cert-cta:active {
+            transform: scale(0.98);
+        }
+
+
+        /* Page Footer Styling */
+        page-footer {
+            margin-top: auto;
+            border-top: 1px solid var(--border-color);
+            padding: 1.5rem 0;
+            background-color: var(--surface-color);
+            text-align: center;
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 600px) {
+            .page-headline {
+                font-size: 2rem;
+            }
+            .page-intro {
+                font-size: 1rem;
+            }
+            .showcase-container {
+                width: 95%;
+            }
+            cert-card {
+                padding: 1.5rem;
+            }
+            .cert-cta {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<!-- Custom Root Element: cert-showcase -->
+<cert-showcase>
+
+    <!-- Custom Header Element -->
+    <page-header>
+        <div class="showcase-container">
+            <nav-links>
+                <!-- NOTE: Update index.html to reflect the correct path if needed -->
+                <a href="index.html" class="nav-link">Home</a>
+                <span class="nav-separator">/</span>
+                <span class="nav-current">Certificates</span>
+            </nav-links>
+            <h1 class="page-headline">IT Certification Journey</h1>
+            <p class="page-intro">
+                As I transition into IT, I am actively pursuing foundational and vendor-specific certifications 
+                to build a strong, marketable knowledge base. This demonstrates commitment and hands-on preparation.
+            </p>
+        </div>
+    </page-header>
+
+    <!-- Custom Main Content Element -->
+    <main-content class="showcase-container">
+        
+        <!-- Custom Grid Element -->
+        <cert-grid>
+            
+            <!-- Custom Card Element 1: Google IT Support -->
+            <cert-card data-progress="75">
+                <div class="card-icon">📚</div>
+                <div class="card-content">
+                    <h2 class="cert-title">Google IT Support Professional Certificate</h2>
+                    <p class="cert-issuer">Issued by Coursera & Google</p>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span class="progress-label">Status:</span>
+                        <span class="progress-value">75% Complete</span>
+                    </div>
+                    <a href="https://www.coursera.org/professional-certificates/google-it-support" class="cert-cta" target="_blank">View Course</a>
+                </div>
+            </cert-card>
+
+            <!-- Custom Card Element 2: CompTIA A+ -->
+            <cert-card data-progress="40">
+                <div class="card-icon">🖥️</div>
+                <div class="card-content">
+                    <h2 class="cert-title">CompTIA A+ (Core 1 & 2)</h2>
+                    <p class="cert-issuer">CompTIA (Self-Study)</p>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width: 40%;"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span class="progress-label">Status:</span>
+                        <span class="progress-value">40% Complete (Focusing on Core 1)</span>
+                    </div>
+                    <a href="https://www.comptia.org/certifications/a" class="cert-cta" target="_blank">Study Plan</a>
+                </div>
+            </cert-card>
+
+            <!-- Custom Card Element 3: Microsoft AZ-900 -->
+            <cert-card data-progress="25">
+                <div class="card-icon">☁️</div>
+                <div class="card-content">
+                    <h2 class="cert-title">Microsoft Azure Fundamentals (AZ-900)</h2>
+                    <p class="cert-issuer">Microsoft (Cloud Basics)</p>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width: 25%;"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span class="progress-label">Status:</span>
+                        <span class="progress-value">25% Complete</span>
+                    </div>
+                    <a href="https://learn.microsoft.com/en-us/certifications/azure-fundamentals/" class="cert-cta" target="_blank">Module Overview</a>
+                </div>
+            </cert-card>
+
+            <!-- Custom Card Element 4 (Example Placeholder) -->
+            <cert-card data-progress="10">
+                <div class="card-icon">🔐</div>
+                <div class="card-content">
+                    <h2 class="cert-title">CompTIA Security+ (Future Goal)</h2>
+                    <p class="cert-issuer">Planned for Q3 2025</p>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width: 10%;"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span class="progress-label">Status:</span>
+                        <span class="progress-value">10% Initial Research</span>
+                    </div>
+                    <a href="#" class="cert-cta">Preparation Roadmap</a>
+                </div>
+            </cert-card>
+
+        </cert-grid>
+    </main-content>
+
+    <!-- Custom Footer Element -->
+    <page-footer>
+        <div class="showcase-container">
+            <p>Pursuing excellence in IT | Lefa Mofokeng &copy; 2025</p>
+        </div>
+    </page-footer>
+
+</cert-showcase>
+
+<script>
+    /**
+     * JavaScript to handle dynamic progress bar filling on load.
+     * Note: For this static page, the progress is set via inline style for immediate visibility,
+     * but this script ensures a slight animation effect and handles data attributes.
+     */
+    document.addEventListener('DOMContentLoaded', () => {
+        const certCards = document.querySelectorAll('cert-card');
+
+        certCards.forEach(card => {
+            const progress = card.getAttribute('data-progress');
+            const progressFill = card.querySelector('.progress-fill');
+            
+            if (progressFill && progress) {
+                // Ensure the progress is applied correctly, but also allow the CSS transition
+                // to make it look smooth when the page loads.
+                setTimeout(() => {
+                    progressFill.style.width = `${progress}%`;
+                }, 100); // Small delay to trigger the CSS transition
+            }
+        });
+    });
+</script>

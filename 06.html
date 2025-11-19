@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Impact - Lefa Mofokeng</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .social-impact-hero {
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            color: white;
+            padding: 100px 20px 80px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.1);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: #ccc;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 800px;
+            margin: 40px auto 0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #ccc;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .programs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #000;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .program-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+        }
+
+        .program-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #000;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .program-image {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .program-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%);
+        }
+
+        .program-image.cybersecurity {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .program-image.four-ir {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .program-image.digital-literacy {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .program-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 64px;
+            color: white;
+            z-index: 1;
+        }
+
+        .program-content {
+            padding: 30px;
+        }
+
+        .program-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #000;
+        }
+
+        .program-description {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .program-features {
+            margin-bottom: 25px;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .feature-item::before {
+            content: '✓';
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .program-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: #000;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #000;
+            border: 1px solid #ddd;
+        }
+
+        .btn-outline:hover {
+            background: #f8f9fa;
+            border-color: #000;
+            transform: translateY(-2px);
+        }
+
+        .impact-mission {
+            background: white;
+            border-radius: 16px;
+            padding: 60px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            margin-bottom: 80px;
+            text-align: center;
+        }
+
+        .mission-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .mission-text {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .testimonials-section {
+            margin-bottom: 80px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .author-info h4 {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .author-info p {
+            color: #888;
+            font-size: 14px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            border-radius: 16px;
+        }
+
+        .cta-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-description {
+            font-size: 18px;
+            color: #ccc;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .btn-white {
+            background: white;
+            color: #000;
+        }
+
+        .btn-white:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .program-actions {
+                flex-direction: column;
+            }
+
+            .impact-mission {
+                padding: 40px 30px;
+            }
+
+            .mission-title {
+                font-size: 28px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 28px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .program-content {
+                padding: 20px;
+            }
+
+            .impact-mission {
+                padding: 30px 20px;
+            }
+
+            .mission-title {
+                font-size: 24px;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .program-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <section class="social-impact-hero">
+        <div class="hero-content">
+            <div class="hero-badge">Making a Difference</div>
+            <h1 class="hero-title">Social Impact Initiatives</h1>
+            <p class="hero-subtitle">Empowering communities through technology education and digital inclusion programs</p>
+            
+            <div class="impact-stats">
+                <div class="stat-item">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Active Programs</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">People Impacted</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Communities Served</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Free Access</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="programs-container">
+        <section class="programs-section">
+            <div class="section-header">
+                <h2 class="section-title">Our Non-Profit Programs</h2>
+                <p class="section-subtitle">Three initiatives designed to bridge the digital divide and create opportunities</p>
+            </div>
+
+            <div class="programs-grid">
+                <!-- Cybersecurity Program -->
+                <div class="program-card">
+                    <div class="program-badge">Active</div>
+                    <div class="program-image cybersecurity">
+                        <div class="program-icon">🔒</div>
+                    </div>
+                    <div class="program-content">
+                        <h3 class="program-title">Cybersecurity Awareness Program</h3>
+                        <p class="program-description">
+                            Empowering individuals and small businesses with essential cybersecurity knowledge to protect against digital threats in an increasingly connected world.
+                        </p>
+                        
+                        <div class="program-features">
+                            <ul class="feature-list">
+                                <li class="feature-item">Basic threat identification and prevention</li>
+                                <li class="feature-item">Secure online practices for daily life</li>
+                                <li class="feature-item">Protecting personal and financial data</li>
+                                <li class="feature-item">Small business security fundamentals</li>
+                                <li class="feature-item">Free security tools and resources</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="program-actions">
+                            <a href="#" class="btn btn-primary">Learn More</a>
+                            <a href="#" class="btn btn-outline">View Curriculum</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4IR Program -->
+                <div class="program-card">
+                    <div class="program-badge">Active</div>
+                    <div class="program-image four-ir">
+                        <div class="program-icon">🤖</div>
+                    </div>
+                    <div class="program-content">
+                        <h3 class="program-title">Introduction to 4th Industrial Revolution</h3>
+                        <p class="program-description">
+                            Demystifying emerging technologies like AI, IoT, and blockchain to prepare communities for the future of work and digital innovation.
+                        </p>
+                        
+                        <div class="program-features">
+                            <ul class="feature-list">
+                                <li class="feature-item">Understanding AI and machine learning</li>
+                                <li class="feature-item">Internet of Things (IoT) applications</li>
+                                <li class="feature-item">Blockchain and digital currencies</li>
+                                <li class="feature-item">Automation and future job skills</li>
+                                <li class="feature-item">Hands-on technology demonstrations</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="program-actions">
+                            <a href="#" class="btn btn-primary">Learn More</a>
+                            <a href="#" class="btn btn-outline">View Workshops</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Digital Literacy Program -->
+                <div class="program-card">
+                    <div class="program-badge">Active</div>
+                    <div class="program-image digital-literacy">
+                        <div class="program-icon">💻</div>
+                    </div>
+                    <div class="program-content">
+                        <h3 class="program-title">Digital Literacy Program</h3>
+                        <p class="program-description">
+                            Building foundational digital skills for underserved communities, from basic computer operation to essential software applications.
+                        </p>
+                        
+                        <div class="program-features">
+                            <ul class="feature-list">
+                                <li class="feature-item">Basic computer and smartphone skills</li>
+                                <li class="feature-item">Internet navigation and email</li>
+                                <li class="feature-item">Microsoft Office fundamentals</li>
+                                <li class="feature-item">Online job searching and applications</li>
+                                <li class="feature-item">Digital communication tools</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="program-actions">
+                            <a href="#" class="btn btn-primary">Learn More</a>
+                            <a href="#" class="btn btn-outline">Find Classes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="impact-mission">
+            <h2 class="mission-title">Our Mission</h2>
+            <p class="mission-text">
+                We believe that access to technology education is a fundamental right in the digital age. Our programs are designed to bridge the digital divide, 
+                create economic opportunities, and empower individuals with the skills needed to thrive in an increasingly digital world. Through these initiatives, 
+                we're building more resilient, informed, and technologically capable communities.
+            </p>
+            <a href="#" class="btn btn-primary">Support Our Mission</a>
+        </section>
+
+        <section class="testimonials-section">
+            <div class="section-header">
+                <h2 class="section-title">Impact Stories</h2>
+                <p class="section-subtitle">Hear from participants who have transformed their lives through our programs</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "The cybersecurity program helped me protect my small business from online threats. I now feel confident managing my digital presence securely."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">TS</div>
+                        <div class="author-info">
+                            <h4>Thabo Sebata</h4>
+                            <p>Small Business Owner</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "Learning about 4IR technologies opened my eyes to career paths I never knew existed. The program inspired me to pursue tech studies."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">NM</div>
+                        <div class="author-info">
+                            <h4>Nomvula Mokoena</h4>
+                            <p>University Student</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "After the digital literacy program, I could finally help my children with their schoolwork and apply for jobs online. Life-changing!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">PM</div>
+                        <div class="author-info">
+                            <h4>Peter Moloi</h4>
+                            <p>Community Member</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2 class="cta-title">Get Involved Today</h2>
+            <p class="cta-description">
+                Whether you want to volunteer, donate, or bring our programs to your community, there are many ways to make a difference.
+            </p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="mailto:lefamjack@gmail.com" class="btn btn-white">Volunteer With Us</a>
+                <a href="#" class="btn btn-outline" style="color: white; border-color: white;">Make a Donation</a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const programCards = document.querySelectorAll('.program-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            }, { 
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            programCards.forEach(card => {
+                card.style.animationPlayState = 'paused';
+                observer.observe(card);
+            });
+
+            // Add hover effects
+            programCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
