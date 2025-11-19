@@ -1,10 +1,15 @@
 <!-- Floating Navigation Bar -->
 <div class="portfolio-floating-nav">
     <div class="floating-nav-container">
-        <a href="#portfolio" class="floating-nav-link active">Portfolio</a>
-        <a href="#webapps" class="floating-nav-link">Web Apps</a>
+        <a href="index.html" class="floating-nav-link active">Home</a>
+        <a href="#portfolio" class="floating-nav-link active">Projects</a>
+        <a href="#webapps" class="floating-nav-link">Blog</a>
         <a href="#about" class="floating-nav-link">About</a>
         <a href="#contact" class="floating-nav-link">Contact</a>
+    </div>
+
+    <div>
+      <a>Contact</a>
     </div>
 </div>
 
@@ -22,15 +27,15 @@
             <div class="hero-stats">
                 <div class="stat-item">
                     <span class="stat-number">50+</span>
-                    <span class="stat-label">Projects</span>
+                    <span class="stat-label">Projects Delivered</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">5+</span>
-                    <span class="stat-label">Years</span>
+                    <span class="stat-number">3+</span>
+                    <span class="stat-label">Years of Experience</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">98%</span>
-                    <span class="stat-label">Satisfaction</span>
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">Satisfied Clients</span>
                 </div>
             </div>
             <div class="hero-social-links">
@@ -120,7 +125,7 @@
             <!-- E-commerce Solutions -->
             <div class="expertise-card">
                 <div class="expertise-icon">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="#fcfcfc"><g fill="none"><path d="M39 32H13L8 12h36l-5 20Z"/><path stroke="#fcfcfc" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M3 6h3.5L8 12m0 0l5 20h26l5-20H8Z"/><circle cx="13" cy="39" r="3" stroke="#fcfcfc" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/><circle cx="39" cy="39" r="3" stroke="#fcfcfc" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/></g></svg>                </div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="#fcfcfc"><g fill="none"><path d="M39 32H13L8 12h36l-5 20Z"/><path stroke="#fcfcfc" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M3 6h3.5L8 12m0 0l5 20h26l5-20H8Z"/><circle cx="13" cy="39" r="3" stroke="#fcfcfc" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/><circle cx="39" cy="39" r="3" stroke="#fcfcfc" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/></g></svg>                </div>
                 <h3 class="expertise-card-title">E-commerce Solutions</h3>
                 <p class="expertise-card-description">
                     Creating comprehensive online shopping experiences with secure payment integrations, 
@@ -199,11 +204,11 @@
 /* Floating Navigation Styles */
 .portfolio-floating-nav {
     position: sticky;
-    top: 20px;
     z-index: 1000;
     display: flex;
     justify-content: center;
-    margin: 20px auto;
+     top: 10px;
+    margin: 10px auto;
     max-width: 1200px;
 }
 
@@ -211,27 +216,27 @@
     background: white;
     border: 1px solid #e0e0e0;
     border-radius: 50px;
-    padding: 12px 24px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
+    padding: 5px;
     display: flex;
     gap: 32px;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.12));
+    width: 1200px;
 }
 
 .floating-nav-link {
     text-decoration: none;
-    color: #666;
+    color: #333;
     font-weight: 500;
     font-size: 14px;
-    padding: 8px 16px;
-    border-radius: 20px;
+    padding: 9px 16px;
+    border-radius: 50px;
     transition: all 0.3s ease;
     position: relative;
 }
 
 .floating-nav-link:hover {
     color: #000;
-    background: #f8f9fa;
+    background: #e8e8e8;
 }
 
 .floating-nav-link.active {
@@ -253,7 +258,7 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 80px;
     align-items: center;
 }
 
@@ -294,7 +299,7 @@
 }
 
 .stat-item {
-    text-align: center;
+    text-align: left;
 }
 
 .stat-number {
@@ -307,7 +312,9 @@
 
 .stat-label {
     font-size: 14px;
+    font-weight: 600;
     color: #666;
+    text-transform: uppercase;
 }
 
 .hero-social-links {
@@ -343,7 +350,7 @@
 }
 
 .btn {
-    padding: 12px 32px;
+    padding: 9px 32px;
     border: none;
     border-radius: 25px;
     font-weight: 600;
@@ -440,16 +447,13 @@
 .expertise-card {
     background: white;
     padding: 40px 30px;
-    border-radius: 16px;
+    border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
     border: 1px solid #f0f0f0;
 }
 
-.expertise-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-}
+
 
 .expertise-icon {
     width: 70px;
@@ -1534,10 +1538,10 @@ document.addEventListener('DOMContentLoaded', function() {
            ========================================= */
         :root {
             --qa-color-primary-text: #000000;
-            --qa-color-accent: #1199fA;
+            --qa-color-accent: #000000;
             --qa-color-light-bg: #f4f4f4;
             --qa-color-white: #fff;
-            --qa-color-line: #4d4d4d;
+            --qa-color-line: #9d9d9d;
             --qa-font-family: 'Inter', sans-serif;
         }
 
@@ -1682,44 +1686,55 @@ document.addEventListener('DOMContentLoaded', function() {
                 <!-- ACCORDION ITEM 1 -->
                 <div class="qa-accordion-item" data-index="1">
                     <div class="qa-accordion-header">
-                        Benefits of staking your crypto on-chain
+                        What is the core focus of your technical expertise?
                         <span class="qa-toggle-icon">+</span>
                     </div>
                     <div class="qa-accordion-body">
-                        <p>Staking provides network security, earns passive income, and is generally more environmentally friendly than traditional Proof-of-Work mining. It allows you to contribute directly to the decentralized governance and operation of the protocol.</p>
+                        <p>My core expertise lies at the intersection of Full-Stack Development and Scalable System Architecture. I specialize in building robust, performant applications — primarily using Python (for backend logic and APIs) and React/TypeScript (for dynamic frontend experiences), and deploying them efficiently using cloud services like AWS or GCP. I focus on code quality and ensuring maintainability.</p>
                     </div>
                 </div>
 
                 <!-- ACCORDION ITEM 2 -->
                 <div class="qa-accordion-item" data-index="2">
                     <div class="qa-accordion-header">
-                        How staking works
+                        Are your projects open-source? Where can I view the code?
                         <span class="qa-toggle-icon">+</span>
                     </div>
                     <div class="qa-accordion-body">
-                        <p>In a Proof-of-Stake system, validators lock up (stake) a certain amount of the cryptocurrency as collateral. The protocol then randomly selects validators to propose and attest to new blocks, rewarding them with new coins or transaction fees for their honest work.</p>
+                        <p>Yes, the majority of my key projects are available on my GitHub profile. I believe in transparency and collaborative coding. You can view project source code, commit history, and the detailed READMEs which often include architectural diagrams and setup instructions. (Note: Code for active commercial projects is often restricted to proprietary libraries, but the architectural overviews are provided in the Case Studies.)</p>
+                    </div>
+                </div>
+
+                <!-- ACCORDION ITEM 2 -->
+                <div class="qa-accordion-item" data-index="2">
+                    <div class="qa-accordion-header">
+                        What materials do you require to begin discussing a potential hire or contract?
+                        <span class="qa-toggle-icon">+</span>
+                    </div>
+                    <div class="qa-accordion-body">
+                        <p>To provide the most accurate assessment, I request a clear Scope of Work (SOW) or Job Description, details on the primary tech stack, and information regarding the expected architectural challenges and team structure.</p>
                     </div>
                 </div>
 
                 <!-- ACCORDION ITEM 3 -->
                 <div class="qa-accordion-item" data-index="3">
                     <div class="qa-accordion-header">
-                        Considerations when staking crypto on-chain
+                        Are you currently available for new projects or full-time roles?
                         <span class="qa-toggle-icon">+</span>
                     </div>
                     <div class="qa-accordion-body">
-                        <p>Key considerations include the 'lock-up' period (the time your funds are inaccessible), the risk of 'slashing' (losing staked funds due to validator misconduct), and the liquidity of your staked asset. Always research the protocol's reputation and underlying security mechanisms.</p>
+                        <p>I am selectively open to new opportunities. While my focus is primarily on my business ventures, I consider exciting, high-impact consulting projects or senior architectural roles that align with my expertise in scalable systems and advanced technologies.</p>
                     </div>
                 </div>
 
                 <!-- ACCORDION ITEM 4 -->
                 <div class="qa-accordion-item" data-index="4">
                     <div class="qa-accordion-header">
-                        Is on-chain staking for you?
+                        What makes your portfolio different from others?
                         <span class="qa-toggle-icon">+</span>
                     </div>
                     <div class="qa-accordion-body">
-                        <p>Staking is ideal for long-term holders comfortable with the volatility of crypto assets and willing to commit their holdings for periods of time to earn rewards. If you require instant access to your funds, liquid staking solutions or other investment methods might be preferable.</p>
+                        <p>My portfolio offers a unique blend of technical depth, entrepreneurial drive, and proven social responsibility. Many developers focus solely on code; I demonstrate the ability to architect, code, launch, and manage systems that deliver commercial or educational value, making me a well-rounded and immediately impactful professional.</p>
                     </div>
                 </div>
                 
@@ -1821,9 +1836,9 @@ document.addEventListener('DOMContentLoaded', function() {
                             <span class="accordion-toggle">+</span>
                         </div>
                         <div class="link-group-content">
-                            <a href="#portfolio" class="footer-link">Blog</a>
+                            <a href="blog.html" class="footer-link">Blog</a>
                             <a href="#webapps" class="footer-link">Roadmap</a>
-                            <a href="#webapps" class="footer-link">Research</a>
+                            <a href="research.html" class="footer-link">Research</a>
                             <a href="#webapps" class="footer-link">Social Impact</a>
                             <a href="#about" class="footer-link">Certificates</a>
                             <a href="#services" class="footer-link">Business</a>
@@ -1919,15 +1934,17 @@ document.addEventListener('DOMContentLoaded', function() {
     font-size: 16px;
     font-weight: 500;
     transition: color 0.3s ease;
+    width: fit-content;
 }
 
 .contact-link:hover {
-    color: #667eea;
+    color: #afafaf;
 }
 
 .footer-right {
     display: flex;
     justify-content: flex-end;
+    padding-top: 4rem;
 }
 
 .footer-links {
@@ -2004,7 +2021,7 @@ document.addEventListener('DOMContentLoaded', function() {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 40px;
+    padding-top: 1px;
     border-top: 1px solid #333;
 }
 
@@ -2047,6 +2064,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     .footer-right {
         justify-content: flex-start;
+        padding-top: 5px;
     }
     
     .footer-headline {

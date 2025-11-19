@@ -1,0 +1,694 @@
+<div class="blog-grid-section">
+    <div class="blog-title">Blog</div>
+    <div class="blog-grid-layout">
+        <article class="blog-card-item">
+            <div class="blog-card-thumbnail">
+                <img src="https://images.unsplash.com/photo-1613909207039-6b173b755cc1?q=80&w=1247&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="blog-card-content">
+                <div class="blog-card-meta">
+                    <span class="blog-card-date">Jul 18 — 2024</span>
+                    <span class="blog-card-author">By Michael</span>
+                </div>
+                <h3 class="blog-card-title">The Psychology of UI: Why Your Brain Decides in 0.2 Seconds Whether a Website Looks Trustworthy</h3>
+            </div>
+        </article>
+
+        <article class="blog-card-item">
+            <div class="blog-card-thumbnail">
+                <img src="https://images.unsplash.com/photo-1523800503107-5bc3ba2a6f81?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="blog-card-content">
+                <div class="blog-card-meta">
+                    <span class="blog-card-date">Jul 18 — 2024</span>
+                    <span class="blog-card-author">By Michael</span>
+                </div>
+                <h3 class="blog-card-title">The Invisible Code That Runs the World: Why Every Business Is Secretly a Software Company</h3>
+            </div>
+        </article>
+
+        <article class="blog-card-item">
+            <div class="blog-card-thumbnail">
+                <img src="https://images.unsplash.com/photo-1672307974995-cd253f7f7eeb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="blog-card-content">
+                <div class="blog-card-meta">
+                    <span class="blog-card-date">Jul 18 — 2024</span>
+                    <span class="blog-card-author">By Michael</span>
+                </div>
+                <h3 class="blog-card-title">Why Web Developers Are the New Architects of Civilization</h3>
+            </div>
+        </article>
+
+        <article class="blog-card-item">
+            <div class="blog-card-thumbnail">
+                <img src="https://images.unsplash.com/photo-1518773553398-650c184e0bb3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="blog-card-content">
+                <div class="blog-card-meta">
+                    <span class="blog-card-date">Jul 18 — 2024</span>
+                    <span class="blog-card-author">By Michael</span>
+                </div>
+                <h3 class="blog-card-title">HTML Is Becoming a Suggestion: How AI Is Redefining the Rules of Front-End Development</h3>
+            </div>
+        </article>
+
+        <article class="blog-card-item">
+            <div class="blog-card-thumbnail">
+                <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="blog-card-content">
+                <div class="blog-card-meta">
+                    <span class="blog-card-date">Jul 18 — 2024</span>
+                    <span class="blog-card-author">By Michael</span>
+                </div>
+                <h3 class="blog-card-title">You’re Not Designing Websites — You’re Designing Human Behavior</h3>
+            </div>
+        </article>
+
+        <article class="blog-card-item">
+            <div class="blog-card-thumbnail">
+                <img src="https://images.unsplash.com/photo-1672911640671-65d5dfa97d26?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width: 100%; height: 100%; object-fit: cover;"> </div>
+            <div class="blog-card-content">
+                <div class="blog-card-meta">
+                    <span class="blog-card-date">Jul 18 — 2024</span>
+                    <span class="blog-card-author">By Michael</span>
+                </div>
+                <h3 class="blog-card-title">Web3, Decentralized Infrastructure & the Coming Battle for the Internet</h3>
+            </div>
+        </article>
+
+    </div>
+</div>
+
+<style>
+    /*
+    Overall Container for the Blog Grid Section
+*/
+.blog-grid-section {
+    max-width: 1200px; /* Max width similar to the image's content area */
+    margin: 40px auto; /* Centering with vertical spacing */
+    background-color: transparent; /* Light gray background matching the image */
+    font-family: Inter, sans-serif; /* Clean, common font */
+}
+
+/*
+    Grid Layout for Blog Cards
+*/
+.blog-grid-layout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 3 columns as per the image */
+    gap: 50px; /* Space between cards */
+    margin-bottom: 8rem;
+}
+
+.blog-title {
+    font-size: 48px;
+    font-weight: 600;
+    margin: 4rem 0;
+}
+
+/*
+    Individual Blog Card Item
+*/
+.blog-card-item {
+    display: flex; /* Arranges thumbnail and content side-by-side */
+    gap: 20px; /* Space between thumbnail and text */
+    align-items: flex-start; /* Aligns content to the top */
+    color: #333; /* Default text color */
+    text-decoration: none; /* Remove underline if this was a link */
+    transition: color 0.2s ease; /* Smooth transition for hover effects */
+}
+
+.blog-card-item:hover .blog-card-title {
+    color: #007bff; /* Example hover color for the title */
+}
+
+/*
+    Thumbnail Styling
+*/
+.blog-card-thumbnail {
+    width: 200px; /* Fixed width for the gray square thumbnail */
+    height: 200px; /* Fixed height for the gray square thumbnail */
+    background-color: #d9d9d9; /* Gray background for the placeholder */
+    flex-shrink: 0; /* Prevents the thumbnail from shrinking */
+    /* If you insert an image, use an <img> tag inside and style it: */
+    /*
+    & 
+    */
+}
+
+.img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+/*
+    Content Area for Date, Author, and Title
+*/
+.blog-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically centers content if needed, but flex-start on item handles it */
+}
+
+/*
+    Meta Information (Date and Author)
+*/
+.blog-card-meta {
+    font-size: 13px;
+    font-weight: 600;
+    color: #888; /* Lighter gray for meta text */
+    margin-bottom: 8px; /* Space below meta, above title */
+    display: flex; /* To align date and author */
+    gap: 5px; /* Space between date and author */
+}
+
+.blog-card-author {
+    font-weight: bold; /* Author slightly bolder */
+}
+
+/*
+    Blog Post Title
+*/
+.blog-card-title {
+    font-size: 22px; /* Larger font size for the title */
+    font-weight: bold; /* Bold title */
+    line-height: 1.4; /* Improved readability for title */
+    margin: 0; /* Remove default margin from h3 */
+    color: #000000; /* Darker color for the title */
+}
+
+/*
+    Responsive Adjustments
+*/
+@media (max-width: 992px) {
+    .blog-grid-layout {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+        gap: 25px;
+    }
+    .blog-card-item {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .blog-grid-layout {
+        grid-template-columns: 1fr; /* Single column on small screens */
+        gap: 20px;
+    }
+    .blog-card-thumbnail {
+        width: 80px;
+        height: 80px;
+    }
+    .blog-card-title {
+        font-size: 16px;
+    }
+    .blog-card-meta {
+        font-size: 12px;
+    }
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+<div class="portfolio-footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-left">
+                <h2 class="footer-headline">Let's create something extraordinary together</h2>
+                <p class="footer-description">
+                    Ready to bring your ideas to life? Whether you're looking to build a new product, 
+                    improve an existing one, or just want to chat about technology and design, 
+                    I'd love to hear from you.
+                </p>
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <span class="contact-label">Email</span>
+                        <a href="mailto:hello@alexmorgan.dev" class="contact-link">lefamjack@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Phone</span>
+                        <a href="tel:+1234567890" class="contact-link">(078) 006-2713</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-right">
+                <div class="footer-links">
+                    <div class="link-group">
+                        <div class="link-group-header">
+                            <h3 class="link-group-title">Discover</h3>
+                            <span class="accordion-toggle">+</span>
+                        </div>
+                        <div class="link-group-content">
+                            <a href="blog.html" class="footer-link">Blog</a>
+                            <a href="#webapps" class="footer-link">Roadmap</a>
+                            <a href="research.html" class="footer-link">Research</a>
+                            <a href="#webapps" class="footer-link">Social Impact</a>
+                            <a href="#about" class="footer-link">Certificates</a>
+                            <a href="#services" class="footer-link">Business</a>
+                            <a href="#contact" class="footer-link">Sandbox</a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-copyright">
+                <p>&copy; 2025 Lefa Mofokeng. All rights reserved.</p>
+            </div>
+            <div class="footer-legal">
+                <a href="#" class="legal-link">Privacy Policy</a>
+                <a href="#" class="legal-link">Terms of Service</a>
+                <a href="#" class="legal-link">Cookies</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}    
+.portfolio-footer {
+    background: #000;
+    color: white;
+    padding: 80px 20px 40px;
+    margin-top: 80px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 780px 1fr;
+    gap: 80px;
+    margin-bottom: 60px;
+    align-items: start;
+}
+
+.footer-left {
+    padding-right: 0;
+    margin: 0;
+}
+
+.footer-headline {
+    font-size: 68px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #fff 0%, #ccc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.footer-description {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #ccc;
+    margin-bottom: 32px;
+    max-width: 100%;
+}
+
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.contact-label {
+    font-size: 14px;
+    color: #999;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.contact-link {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    width: fit-content;
+}
+
+.contact-link:hover {
+    color: #afafaf;
+}
+
+.footer-right {
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+
+.link-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 20px;
+}
+
+.link-group:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.link-group-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 0;
+    border-bottom: 1px solid white;
+}
+
+.link-group-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: #ccc;
+    margin-bottom: 0;
+    letter-spacing: 0.5px;
+}
+
+.accordion-toggle {
+    font-size: 18px;
+    font-weight: 300;
+    color: #ccc;
+    transition: transform 0.3s ease;
+    display: none;
+}
+
+.link-group-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    overflow: hidden;
+}
+
+.footer-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 1px 0;
+    position: relative;
+}
+
+.footer-link:hover {
+    color: #999;
+}
+
+.footer-link:hover::before {
+    opacity: 1;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    border-top: 1px solid #333;
+}
+
+.footer-copyright {
+    color: #999;
+    font-size: 14px;
+}
+
+.footer-legal {
+    display: flex;
+    gap: 24px;
+}
+
+.legal-link {
+    color: #999;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.legal-link:hover {
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    
+    .footer-left {
+        padding-right: 0;
+        text-align: left;
+    }
+    
+    .footer-description {
+        max-width: none;
+    }
+    
+    .footer-right {
+        justify-content: flex-start;
+        padding-top: 5px;
+    }
+    
+    .footer-headline {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolio-footer {
+        padding: 60px 20px 30px;
+    }
+    
+    .footer-headline {
+        font-size: 32px;
+    }
+    
+    .footer-links {
+        grid-template-columns: 1fr;
+        gap: 0;
+        width: 100%;
+    }
+    
+    .link-group {
+        border-bottom: 1px solid #adadad;
+        gap: 0;
+        padding-bottom: 0;
+    }
+    
+    .link-group:last-child {
+        border-bottom: none;
+    }
+    
+    .link-group-header {
+        padding: 20px 0;
+    }
+    
+    .accordion-toggle {
+        display: block;
+    }
+    
+    .link-group-content {
+        max-height: 0;
+        opacity: 0;
+        gap: 0;
+    }
+    
+    .link-group.active .link-group-content {
+        max-height: 500px;
+        opacity: 1;
+        padding-bottom: 20px;
+        gap: 16px;
+    }
+    
+    .link-group.active .accordion-toggle {
+        transform: rotate(45deg);
+    }
+    
+    .footer-link {
+        padding: 12px 0;
+        font-size: 15px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .footer-legal {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .footer-link:hover {
+        transform: translateX(0);
+    }
+    
+    .footer-link::before {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-headline {
+        font-size: 28px;
+    }
+    
+    .footer-description {
+        font-size: 16px;
+    }
+    
+    .footer-links {
+        gap: 0;
+    }
+    
+    .link-group {
+        gap: 0;
+    }
+}
+
+/* Animation for scroll-in effect */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.footer-content > * {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.footer-left {
+    animation-delay: 0.1s;
+}
+
+.footer-right {
+    animation-delay: 0.2s;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Smooth scrolling for footer links
+    const footerLinks = document.querySelectorAll('.footer-link[href^="#"]');
+    
+    footerLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Accordion functionality for mobile
+    const linkGroups = document.querySelectorAll('.link-group');
+    
+    function initAccordion() {
+        if (window.innerWidth <= 768) {
+            // Close all accordions initially on mobile
+            linkGroups.forEach(group => {
+                group.classList.remove('active');
+            });
+            
+            // Add click event to accordion headers
+            linkGroups.forEach(group => {
+                const header = group.querySelector('.link-group-header');
+                
+                // Remove existing event listeners to prevent duplicates
+                header.removeEventListener('click', toggleAccordion);
+                
+                // Add new event listener
+                header.addEventListener('click', toggleAccordion);
+            });
+        } else {
+            // Remove accordion behavior on larger screens
+            linkGroups.forEach(group => {
+                group.classList.add('active');
+                const header = group.querySelector('.link-group-header');
+                header.removeEventListener('click', toggleAccordion);
+            });
+        }
+    }
+    
+    // Toggle accordion function
+    function toggleAccordion() {
+        const group = this.parentElement;
+        
+        // Close other open accordions
+        linkGroups.forEach(otherGroup => {
+            if (otherGroup !== group) {
+                otherGroup.classList.remove('active');
+            }
+        });
+        
+        // Toggle current accordion
+        group.classList.toggle('active');
+    }
+    
+    // Initialize accordion on load
+    initAccordion();
+    
+    // Reinitialize on window resize
+    window.addEventListener('resize', initAccordion);
+    
+    // Intersection Observer for animation
+    const footer = document.querySelector('.portfolio-footer');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animationPlayState = 'running';
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    if (footer) {
+        observer.observe(footer);
+    }
+});
+</script>
