@@ -77,6 +77,10 @@
                     <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#000000" d="M256 8a248 248 0 1 0 0 496a248 248 0 1 0 0-496m164 114.4c29.5 36 47.4 82 47.8 132c-7-1.5-77-15.7-147.5-6.8c-5.8-14-11.2-26.4-18.6-41.6c78.3-32 113.8-77.5 118.3-83.5zm-23.6-24.5c-3.8 5.4-35.7 48.3-111 76.5c-34.7-63.8-73.2-116.2-79-124c67.2-16.2 138 1.3 190.1 47.5zM165.9 64.6c5.6 7.7 43.4 60.1 78.5 122.5C145.3 213.4 58 213 48.6 212.9c13.7-65.7 58-120.4 117.3-148.3M44.2 256.3c0-2.2 0-4.3.1-6.5c9.3.2 111.9 1.5 217.7-30.1c6.1 11.9 11.9 23.9 17.2 35.9c-76.6 21.6-146.2 83.5-180.5 142.3c-33.8-37.6-54.5-87.2-54.5-141.6M126 423.4c22.1-45.2 82.2-103.6 167.6-132.8c29.7 77.3 42 142.1 45.2 160.6c-68.1 29-150 21.1-212.8-27.9zm248.4 8.5c-2.2-12.9-13.4-74.9-41.2-151c66.4-10.6 124.7 6.8 131.9 9.1c-9.4 58.9-43.3 109.8-90.8 142z"/></svg>
                     Dribbble
                 </a>
+                <a href="#" class="social-link">
+                    <svg width="22" height="22" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="#000000" d="M640 64L435.8 463.2H244l85.5-165.5h-3.8C255.1 389.3 149.9 449.5 0 463.2V300.1s95.9-5.7 152.3-64.9H0V64h171.1v140.8h3.8l70-140.8h129.4v139.9h3.8L450.7 64z"/></svg>
+                    Webflow
+                </a>
             </div>
             <div class="hero-actions">
                 <button class="btn btn-primary" id="viewWorkBtn">View My Work
@@ -1813,6 +1817,506 @@ document.addEventListener('DOMContentLoaded', function() {
   updateWebappsPagination();
 });
 </script>
+
+
+
+
+
+
+
+
+
+<style>
+    /* Word Target & Arrow Logic */
+    .cr-target-word {
+        color: #fff;
+        font-weight: 600;
+        position: relative;
+        display: inline-block;
+    }
+
+    .cr-arrow-svg {
+        position: absolute;
+        width: 110px;
+        height: 60px;
+        top: 10px;  /* Moves arrow down slightly */
+        left: -115px; /* Moves arrow to the left of the word */
+        pointer-events: none;
+        overflow: visible;
+    }
+
+    /* Drawing Animations */
+    .cr-arrow-path {
+        stroke-dasharray: 100;
+        stroke-dashoffset: 100;
+        animation: cr-draw-line 1.5s ease-out forwards;
+        animation-delay: 0.5s; /* Wait a moment before drawing */
+    }
+
+    .cr-arrow-head {
+        stroke-dasharray: 30;
+        stroke-dashoffset: 30;
+        opacity: 0;
+        animation: cr-draw-head 0.5s ease-out forwards;
+        animation-delay: 1.8s; /* Draw head after line finishes */
+    }
+
+    @keyframes cr-draw-line {
+        to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes cr-draw-head {
+        to { stroke-dashoffset: 0; opacity: 1; }
+    }
+
+</style>
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<div class="cr-section-wrapper">
+    <div style="width: 1200px; position: relative; align-items: center;">
+    <h2 class="cr-section-title">Client Feedback</h2>
+    <p class="cr-section-subtitle">
+        Driven by 
+                <span class="cr-target-word">
+                    Success
+                    <svg class="cr-arrow-svg" viewBox="0 0 110 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path class="cr-arrow-path" d="M10 50 C 20 55, 45 55, 90 25" stroke="#888" stroke-width="2" stroke-linecap="round"/>
+                        <path class="cr-arrow-head" d="M80 22 L 90 25 L 85 35" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+    </p>
+    </div>
+
+    <div class="cr-scroll-area">
+        
+        <div class="cr-edge-overlay cr-overlay-left"></div>
+        <div class="cr-edge-overlay cr-overlay-right"></div>
+
+        <div class="cr-grid-container">
+
+            <div class="cr-column">
+                <div class="cr-track cr-scroll-up">
+                    <div class="cr-content-group">
+                        <div class="cr-card">
+                            <div class="cr-card-header">
+                                <img src="https://i.pravatar.cc/150?img=11" alt="Avatar" class="cr-avatar">
+                                <div class="cr-user-info">
+                                    <div class="cr-name">Alex M.</div>
+                                    <div class="cr-company">Apex Designs</div>
+                                </div>
+                            </div>
+                            <p class="cr-text">The monochrome aesthetic is exactly what we needed. It isn't just about the look; the clean architecture allowed us to integrate complex data streams without cluttering the UI. We've seen a 40% uplift in user retention.</p>
+                            <div class="cr-card-footer"><span class="cr-stars">★★★★★</span><span class="cr-time">2 days ago</span></div>
+                        </div>
+                        <div class="cr-card">
+                            <div class="cr-card-header">
+                                <img src="https://i.pravatar.cc/150?img=5" alt="Avatar" class="cr-avatar">
+                                <div class="cr-user-info">
+                                    <div class="cr-name">Sarah J.</div>
+                                    <div class="cr-company">Vertex Inc.</div>
+                                </div>
+                            </div>
+                            <p class="cr-text">Incredible attention to detail. The workflow is seamless, but what really stands out is the documentation. Scaling this across our engineering team was effortless because the code is so self-documenting.</p>
+                            <div class="cr-card-footer"><span class="cr-stars">★★★★☆</span><span class="cr-time">1 week ago</span></div>
+                        </div>
+                        <div class="cr-card">
+                            <div class="cr-card-header">
+                                <img src="https://i.pravatar.cc/150?img=13" alt="Avatar" class="cr-avatar">
+                                <div class="cr-user-info">
+                                    <div class="cr-name">David B.</div>
+                                    <div class="cr-company">MonoSpace</div>
+                                </div>
+                            </div>
+                            <p class="cr-text">Minimalist design at its finest. It cuts through the noise and delivers exactly what the user wants without any unnecessary bloat or distractions. The animation performance is top-tier even on older devices.</p>
+                            <div class="cr-card-footer"><span class="cr-stars">★★★★★</span><span class="cr-time">Yesterday</span></div>
+                        </div>
+                    </div>
+                    <div class="cr-content-group">
+                        <div class="cr-card"><div class="cr-card-header"><img src="https://i.pravatar.cc/150?img=11" class="cr-avatar"><div class="cr-user-info"><div class="cr-name">Alex M.</div><div class="cr-company">Apex Designs</div></div></div><p class="cr-text">The monochrome aesthetic is exactly what we needed. It isn't just about the look; the clean architecture allowed us to integrate complex data streams without cluttering the UI. We've seen a 40% uplift in user retention.</p><div class="cr-card-footer"><span class="cr-stars">★★★★★</span><span class="cr-time">2 days ago</span></div></div>
+                        <div class="cr-card"><div class="cr-card-header"><img src="https://i.pravatar.cc/150?img=5" class="cr-avatar"><div class="cr-user-info"><div class="cr-name">Sarah J.</div><div class="cr-company">Vertex Inc.</div></div></div><p class="cr-text">Incredible attention to detail. The workflow is seamless, but what really stands out is the documentation. Scaling this across our engineering team was effortless because the code is so self-documenting.</p><div class="cr-card-footer"><span class="cr-stars">★★★★☆</span><span class="cr-time">1 week ago</span></div></div>
+                        <div class="cr-card"><div class="cr-card-header"><img src="https://i.pravatar.cc/150?img=13" class="cr-avatar"><div class="cr-user-info"><div class="cr-name">David B.</div><div class="cr-company">MonoSpace</div></div></div><p class="cr-text">Minimalist design at its finest. It cuts through the noise and delivers exactly what the user wants without any unnecessary bloat or distractions. The animation performance is top-tier even on older devices.</p><div class="cr-card-footer"><span class="cr-stars">★★★★★</span><span class="cr-time">Yesterday</span></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cr-column">
+                <div class="cr-track cr-scroll-down">
+                    <div class="cr-content-group">
+                        <div class="cr-card">
+                            <div class="cr-card-header">
+                                <img src="https://i.pravatar.cc/150?img=60" alt="Avatar" class="cr-avatar">
+                                <div class="cr-user-info">
+                                    <div class="cr-name">Michael T.</div>
+                                    <div class="cr-company">TechFlow</div>
+                                </div>
+                            </div>
+                            <p class="cr-text">Efficiency increased by 40% after integration. We previously struggled with slow load times, but the optimized assets in this package solved that overnight. A true game changer for our metrics.</p>
+                            <div class="cr-card-footer"><span class="cr-stars">★★★★★</span><span class="cr-time">3 days ago</span></div>
+                        </div>
+                        <div class="cr-card">
+                            <div class="cr-card-header">
+                                <img src="https://i.pravatar.cc/150?img=44" alt="Avatar" class="cr-avatar">
+                                <div class="cr-user-info">
+                                    <div class="cr-name">Priya K.</div>
+                                    <div class="cr-company">Orbit Logic</div>
+                                </div>
+                            </div>
+                            <p class="cr-text">Dark mode implementation is flawless. Usually, contrast issues plague these kinds of themes, but every element here pops perfectly. The semantic HTML tags were also a nice touch for accessibility.</p>
+                            <div class="cr-card-footer"><span class="cr-stars">★★★★★</span><span class="cr-time">5 hours ago</span></div>
+                        </div>
+                        <div class="cr-card">
+                            <div class="cr-card-header">
+                                <img src="https://i.pravatar.cc/150?img=33" alt="Avatar" class="cr-avatar">
+                                <div class="cr-user-info">
+                                    <div class="cr-name">Tom H.</div>
+                                    <div class="cr-company">Linear Systems</div>
+                                </div>
+                            </div>
+                            <p class="cr-text">Solid architecture. The font choice is perfect for readability during long sessions. We successfully forked the repo and added our own custom modules without breaking the core layout.</p>
+                            <div class="cr-card-footer"><span class="cr-stars">★★★★☆</span><span class="cr-time">1 month ago</span></div>
+                        </div>
+                    </div>
+                    <div class="cr-content-group">
+                        <div class="cr-card"><div class="cr-card-header"><img src="https://i.pravatar.cc/150?img=60" class="cr-avatar"><div class="cr-user-info"><div class="cr-name">Michael T.</div><div class="cr-company">TechFlow</div></div></div><p class="cr-text">Efficiency increased by 40% after integration. We previously struggled with slow load times, but the optimized assets in this package solved that overnight. A true game changer for our metrics.</p><div class="cr-card-footer"><span class="cr-stars">★★★★★</span><span class="cr-time">3 days ago</span></div></div>
+                        <div class="cr-card"><div class="cr-card-header"><img src="https://i.pravatar.cc/150?img=44" class="cr-avatar"><div class="cr-user-info"><div class="cr-name">Priya K.</div><div class="cr-company">Orbit Logic</div></div></div><p class="cr-text">Dark mode implementation is flawless. Usually, contrast issues plague these kinds of themes, but every element here pops perfectly. The semantic HTML tags were also a nice touch for accessibility.</p><div class="cr-card-footer"><span class="cr-stars">★★★★★</span><span class="cr-time">5 hours ago</span></div></div>
+                        <div class="cr-card"><div class="cr-card-header"><img src="https://i.pravatar.cc/150?img=33" class="cr-avatar"><div class="cr-user-info"><div class="cr-name">Tom H.</div><div class="cr-company">Linear Systems</div></div></div><p class="cr-text">Solid architecture. The font choice is perfect for readability during long sessions. We successfully forked the repo and added our own custom modules without breaking the core layout.</p><div class="cr-card-footer"><span class="cr-stars">★★★★☆</span><span class="cr-time">1 month ago</span></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cr-column">
+                <div class="cr-track cr-scroll-up">
+                    <div class="cr-content-group">
+                        <div class="cr-card">
+                            <div class="cr-card-header">
+                                <img src="https://i.pravatar.cc/150?img=12" alt="Avatar" class="cr-avatar">
+                                <div class="cr-user-info">
+                                    <div class="cr-name">James L.</div>
+                                    <div class="cr-company">Flux Studios</div>
+                                </div>
+                            </div>
+                            <p class="cr-text">Simply stunning visual hierarchy. It works smoothly on all devices, from our large 4k monitors down to the smallest mobile viewports. The CSS variable structure made customization a breeze.</p>
+                            <div class="cr-card-footer"><span class="cr-stars">★★★★★</span><span class="cr-time">Just now</span></div>
+                        </div>
+                        <div class="cr-card">
+                            <div class="cr-card-header">
+                                <img src="https://i.pravatar.cc/150?img=20" alt="Avatar" class="cr-avatar">
+                                <div class="cr-user-info">
+                                    <div class="cr-name">Morgan F.</div>
+                                    <div class="cr-company">Basecamp</div>
+                                </div>
+                            </div>
+                            <p class="cr-text">The user experience is buttery smooth. Great job. We used this as the foundation for our client dashboard and they have been raving about the "premium feel" ever since launch.</p>
+                            <div class="cr-card-footer"><span class="cr-stars">★★★★★</span><span class="cr-time">4 days ago</span></div>
+                        </div>
+                        <div class="cr-card">
+                            <div class="cr-card-header">
+                                <img src="https://i.pravatar.cc/150?img=59" alt="Avatar" class="cr-avatar">
+                                <div class="cr-user-info">
+                                    <div class="cr-name">Kaito Y.</div>
+                                    <div class="cr-company">Nippon Dev</div>
+                                </div>
+                            </div>
+                            <p class="cr-text">Very modern stack. Documentation was clear. I appreciated the absence of heavy frameworks; it felt very lightweight and respectful of the user's browser resources.</p>
+                            <div class="cr-card-footer"><span class="cr-stars">★★★★☆</span><span class="cr-time">2 weeks ago</span></div>
+                        </div>
+                    </div>
+                    <div class="cr-content-group">
+                        <div class="cr-card"><div class="cr-card-header"><img src="https://i.pravatar.cc/150?img=12" class="cr-avatar"><div class="cr-user-info"><div class="cr-name">James L.</div><div class="cr-company">Flux Studios</div></div></div><p class="cr-text">Simply stunning visual hierarchy. It works smoothly on all devices, from our large 4k monitors down to the smallest mobile viewports. The CSS variable structure made customization a breeze.</p><div class="cr-card-footer"><span class="cr-stars">★★★★★</span><span class="cr-time">Just now</span></div></div>
+                        <div class="cr-card"><div class="cr-card-header"><img src="https://i.pravatar.cc/150?img=20" class="cr-avatar"><div class="cr-user-info"><div class="cr-name">Morgan F.</div><div class="cr-company">Basecamp</div></div></div><p class="cr-text">The user experience is buttery smooth. Great job. We used this as the foundation for our client dashboard and they have been raving about the "premium feel" ever since launch.</p><div class="cr-card-footer"><span class="cr-stars">★★★★★</span><span class="cr-time">4 days ago</span></div></div>
+                        <div class="cr-card"><div class="cr-card-header"><img src="https://i.pravatar.cc/150?img=59" class="cr-avatar"><div class="cr-user-info"><div class="cr-name">Kaito Y.</div><div class="cr-company">Nippon Dev</div></div></div><p class="cr-text">Very modern stack. Documentation was clear. I appreciated the absence of heavy frameworks; it felt very lightweight and respectful of the user's browser resources.</p><div class="cr-card-footer"><span class="cr-stars">★★★★☆</span><span class="cr-time">2 weeks ago</span></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cr-column">
+                <div class="cr-track cr-scroll-down">
+                    <div class="cr-content-group">
+                        <div class="cr-card">
+                            <div class="cr-card-header">
+                                <img src="https://i.pravatar.cc/150?img=53" alt="Avatar" class="cr-avatar">
+                                <div class="cr-user-info">
+                                    <div class="cr-name">Robert D.</div>
+                                    <div class="cr-company">Iron Clad</div>
+                                </div>
+                            </div>
+                            <p class="cr-text">Robust and reliable. The animation adds a premium feel without causing any layout shifts or jitters. I've deployed this on three separate client sites and it works perfectly every time.</p>
+                            <div class="cr-card-footer"><span class="cr-stars">★★★★★</span><span class="cr-time">3 hours ago</span></div>
+                        </div>
+                        <div class="cr-card">
+                            <div class="cr-card-header">
+                                <img src="https://i.pravatar.cc/150?img=9" alt="Avatar" class="cr-avatar">
+                                <div class="cr-user-info">
+                                    <div class="cr-name">Anita S.</div>
+                                    <div class="cr-company">Spark Labs</div>
+                                </div>
+                            </div>
+                            <p class="cr-text">Exactly as described. The infinite scroll is mesmerizing. It really captures the user's attention immediately upon landing. The grey theme is also very easy on the eyes.</p>
+                            <div class="cr-card-footer"><span class="cr-stars">★★★★★</span><span class="cr-time">2 days ago</span></div>
+                        </div>
+                        <div class="cr-card">
+                            <div class="cr-card-header">
+                                <img src="https://i.pravatar.cc/150?img=8" alt="Avatar" class="cr-avatar">
+                                <div class="cr-user-info">
+                                    <div class="cr-name">Chris P.</div>
+                                    <div class="cr-company">Code Foundry</div>
+                                </div>
+                            </div>
+                            <p class="cr-text">Clean code, no bloat. A developer's dream. I usually end up rewriting half the CSS when I buy templates, but this one was structured logically and cleanly from the start.</p>
+                            <div class="cr-card-footer"><span class="cr-stars">★★★★☆</span><span class="cr-time">5 days ago</span></div>
+                        </div>
+                    </div>
+                    <div class="cr-content-group">
+                        <div class="cr-card"><div class="cr-card-header"><img src="https://i.pravatar.cc/150?img=53" class="cr-avatar"><div class="cr-user-info"><div class="cr-name">Robert D.</div><div class="cr-company">Iron Clad</div></div></div><p class="cr-text">Robust and reliable. The animation adds a premium feel without causing any layout shifts or jitters. I've deployed this on three separate client sites and it works perfectly every time.</p><div class="cr-card-footer"><span class="cr-stars">★★★★★</span><span class="cr-time">3 hours ago</span></div></div>
+                        <div class="cr-card"><div class="cr-card-header"><img src="https://i.pravatar.cc/150?img=9" class="cr-avatar"><div class="cr-user-info"><div class="cr-name">Anita S.</div><div class="cr-company">Spark Labs</div></div></div><p class="cr-text">Exactly as described. The infinite scroll is mesmerizing. It really captures the user's attention immediately upon landing. The grey theme is also very easy on the eyes.</p><div class="cr-card-footer"><span class="cr-stars">★★★★★</span><span class="cr-time">2 days ago</span></div></div>
+                        <div class="cr-card"><div class="cr-card-header"><img src="https://i.pravatar.cc/150?img=8" class="cr-avatar"><div class="cr-user-info"><div class="cr-name">Chris P.</div><div class="cr-company">Code Foundry</div></div></div><p class="cr-text">Clean code, no bloat. A developer's dream. I usually end up rewriting half the CSS when I buy templates, but this one was structured logically and cleanly from the start.</p><div class="cr-card-footer"><span class="cr-stars">★★★★☆</span><span class="cr-time">5 days ago</span></div></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    /* --- scoped CSS start --- */
+
+    /* Outer Wrapper */
+    .cr-section-wrapper {
+        width: 100%;
+        background-color: #0a0a0a;
+        font-family: 'Inter', sans-serif;
+        box-sizing: border-box;
+        padding: 40px 20px; /* Outer padding */
+    }
+
+    .cr-section-wrapper * {
+        box-sizing: border-box;
+    }
+
+    /* Typography */
+    div[style*="width: 1200px"] {
+        max-width: 100%;
+        margin: 0 auto;
+        text-align: left !important;
+    }
+
+    .cr-section-title {
+        text-align: left !important;
+    }
+
+    .cr-section-subtitle {
+        text-align: left !important;
+    }
+
+    .cr-section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #ffffff;
+       
+    }
+
+    .cr-section-subtitle {
+        font-size: 1.1rem;
+        color: #888;
+        font-weight: 300;
+        padding-bottom: 4rem;
+    }
+
+    /* Scroll Area (Holds the grid and overlays) */
+    .cr-scroll-area {
+        position: relative;
+        height: 700px; /* Height of the scrollable area */
+        overflow: hidden;
+    }
+
+    /* Grid Layout */
+    .cr-grid-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        height: 100%;
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    /* Column & Masking */
+    .cr-column {
+        position: relative;
+        height: 100%;
+        overflow: hidden;
+        /* Fade mask for smooth entry/exit */
+        mask-image: linear-gradient(to bottom, transparent, black 9%, black 95%, transparent);
+        -webkit-mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+    }
+
+    /* --- Hover Pause --- */
+    .cr-column:hover .cr-track {
+        animation-play-state: paused;
+    }
+
+    /* Track Logic */
+    .cr-track {
+        position: absolute;
+        top: 0; left: 0; width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        will-change: transform;
+    }
+
+    .cr-content-group {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* Card Styling */
+    .cr-card {
+        background-color: #171717;
+        border: 1px solid #333;
+        border-radius: 12px;
+        padding: 24px;
+        color: #e5e5e5;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        gap: 16px; /* Increased gap for spacing */
+    }
+
+    .cr-card:hover {
+        background-color: #222;
+        border-color: #555;
+    }
+
+    /* Card Header */
+    .cr-card-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .cr-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+        background-color: #333;
+        filter: grayscale(100%);
+        border: 1px solid #444;
+    }
+
+    .cr-user-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .cr-name {
+        font-weight: 600;
+        font-size: 1rem;
+        color: #fff;
+        line-height: 1.2;
+    }
+
+    .cr-company {
+        font-size: 0.75rem;
+        color: #777;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-top: 2px;
+    }
+
+    /* Card Body */
+    .cr-text {
+        font-size: 0.9rem;
+        line-height: 1.6; /* Better readability for longer text */
+        color: #b0b0b0;
+        margin: 0;
+        flex-grow: 1;
+    }
+
+    /* Card Footer */
+    .cr-card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 16px;
+        border-top: 1px solid #2a2a2a;
+    }
+
+    .cr-stars {
+        color: #999;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+    }
+
+    .cr-time {
+        font-size: 0.75rem;
+        color: #555;
+        font-weight: 500;
+    }
+
+    /* Animations - slowed down slightly for readability */
+    .cr-scroll-up { animation: cr-scroll-up-anim 80s linear infinite; }
+    .cr-scroll-down { animation: cr-scroll-down-anim 90s linear infinite; transform: translateY(-50%); }
+
+    @keyframes cr-scroll-up-anim { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
+    @keyframes cr-scroll-down-anim { 0% { transform: translateY(-50%); } 100% { transform: translateY(0); } }
+
+   /* Blurry Overlays */
+    .cr-edge-overlay {
+        position: absolute;
+        top: 0; bottom: 0;
+        width: 20%; 
+        z-index: 10;
+        pointer-events: none;
+        backdrop-filter: blur(0);
+        -webkit-backdrop-filter: blur(1px);
+    }
+    .cr-overlay-left { left: 0; background: linear-gradient(to right, rgba(10,10,10, 1) 0%, rgba(10,10,10, 0.6) 30%, rgba(10, 10, 10, 0) 100%); }
+    .cr-overlay-right { right: 0; background: linear-gradient(to left, rgba(10,10,10, 1) 0%, rgba(10,10,10, 0.6) 30%, rgba(10, 10, 10, 0) 100%); }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .cr-grid-container { grid-template-columns: repeat(2, 1fr); }
+        .cr-edge-overlay { width: 15%; }
+        .cr-column:nth-child(3), .cr-column:nth-child(4) { display: none; }
+    }
+    @media (max-width: 600px) {
+        .cr-grid-container { grid-template-columns: 1fr; }
+        .cr-edge-overlay { display: none; }
+        .cr-column:nth-child(2) { display: none; }
+    }
+    /* --- scoped CSS end --- */
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
