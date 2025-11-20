@@ -1,0 +1,225 @@
+
+
+    <div class="support-container">
+        <div class="support-content">
+            <div class="support-badge">System Administration</div>
+            <h2 class="support-title">Comprehensive IT Support & Infrastructure</h2>
+    
+            <p class="support-description">
+                Beyond software development, I possess deep technical knowledge in maintaining the ecosystems where code lives. 
+                I bridge the gap between hardware, networking, and operating systems to ensure seamless business continuity.
+            </p>
+        </div>
+
+        <div class="support-visual">
+            <ul class="support-list">
+                <li class="support-item">
+                    <span class="check-icon">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </span>
+                    <div class="item-text">
+                        <strong>Hardware Diagnostics & Repair</strong>
+                        <span>Troubleshooting component failures, upgrades, and peripheral maintenance.</span>
+                    </div>
+                </li>
+                <li class="support-item">
+                    <span class="check-icon">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </span>
+                    <div class="item-text">
+                        <strong>Network Administration</strong>
+                        <span>TCP/IP configuration, DNS/DHCP management, VPN setup, and router troubleshooting.</span>
+                    </div>
+                </li>
+                <li class="support-item">
+                    <span class="check-icon">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </span>
+                    <div class="item-text">
+                        <strong>OS Environment Management</strong>
+                        <span>Advanced support for Windows, MacOS, and Linux (Ubuntu/CentOS) environments.</span>
+                    </div>
+                </li>
+                <li class="support-item">
+                    <span class="check-icon">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </span>
+                    <div class="item-text">
+                        <strong>Security & Data Recovery</strong>
+                        <span>Virus removal, firewall configuration, and disaster recovery protocols.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+/* IT Tech Support Section Styles */
+.tech-support-section {
+    background: #f8f9fa; /* Contrast against the grey expertise section */
+    padding: 100px 20px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.support-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    justify-content: space-between;
+}
+
+.support-content {
+    flex: 1;
+    max-width: 600px;
+}
+
+.support-visual {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.support-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    background: #f5f5f5;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+.support-title {
+    font-size: clamp(32px, 4vw, 42px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    color: #000;
+}
+
+.support-description {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+.support-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.support-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.check-icon {
+    min-width: 24px;
+    height: 24px;
+    background: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-top: 8px;
+}
+
+.item-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-text strong {
+    font-size: 21px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 4px;
+}
+
+.item-text span {
+    font-size: 15px;
+    color: #666;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+/* Terminal Visual Styles */
+.terminal-window {
+    background: #1a1a1a;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    font-family: 'Courier New', monospace;
+    transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
+    transition: transform 0.3s ease;
+}
+
+.terminal-window:hover {
+    transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+}
+
+.terminal-header {
+    background: #2d2d2d;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+.terminal-title {
+    margin-left: 12px;
+    color: #999;
+    font-size: 12px;
+    font-family: sans-serif;
+}
+
+.terminal-body {
+    padding: 24px;
+    color: #f0f0f0;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Add this to your existing Media Query for max-width: 768px */
+@media (max-width: 768px) {
+    .support-container {
+        flex-direction: column;
+        gap: 50px;
+    }
+    
+    .support-content {
+        padding-right: 0;
+        text-align: left;
+    }
+    
+    .terminal-window {
+        transform: none;
+        margin: 0 auto;
+    }
+}
+</style>
+
+
+
+
+

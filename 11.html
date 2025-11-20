@@ -1,0 +1,271 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<div class="it-section-wrapper">
+    
+    <div class="it-header">
+        <h2 class="it-title">System Architecture <span class="it-dim">&</span> Support</h2>
+        <p class="it-subtitle">Because code needs a reliable environment to run on.</p>
+    </div>
+
+    <div class="it-grid">
+        
+        <div class="it-visual-col">
+            <div class="it-network-container">
+                <svg class="it-network-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="it-line it-line-1" d="M50 50 L 200 200 L 350 50" stroke="#333" stroke-width="2"/>
+                    <path class="it-line it-line-2" d="M50 350 L 200 200 L 350 350" stroke="#333" stroke-width="2"/>
+                    <path class="it-line it-line-3" d="M200 50 L 200 350" stroke="#333" stroke-width="2"/>
+                    <path class="it-line it-line-4" d="M50 200 L 350 200" stroke="#333" stroke-width="2"/>
+
+                    <circle class="it-node" cx="200" cy="200" r="20" fill="#111" stroke="#fff" stroke-width="2"/>
+                    
+                    <circle class="it-node it-pulse" cx="50" cy="50" r="8" fill="#333"/>
+                    <circle class="it-node it-pulse" cx="350" cy="50" r="8" fill="#333"/>
+                    <circle class="it-node it-pulse" cx="50" cy="350" r="8" fill="#333"/>
+                    <circle class="it-node it-pulse" cx="350" cy="350" r="8" fill="#333"/>
+                    <circle class="it-node" cx="200" cy="50" r="5" fill="#555"/>
+                    <circle class="it-node" cx="200" cy="350" r="5" fill="#555"/>
+                    <circle class="it-node" cx="50" cy="200" r="5" fill="#555"/>
+                    <circle class="it-node" cx="350" cy="200" r="5" fill="#555"/>
+                    
+                    <circle class="it-packet" r="3" fill="#fff">
+                        <animateMotion dur="3s" repeatCount="indefinite" path="M50 50 L 200 200 L 350 350" />
+                    </circle>
+                    <circle class="it-packet" r="3" fill="#fff">
+                        <animateMotion dur="4s" repeatCount="indefinite" path="M350 50 L 200 200 L 50 350" />
+                    </circle>
+                </svg>
+                
+                <div class="it-svg-label">CORE<br>ONLINE</div>
+            </div>
+        </div>
+
+        <div class="it-skills-col">
+            
+            <div class="it-module">
+                <div class="it-module-header">
+                    <span class="it-module-id">SYS_ADMIN_01</span>
+                    <div class="it-status"><span class="it-blink"></span>ACTIVE</div>
+                </div>
+                <h3 class="it-module-title">Administration & Config</h3>
+                <p class="it-module-desc">Active Directory management, Azure AD integration, and Office 365 tenant administration. Ensuring user access and security protocols are enforced.</p>
+            </div>
+
+            <div class="it-module">
+                <div class="it-module-header">
+                    <span class="it-module-id">NET_OPS_02</span>
+                    <div class="it-status"><span class="it-blink"></span>ACTIVE</div>
+                </div>
+                <h3 class="it-module-title">Network Infrastructure</h3>
+                <p class="it-module-desc">TCP/IP deep dives, DNS propagation, Firewall configuration (Cisco/Ubiquiti), VPN tunneling, and VLAN segmentation for optimized traffic flow.</p>
+            </div>
+
+            <div class="it-module">
+                <div class="it-module-header">
+                    <span class="it-module-id">HW_DIAG_03</span>
+                    <div class="it-status"><span class="it-blink"></span>STANDBY</div>
+                </div>
+                <h3 class="it-module-title">Hardware & Virtualization</h3>
+                <p class="it-module-desc">Server assembly/racking, RAID configuration, Hyper-V/VMware deployment, and peripheral troubleshooting. I fix the metal the code runs on.</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    /* --- scoped CSS start --- */
+
+    .it-section-wrapper {
+        width: 100%;
+        background-color: #0a0a0a; /* Dark background */
+        color: #e5e5e5;
+        font-family: 'Inter', sans-serif;
+        padding: 60px 20px;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .it-section-wrapper * {
+        box-sizing: border-box;
+    }
+
+    /* Header */
+    .it-header {
+        margin-bottom: 60px;
+        padding-left: 10px;
+        border-left: 2px solid #333;
+    }
+
+    .it-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin: 0;
+        color: #fff;
+        letter-spacing: -1px;
+    }
+
+    .it-dim {
+        color: #555;
+    }
+
+    .it-subtitle {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.9rem;
+        color: #888;
+        margin-top: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Layout Grid */
+    .it-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+    }
+
+    /* --- Visual Column (Left) --- */
+    .it-visual-col {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .it-network-container {
+        position: relative;
+        width: 400px;
+        height: 400px;
+    }
+
+    .it-network-svg {
+        width: 100%;
+        height: 100%;
+        filter: drop-shadow(0 0 10px rgba(255,255,255,0.1));
+    }
+
+    .it-svg-label {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem;
+        text-align: center;
+        color: #fff;
+        font-weight: 700;
+        background-color: #0a0a0a;
+        padding: 5px 10px;
+        border: 1px solid #333;
+        border-radius: 4px;
+    }
+
+    /* SVG Animations */
+    .it-pulse {
+        animation: it-pulse-anim 3s infinite ease-in-out;
+    }
+
+    @keyframes it-pulse-anim {
+        0%, 100% { fill: #333; stroke: #333; }
+        50% { fill: #555; stroke: #fff; }
+    }
+
+    .it-packet {
+        opacity: 0.8;
+    }
+
+    /* --- Skills Column (Right) --- */
+    .it-skills-col {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .it-module {
+        background-color: #111;
+        border: 1px solid #222;
+        border-left: 4px solid #333; /* Default inactive state */
+        padding: 20px;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .it-module:hover {
+        background-color: #161616;
+        border-left-color: #fff; /* Highlight on hover */
+        transform: translateX(10px); /* Slide effect */
+        box-shadow: -10px 0 20px rgba(0,0,0,0.5);
+    }
+
+    /* Module Header (Terminal Style) */
+    .it-module-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75rem;
+    }
+
+    .it-module-id {
+        color: #555;
+    }
+
+    .it-status {
+        color: #fff;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .it-blink {
+        display: block;
+        width: 6px;
+        height: 6px;
+        background-color: #fff; /* White light */
+        border-radius: 50%;
+        box-shadow: 0 0 5px #fff;
+        animation: it-blink-anim 2s infinite;
+    }
+
+    @keyframes it-blink-anim {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.2; }
+    }
+
+    /* Module Content */
+    .it-module-title {
+        font-size: 1.2rem;
+        color: #fff;
+        margin: 0 0 8px 0;
+        font-weight: 600;
+    }
+
+    .it-module-desc {
+        font-size: 0.9rem;
+        color: #999;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+        .it-grid {
+            grid-template-columns: 1fr;
+        }
+        .it-visual-col {
+            margin-bottom: 40px;
+            /* Reduce size of SVG on mobile */
+            transform: scale(0.8); 
+        }
+        .it-header {
+            border-left: none;
+            padding-left: 0;
+            text-align: center;
+        }
+    }
+    /* --- scoped CSS end --- */
+</style>
