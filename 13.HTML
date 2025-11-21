@@ -1,296 +1,1077 @@
+<!-- Floating Navigation Bar -->
+<div class="portfolio-floating-nav" id="floatingNav">
+    <div class="floating-nav-container">
+        <a href="index.html" class="floating-nav-link">Home</a>
+        <a href="#portfolio" class="floating-nav-link">Projects</a>
+        <a href="#webapps" class="floating-nav-link">Blog</a>
+        <a href="#about" class="floating-nav-link">About</a>
+    </div>
 
-<div class="tech-support-section" id="tech-support">
+    <div class="floating-nav-contact">
+        <a href="#contact" class="contact-button">Contact</a>
+    </div>
+    
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</div>
 
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay">
+    <div class="mobile-menu-content">
+        <a href="index.html" class="mobile-nav-link active">Home</a>
+        <a href="#portfolio" class="mobile-nav-link">Projects</a>
+        <a href="#webapps" class="mobile-nav-link">Blog</a>
+        <a href="#about" class="mobile-nav-link">About</a>
+        <a href="#contact" class="mobile-nav-link">Contact</a>
+        <a href="#contact" class="mobile-contact-button">Contact</a>
+    </div>
+</div>
 
-
-<div class="tech-marquee">
-        <div class="marquee-track">
-            <span class="marquee-text">Because code needs a reliable environment to run on. &nbsp;&mdash;&nbsp; </span>
-            <span class="marquee-text">Because code needs a reliable environment to run on. &nbsp;&mdash;&nbsp; </span>
+<!-- Hero Section -->
+<div class="portfolio-hero-section">
+    <div class="hero-container">
+        <div class="hero-content">
+            <div class="hero-badge">Full Stack Developer &#10072; UI/UX Designer</div>
+            <h1 class="hero-title">Hi, I'm Lefa Mofokeng</h1>
+            <p class="hero-description">
+                I create beautiful, functional digital experiences. With over 5 years of experience 
+                in web development, I specialize in building responsive web applications, 
+                e-commerce solutions, and interactive user interfaces that drive results.
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <!-- Added data-target for the animation script -->
+                    <span class="stat-number" data-target="50+">0</span>
+                    <span class="stat-label">Projects Delivered</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="3+">0</span>
+                    <span class="stat-label">Years of Experience</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="15+">0</span>
+                    <span class="stat-label">Satisfied Clients</span>
+                </div>
+            </div>
+            <div class="hero-social-links">
+                <a href="https://x.com/thisislefa" class="social-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#000000" d="M18.205 2.25h3.308l-7.227 8.26l8.502 11.24H16.13l-5.214-6.817L4.95 21.75H1.64l7.73-8.835L1.215 2.25H8.04l4.713 6.231l5.45-6.231Zm-1.161 17.52h1.833L7.045 4.126H5.078L17.044 19.77Z"/></svg>
+                    X
+                </a>
+                <a href="https://instagram.com/thisislefa" class="social-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 14 14" fill="#000000"><g fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"><path d="M10.333 3.644a.25.25 0 1 1 0-.5m0 .5a.25.25 0 1 0 0-.5"/><path d="M.858 3.431A2.573 2.573 0 0 1 3.431.858h6.862a2.573 2.573 0 0 1 2.573 2.573v6.862a2.573 2.573 0 0 1-2.573 2.573H3.43a2.573 2.573 0 0 1-2.573-2.573V3.43Z"/><path d="M4.312 6.862a2.55 2.55 0 1 0 5.1 0a2.55 2.55 0 1 0-5.1 0"/></g></svg>
+                    Instagram
+                </a>
+                <a href="htttps://linkedin.com/in/mofokenglj" class="social-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/thisislefa" class="social-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    GitHub
+                </a>
+                <a href="https://dribbble.com/thisislefa" class="social-link">
+                    <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#000000" d="M256 8a248 248 0 1 0 0 496a248 248 0 1 0 0-496m164 114.4c29.5 36 47.4 82 47.8 132c-7-1.5-77-15.7-147.5-6.8c-5.8-14-11.2-26.4-18.6-41.6c78.3-32 113.8-77.5 118.3-83.5zm-23.6-24.5c-3.8 5.4-35.7 48.3-111 76.5c-34.7-63.8-73.2-116.2-79-124c67.2-16.2 138 1.3 190.1 47.5zM165.9 64.6c5.6 7.7 43.4 60.1 78.5 122.5C145.3 213.4 58 213 48.6 212.9c13.7-65.7 58-120.4 117.3-148.3M44.2 256.3c0-2.2 0-4.3.1-6.5c9.3.2 111.9 1.5 217.7-30.1c6.1 11.9 11.9 23.9 17.2 35.9c-76.6 21.6-146.2 83.5-180.5 142.3c-33.8-37.6-54.5-87.2-54.5-141.6M126 423.4c22.1-45.2 82.2-103.6 167.6-132.8c29.7 77.3 42 142.1 45.2 160.6c-68.1 29-150 21.1-212.8-27.9zm248.4 8.5c-2.2-12.9-13.4-74.9-41.2-151c66.4-10.6 124.7 6.8 131.9 9.1c-9.4 58.9-43.3 109.8-90.8 142z"/></svg>
+                    Dribbble
+                </a>
+                <a href="https://thisislefa.webflow.io" class="social-link">
+                    <svg width="22" height="22" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="#000000" d="M640 64L435.8 463.2H244l85.5-165.5h-3.8C255.1 389.3 149.9 449.5 0 463.2V300.1s95.9-5.7 152.3-64.9H0V64h171.1v140.8h3.8l70-140.8h129.4v139.9h3.8L450.7 64z"/></svg>
+                    Webflow
+                </a>
+                <a href="https://thisislefa.framer.website" class="social-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#000000" d="M4 0h16v8h-8zm0 8h8l8 8H4zm0 8h8v8z"/></svg>
+                    Framer
+                </a>
+            </div>
+            <div class="hero-actions">
+                <button class="btn btn-primary" id="viewWorkBtn">View My Work
+                    <svg width="25" height="25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" style="vertical-align: middle; margin-left: 5px"><path fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" d="M.5 7h13M10 10.5L13.5 7L10 3.5"/></svg>
+                </button>
+                <button class="btn btn-secondary" id="downloadCvBtn">Download CV
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="vertical-align: middle; margin-left: 5px"><path fill="#000000" d="M19.92 12.08L12 20l-7.92-7.92l1.42-1.41l5.5 5.5V2h2v14.17l5.5-5.51l1.42 1.42M12 20H2v2h20v-2H12Z"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="image-container">
+                <img src="images/Untitled.png" alt="Lefa Mofokeng - Full Stack Developer" onerror="this.src='https://placehold.co/450x500/e0e0e0/000000?text=Profile+Image';">
+                <div class="image-overlay"></div>
+            </div>
         </div>
     </div>
-<style>
-    /* Scrolling Marquee Styles */
-.tech-marquee {
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    padding-bottom: 60px; /* Space between text and the content below */
-    user-select: none;
-}
-
-.marquee-track {
-    display: flex;
-    width: fit-content;
-    animation: scrollText 20s linear infinite;
-}
-
-.marquee-text {
-    font-size: clamp(40px, 6vw, 90px); /* Responsive large text */
-    font-weight: 800;
-    text-transform: uppercase;
-    padding-right: 20px;
-    line-height: 1;
-    
-    /* Style Option A: Solid Black */
-    /* color: #000; */
-    
-    /* Style Option B: Modern Outlined Text (Recommended) */
-    color: #000;
-    
-    transition: all 0.3s ease;
-}
-
-/* Optional: Fill with color on hover */
-.tech-marquee:hover .marquee-text {
-    color: #000;
-    -webkit-text-stroke: 0px;
-}
-
-@keyframes scrollText {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
-}
-</style>
-
-
-
-
-
-
-    <div class="support-container">
-    <div class="support-content">
-        <div class="support-badge">System Administration</div>
-        <h2 class="support-title">Comprehensive IT Support & Infrastructure</h2>
-
-        <p class="support-description">
-            Beyond software development, I possess deep technical knowledge in maintaining the ecosystems where code lives. 
-            I bridge the gap between hardware, networking, and operating systems to ensure seamless business continuity.
-        </p>
-    </div>
-
-    <div class="support-visual">
-        <ul class="support-list">
-            <li class="support-item">
-                <span class="check-icon">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </span>
-                <div class="item-text">
-                    <strong>Hardware Diagnostics & Repair</strong>
-                    <span>Troubleshooting component failures, upgrades, and peripheral maintenance.</span>
-                </div>
-            </li>
-            <li class="support-item">
-                <span class="check-icon">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </span>
-                <div class="item-text">
-                    <strong>Network Administration</strong>
-                    <span>TCP/IP configuration, DNS/DHCP management, VPN setup, and router troubleshooting.</span>
-                </div>
-            </li>
-            <li class="support-item">
-                <span class="check-icon">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </span>
-                <div class="item-text">
-                    <strong>OS Environment Management</strong>
-                    <span>Advanced support for Windows, MacOS, and Linux (Ubuntu/CentOS) environments.</span>
-                </div>
-            </li>
-            <li class="support-item">
-                <span class="check-icon">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </span>
-                <div class="item-text">
-                    <strong>Security & Data Recovery</strong>
-                    <span>Virus removal, firewall configuration, and disaster recovery protocols.</span>
-                </div>
-            </li>
-        </ul>
-    </div>
-</div>
 </div>
 
+<!-- What I Do Section -->
+<div class="expertise-section">
+    <div class="expertise-container">
+        <div class="expertise-header">
+            <h2 class="expertise-title" style="position: relative; margin-bottom: 2rem;">What I Do
+                <svg class="underline-svg" viewBox="0 0 186 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 16.9998C30.4988 9.39999 91.2223 -6.38075 193 11.0002"/>
+                </svg>
+            </h2>
+            <p class="expertise-subtitle">Crafting digital solutions that drive business growth and user engagement</p>
+        </div>
+        
+        <div class="expertise-grid">
+            <!-- Frontend Development -->
+            <div class="expertise-card">
+                <div class="expertise-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 24 24" fill="#ffffff"><g fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M2.25 21.75a1.5 1.5 0 0 1-1.5-1.5V3.865A1.62 1.62 0 0 1 2.365 2.25h19.278a1.61 1.61 0 0 1 1.607 1.607v16.278a1.62 1.62 0 0 1-1.615 1.615zm21-15H.75m12 7.5h4.5"/><path d="m6.75 11.25l3 3l-3 3"/></g></svg>
+                </div>
+                <h3 class="expertise-card-title">Frontend Development</h3>
+                <p class="expertise-card-description">
+                    Building responsive, accessible, and performant user interfaces using modern technologies 
+                    like React, Vue.js, and TypeScript. Focus on creating seamless user experiences across all devices.
+                </p>
+                <div class="expertise-tech">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Vue.js</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">HTML5/CSS3</span>
+                </div>
+            </div>
+            
+            <!-- Backend Development -->
+            <div class="expertise-card">
+                <div class="expertise-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 16 16"><path fill="#ffffff" fill-rule="evenodd" d="M1.5 2h13l.5.5V9h-1V6H2v7h7v1H1.5l-.5-.5v-11l.5-.5zM2 5h12V3H2v2zm5 7v-1.094a1.633 1.633 0 0 1-.469-.265l-.945.539l-.5-.86l.937-.547a1.57 1.57 0 0 1 0-.547l-.937-.546l.5-.86l.945.54c.151-.12.308-.209.469-.266V7h1v1.094a1.48 1.48 0 0 1 .469.265l.945-.539l.5.86l-.937.547a1.57 1.57 0 0 1 0 .546l.937.547l-.5.86l-.945-.54a1.807 1.807 0 0 1-.469.266V12H7zm-.25-2.5c0 .208.073.385.219.531a.723.723 0 0 0 .531.219a.723.723 0 0 0 .531-.219a.723.723 0 0 0 .219-.531a.723.723 0 0 0-.219-.531a.723.723 0 0 0-.531-.219a.723.723 0 0 0-.531.219a.723.723 0 0 0-.219.531zm5.334 5.5v-1.094a1.634 1.634 0 0 1-.469-.265l-.945.539l-.5-.86l.938-.547a1.572 1.572 0 0 1 0-.547l-.938-.546l.5-.86l.945.54c.151-.12.308-.209.47-.266V10h1v1.094a1.486 1.486 0 0 1 .468.265l.945-.539l.5.86l-.937.547a1.562 1.562 0 0 1 0 .546l.937.547l-.5.86l-.945-.54a1.806 1.806 0 0 1-.469.266V15h-1zm-.25-2.5c0 .208.073.385.219.531a.723.723 0 0 0 .531.219a.723.723 0 0 0 .531-.219a.723.723 0 0 0 .22-.531a.723.723 0 0 0-.22-.531a.723.723 0 0 0-.53-.219a.723.723 0 0 0-.532.219a.723.723 0 0 0-.219.531z" clip-rule="evenodd"/></svg>                </div>
+                <h3 class="expertise-card-title">Backend Development</h3>
+                <p class="expertise-card-description">
+                    Developing robust server-side applications, RESTful APIs, and database architectures. 
+                    Expertise in Node.js, Python, and cloud services for scalable and secure solutions.
+                </p>
+                <div class="expertise-tech">
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">MongoDB</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                </div>
+            </div>
+            
+            <!-- E-commerce Solutions -->
+            <div class="expertise-card">
+                <div class="expertise-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="#fcfcfc"><g fill="none"><path d="M39 32H13L8 12h36l-5 20Z"/><path stroke="#fcfcfc" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M3 6h3.5L8 12m0 0l5 20h26l5-20H8Z"/><circle cx="13" cy="39" r="3" stroke="#fcfcfc" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/><circle cx="39" cy="39" r="3" stroke="#fcfcfc" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/></g></svg>                </div>
+                <h3 class="expertise-card-title">E-commerce Solutions</h3>
+                <p class="expertise-card-description">
+                    Creating comprehensive online shopping experiences with secure payment integrations, 
+                    inventory management, and optimized checkout processes that convert visitors into customers.
+                </p>
+                <div class="expertise-tech">
+                    <span class="tech-tag">Shopify</span>
+                    <span class="tech-tag">WooCommerce</span>
+                    <span class="tech-tag">Stripe</span>
+                    <span class="tech-tag">Payment APIs</span>
+                </div>
+            </div>
+            
+            <!-- UI/UX Design -->
+            <div class="expertise-card">
+                <div class="expertise-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 32 32"><path fill="#fcfcfc" d="M7.166 2.09a1 1 0 0 1 .585.887c.028 1.24.47 2.023.99 2.83l.144.22c.49.743 1.116 1.693 1.116 2.973a3.99 3.99 0 0 1-1.4 3.04c.355.367.615.797.805 1.239c.507 1.175.595 2.602.595 3.727c0 1.844-.288 4.908-.815 7.523c-.263 1.303-.595 2.55-1.006 3.494c-.203.468-.45.919-.76 1.269c-.304.344-.777.708-1.416.708c-.64 0-1.113-.364-1.417-.708c-.309-.35-.556-.8-.76-1.269c-.411-.943-.745-2.19-1.008-3.494c-.528-2.614-.818-5.679-.818-7.523c0-1.126.09-2.553.598-3.729c.19-.44.45-.869.805-1.235A4 4 0 0 1 2 9c0-.935.118-1.922.743-3.06c.605-1.103 1.65-2.283 3.368-3.71a1 1 0 0 1 1.054-.14M4.497 6.9c-.413.753-.496 1.377-.496 2.099a2 2 0 0 0 4 0c0-.658-.296-1.115-.842-1.958l-.097-.15c-.346-.534-.725-1.158-.986-1.948c-.799.782-1.282 1.417-1.579 1.957m-.062 7.17C4.099 14.849 4 15.925 4 17.007c0 1.7.274 4.631.778 7.128c.254 1.252.554 2.339.881 3.09c.128.293.245.501.344.64a3.6 3.6 0 0 0 .342-.64c.327-.75.627-1.837.88-3.09c.502-2.497.775-5.428.775-7.128c0-1.084-.097-2.16-.431-2.935c-.161-.373-.357-.63-.581-.794c-.214-.156-.516-.277-.985-.277s-.772.12-.987.278c-.224.165-.421.421-.582.794m6.55-7.39A7 7 0 0 1 20.929 12h-3.428a4.5 4.5 0 0 0-4.5 4.499v3.43a7 7 0 0 1-1.613-.434a49 49 0 0 1-.209 2.053a9 9 0 0 0 1.822.396V24.5a4.5 4.5 0 0 0 4.5 4.5h8a4.5 4.5 0 0 0 4.5-4.5v-8a4.5 4.5 0 0 0-4.5-4.5h-2.555A9 9 0 0 0 9.973 4.95l.027.042l.136.205c.236.353.57.855.85 1.483M25.5 14a2.5 2.5 0 0 1 2.5 2.5v8a2.5 2.5 0 0 1-2.5 2.5h-8a2.5 2.5 0 0 1-2.5-2.5v-2.555A9.004 9.004 0 0 0 22.945 14zM15 19.93V16.5a2.5 2.5 0 0 1 2.5-2.5h3.43A7 7 0 0 1 15 19.93"/></svg>
+                </div>
+                <h3 class="expertise-card-title">UI/UX Design</h3>
+                <p class="expertise-card-description">
+                    Designing intuitive and beautiful interfaces that prioritize user needs. From wireframing 
+                    to prototyping, ensuring every interaction is meaningful and every visual element serves a purpose.
+                </p>
+                <div class="expertise-tech">
+                    <span class="tech-tag">Figma</span>
+                    <span class="tech-tag">Adobe XD</span>
+                    <span class="tech-tag">User Research</span>
+                    <span class="tech-tag">Prototyping</span>
+                </div>
+            </div>
+            
+            <!-- Mobile Development -->
+            <div class="expertise-card">
+                <div class="expertise-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="#fcfcfc"><g fill="none" stroke="#fcfcfc" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m12 19.01l.01-.011"/><path d="M18 18v3.4a.6.6 0 0 1-.6.6H6.6a.6.6 0 0 1-.6-.6V18M18 6V2.6a.6.6 0 0 0-.6-.6H6.6a.6.6 0 0 0-.6.6V6"/><path stroke-linejoin="round" d="M15.5 8.5L19 12l-3.5 3.5m-7-7L5 12l3.5 3.5"/></g></svg>
+                </div>
+                <h3 class="expertise-card-title">Mobile Development</h3>
+                <p class="expertise-card-description">
+                    Building cross-platform mobile applications that deliver native-like performance. 
+                    Focus on responsive design, smooth animations, and optimal user experience on all screen sizes.
+                </p>
+                <div class="expertise-tech">
+                    <span class="tech-tag">React Native</span>
+                    <span class="tech-tag">Flutter</span>
+                    <span class="tech-tag">PWA</span>
+                    <span class="tech-tag">App Store</span>
+                </div>
+            </div>
+            
+            <!-- DevOps & Cloud -->
+            <div class="expertise-card">
+                <div class="expertise-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 16 16"><path fill="#fcfcfc" d="M5 6a3 3 0 0 1 5.832-.993a2 2 0 0 1 1.062.204l.031.016a4.001 4.001 0 0 0-7.895.28A3.25 3.25 0 0 0 4.25 12H6v-1H4.25a2.25 2.25 0 0 1 0-4.5h.25A.5.5 0 0 0 5 6m9.447 1.606l-3-1.5a1 1 0 0 0-.894 0l-3 1.5A1 1 0 0 0 7 8.5v4.004a1 1 0 0 0 .553.894l3 1.5a1 1 0 0 0 .894 0l3-1.5a1 1 0 0 0 .553-.894V8.5a1 1 0 0 0-.553-.894M8.04 8.732a.5.5 0 0 1 .657-.263L11 9.456l2.303-.987a.5.5 0 0 1 .394.92l-2.197.94V13a.5.5 0 1 1-1 0v-2.67l-2.197-.942a.5.5 0 0 1-.263-.656"/></svg>
+                </div>
+                <h3 class="expertise-card-title">DevOps & Cloud</h3>
+                <p class="expertise-card-description">
+                    Implementing CI/CD pipelines, containerization, and cloud infrastructure for reliable 
+                    and scalable deployments. Ensuring high availability and performance across global markets.
+                </p>
+                <div class="expertise-tech">
+                    <span class="tech-tag">AWS</span>
+                    <span class="tech-tag">Docker</span>
+                    <span class="tech-tag">GitHub Actions</span>
+                    <span class="tech-tag">CI/CD</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <style>
-/* IT Tech Support Section Styles */
-.tech-support-section {
-    background: #f8f9fa; /* Contrast against the grey expertise section */
-    padding: 30px 20px 120PX 20PX;
+* {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    
 }
 
-.support-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 80px;
-    justify-content: space-between;
-}
-
-.support-content {
-    flex: 1;
-    max-width: 600px;
-    position: relative; /* UPDATED: Needed for arrow positioning */
-}
-
-/* NEW ARROW STYLES */
-.arrow-container {
-    position: absolute;
-    top: -55px;
-    left: -40px;
-    width: 150px;
-    height: 80px;
-    pointer-events: none;
-    z-index: 10;
-}
-
-.support-visual {
-    flex: 1;
+/* Floating Navigation Styles */
+.portfolio-floating-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
     display: flex;
     justify-content: center;
-    position: relative;
+    padding: 12px 20px;
+    transform: translateY(0);
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.support-badge {
-    display: inline-block;
+.portfolio-floating-nav.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+.floating-nav-container {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 50px;
+    padding: 5px;
+    display: flex;
+    gap: 32px;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.12));
+    max-width: 1200px;
+    width: 100%;
+    position: relative;
+    backface-visibility: visible;
+}
+
+.floating-nav-link {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 500;
     font-size: 14px;
-    font-weight: 400;
-    color: #ffffff;
-    margin-bottom: 16px;
+    padding: 11px 16px;
+    border-radius: 50px;
+    position: relative;
+    white-space: nowrap;
+    backface-visibility: visible;
+}
+
+.floating-nav-link:hover {
+    color: #000;
+    background: #e8e8e8;
+}
+
+.floating-nav-contact {
+    position: absolute;
+    right: 161px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.contact-button {
+    background: #000;
+    color: white;
+    text-decoration: none;
+    padding: 11px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    border: 2px solid #000;
+    white-space: nowrap;
+}
+
+.contact-button:hover {
+    background: white;
+    color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
     background: black;
-    padding: 6px 14px;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
     border-radius: 50px;
 }
 
-.support-title {
-    font-size: clamp(32px, 4vw, 42px);
-    font-weight: 700;
-    line-height: 1.1;
-    margin-bottom: 24px;
-    color: #000;
+.mobile-menu-toggle span {
+    width: 20px;
+    height: 2px;
+    background: #fff;
+    position: absolute;
+    left: 5px;
+    transition: 0.3s;
+    transform-origin: center;
 }
 
-.support-description {
-    font-size: 16px;
-    line-height: 1.7;
-    color: #555;
-    margin-bottom: 40px;
+.mobile-menu-toggle span:nth-child(1) {
+    top: 10px;
 }
 
-.support-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+.mobile-menu-toggle span:nth-child(2) {
+    top: 14px;
 }
 
-.support-item {
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
+.mobile-menu-toggle span:nth-child(3) {
+    top: 18px;
 }
 
-.check-icon {
-    min-width: 24px;
-    height: 24px;
-    background: #000;
-    border-radius: 50%;
-    display: flex;
+/* Perfectly centered X */
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 14px;
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 14px;
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 999;
+    display: none;
     align-items: center;
     justify-content: center;
-    color: white;
-    margin-top: 8px;
 }
 
-.item-text {
+.mobile-menu-overlay.active {
+    display: flex;
+}
+
+.mobile-menu-content {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
-.item-text strong {
-    font-size: 21px;
+.mobile-nav-link {
+    text-decoration: none;
+    color: #333;
+    font-size: 24px;
     font-weight: 600;
-    color: #000;
-    margin-bottom: 4px;
+    padding: 15px 30px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
 }
 
-.item-text span {
-    font-size: 15px;
-    color: #666;
+.mobile-nav-link.active,
+.mobile-nav-link:hover {
+    background: #000;
+    color: white;
+}
+
+.mobile-contact-button {
+    background: #000;
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+/* Hero Section Styles */
+.portfolio-hero-section {
+    background: white;
+    color: white;
+    padding: 120px 20px 80px;
+    margin-bottom: 60px;
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.hero-content {
+    padding-right: 40px;
+}
+
+.hero-badge {
+    display: inline-block;
+    background: #000;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
     font-weight: 500;
-    line-height: 1.5;
+    margin-bottom: 24px;
 }
 
-/* Terminal Visual Styles */
-.terminal-window {
-    background: #1a1a1a;
-    width: 100%;
-    max-width: 500px;
-    border-radius: 12px;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+.hero-title {
+    font-size: clamp(36px, 5vw, 47px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: black;
+}
+
+.hero-description {
+    font-size: clamp(16px, 2vw, 18px);
+    line-height: 1.6;
+    margin-bottom: 32px;
+    color: #666;
+}
+
+.hero-stats {
+    display: flex;
+    gap: clamp(20px, 4vw, 32px);
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: left;
+}
+
+/* --- NEW TICKER ANIMATION STYLES --- */
+.stat-number {
+    display: inline-flex;
+    align-items: flex-start;
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: #000;
+    /* Set a fixed height equal to line height to mask the rolling numbers */
+    height: 1.1em;
+    line-height: 1.1em;
     overflow: hidden;
-    font-family: 'Courier New', monospace;
-    transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
-    transition: transform 0.3s ease;
+    position: relative;
 }
 
-.terminal-window:hover {
-    transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+.ticker-column {
+    display: flex;
+    flex-direction: column;
+    /* We will animate the transform property */
+    transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1); 
+    /* Use hardware acceleration */
+    will-change: transform;
+    transform: translateY(-100%); /* Initial state: show '0' at the bottom of strip */
 }
 
-.terminal-header {
-    background: #2d2d2d;
-    padding: 12px 16px;
+/* When the active class is added, we slide to 0% */
+.ticker-column.active {
+    transform: translateY(0);
+}
+
+.ticker-digit {
+    height: 1.1em; /* Match parent height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* ----------------------------------- */
+
+.stat-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+}
+
+.hero-social-links {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+
+.social-link {
     display: flex;
     align-items: center;
     gap: 8px;
-}
-
-
-.terminal-title {
-    margin-left: 12px;
-    color: #999;
-    font-size: 12px;
-    font-family: sans-serif;
-}
-
-.terminal-body {
-    padding: 24px;
-    color: #f0f0f0;
+    color: black;
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 25px;
+    transition: all 0.3s ease;
     font-size: 14px;
+}
+
+.social-link:hover {
+    background: #f8f9fa;
+    border-color: #666;
+    transform: translateY(-2px);
+}
+
+.hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 32px;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 140px;
+}
+
+.btn-primary {
+    background: rgb(0, 0, 0);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: black;
+    border: 2px solid #e0e0e0;
+}
+
+.btn-secondary:hover {
+    background: #f8f9fa;
+    border-color: #666;
+    transform: translateY(-2px);
+}
+
+/* Hero Image Styles */
+.hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container {
+    position: relative;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    max-width: 450px;
+    width: 100%;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* What I Do Section Styles */
+.expertise-section {
+    background: #f8f9fa;
+    padding: 80px 20px;
+}
+
+.expertise-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.expertise-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.expertise-title {
+    font-size: clamp(28px, 4vw, 36px);
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 16px;
+}
+
+.expertise-subtitle {
+    font-size: clamp(16px, 2vw, 18px);
+    color: #666;
+    font-weight: 600;
+    max-width: 600px;
+    margin: 0 auto;
     line-height: 1.6;
 }
 
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+.expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+    gap: 30px;
 }
 
-/* Add this to your existing Media Query for max-width: 768px */
-@media (max-width: 768px) {
-    .support-container {
-        flex-direction: column;
-        gap: 50px;
-    }
-    
-    .support-content {
-        padding-right: 0;
-        text-align: left;
-    }
-    
-    .terminal-window {
-        transform: none;
-        margin: 0 auto;
-    }
+.expertise-card {
+    background: white;
+    padding: 30px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
 
-    /* Hide arrow on mobile as layout shifts */
-    .arrow-container {
+
+.expertise-icon {
+    width: 70px;
+    height: 70px;
+    background: #000;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    color: white;
+}
+
+.expertise-card-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 16px;
+}
+
+.expertise-card-description {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.expertise-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tech-tag {
+    background: #f8f9fa;
+    color: #000;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid #e0e0e0;
+}
+
+.underline-svg {
+    position: absolute;
+    bottom: -15px;
+    left: -5%;
+    width: 110%;
+    height: 25px;
+    overflow: visible;
+}
+
+.underline-svg path {
+    stroke: #000;
+    stroke-width: 5;
+    stroke-linecap: round;
+    fill: none;
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: draw 1.5s ease-out 0.5s forwards;
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero-container {
+        gap: 60px;
+    }
+    
+    .floating-nav-container {
+        gap: 20px;
+    }
+    
+    .floating-nav-link {
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolio-floating-nav {
+        padding: 10px 15px;
+    }
+    
+    .floating-nav-container {
         display: none;
     }
+    
+    .floating-nav-contact {
+        display: none;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+        margin-left: auto;
+    }
+    
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    
+    .hero-content {
+        padding-right: 0;
+        order: 2;
+    }
+    
+    .hero-image {
+        order: 1;
+    }
+    
+    .hero-stats {
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .hero-social-links {
+        justify-content: center;
+    }
+    
+    .hero-actions {
+        justify-content: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .expertise-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .expertise-card {
+        padding: 25px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .portfolio-hero-section {
+        padding: 100px 15px 60px;
+    }
+    
+    .hero-title {
+        font-size: 32px;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .stat-item {
+        text-align: center;
+    }
+    
+    .hero-social-links {
+        justify-content: center;
+    }
+    
+    .social-link {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    
+    .hero-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: none;
+    }
+    
+    .expertise-section {
+        padding: 60px 15px;
+    }
+}
+
+/* Smooth scrolling for navigation */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Prevent horizontal scroll */
+body {
+    overflow-x: hidden;
 }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // --- FLOATING NAVIGATION LOGIC ---
+    const floatingNav = document.getElementById('floatingNav');
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    const navLinks = document.querySelectorAll('.floating-nav-link');
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    function updateHeader() {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            floatingNav.classList.add('hidden');
+        } else {
+            floatingNav.classList.remove('hidden');
+        }
+        lastScrollY = currentScrollY;
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(updateHeader);
+            ticking = true;
+        }
+    });
+
+    // Mobile Menu
+    function toggleMobileMenu() {
+        mobileMenuToggle.classList.toggle('active');
+        mobileMenuOverlay.classList.toggle('active');
+        document.body.style.overflow = mobileMenuOverlay.classList.contains('active') ? 'hidden' : '';
+    }
+
+    mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+    mobileNavLinks.forEach(link => link.addEventListener('click', () => {
+        mobileMenuToggle.classList.remove('active');
+        mobileMenuOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }));
+    mobileMenuOverlay.addEventListener('click', (e) => {
+        if (e.target === mobileMenuOverlay) toggleMobileMenu();
+    });
+
+    // Active State logic
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            navLinks.forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+    window.addEventListener('scroll', function() {
+        const sections = document.querySelectorAll('section');
+        let current = '';
+        sections.forEach(section => {
+            if (window.scrollY >= section.offsetTop - 100) {
+                current = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').substring(1) === current) link.classList.add('active');
+        });
+        mobileNavLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').substring(1) === current) link.classList.add('active');
+        });
+    });
+
+    // Window resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            mobileMenuToggle.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // --- ANIMATED STATS (TICKER / ODOMETER) LOGIC ---
+    
+    // Function to build the strip for a digit
+    function createTickerColumn(targetDigit) {
+        const column = document.createElement('div');
+        column.className = 'ticker-column';
+        
+        // We want the numbers to appear from TOP.
+        // Standard visual: |2| -> |5|
+        // Animation: The strip moves DOWN. 
+        // DOM Order: 
+        // [Target Digit]
+        // [Target - 1]
+        // ...
+        // [0]
+        //
+        // Initial Transform: translateY(-100% + 1 digit height). 
+        // Actually, if we put '0' at the bottom, and 'Target' at the top.
+        // And we want to start seeing '0'.
+        // We translate Y to show the bottom element.
+        // Then we animate translate Y to 0 (showing top element).
+        
+        const digit = parseInt(targetDigit, 10);
+        
+        // Build numbers from Target down to 0
+        for (let i = digit; i >= 0; i--) {
+            const span = document.createElement('span');
+            span.className = 'ticker-digit';
+            span.textContent = i;
+            column.appendChild(span);
+        }
+        
+        // Calculate initial offset to show '0' (which is the last child)
+        // Total children = digit + 1. 
+        // We want to shift up by (digit) heights to show the last one?
+        // No, translateY percent is based on the column height.
+        // If we want to show the bottom-most element (0), we translate -((N-1)/N * 100)%?
+        // Simpler: Just use a calculation in JS or standard CSS.
+        // Let's do it via inline style for the start position.
+        
+        // Actually, simpler CSS trick:
+        // transform: translateY( calc(-100% + 1.1em) ); // Show the last item
+        // Transition to translateY(0); // Show the first item (Target)
+        
+        // Note: 1.1em is the height of one digit.
+        // Since the number of items varies, percentage is tricky.
+        // Let's set initial transform via JS.
+        const count = digit + 1;
+        const initialTranslate = -100 + (100 / count); // This moves it so the last item is visible? 
+        // Example: 2 items (1, 0). Height 200%.
+        // Translate -50% moves it up half way. Shows bottom half. Correct.
+        
+        column.style.transform = `translateY(${initialTranslate}%)`;
+        
+        return { column, initialTranslate };
+    }
+
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const container = entry.target;
+                const targetString = container.getAttribute('data-target');
+                
+                // If already animated, skip
+                if (container.hasAttribute('data-animated')) return;
+                container.setAttribute('data-animated', 'true');
+                
+                container.innerHTML = ''; // Clear loading text
+                
+                // Parse string (e.g., "50+") into characters
+                const chars = targetString.split('');
+                
+                chars.forEach((char, index) => {
+                    if (/\d/.test(char)) {
+                        // It's a digit
+                        const { column, initialTranslate } = createTickerColumn(char);
+                        container.appendChild(column);
+                        
+                        // Force Reflow
+                        column.offsetHeight;
+                        
+                        // Animate
+                        // Stagger delays based on index for a "rolling" effect
+                        setTimeout(() => {
+                            column.style.transform = 'translateY(0)';
+                            // Add class for any specific CSS overrides
+                            column.classList.add('active'); 
+                        }, index * 100);
+                        
+                    } else {
+                        // It's a symbol (e.g., +), just append static
+                        const span = document.createElement('span');
+                        span.className = 'ticker-digit'; // Re-use class for alignment
+                        span.textContent = char;
+                        // Symbols don't roll, they just fade in or stay static. 
+                        // To align with the rolling numbers which are 1.1em height containers...
+                        // We wrap the symbol in a container of same height
+                        const wrapper = document.createElement('div');
+                        wrapper.style.height = '1.1em';
+                        wrapper.style.display = 'flex';
+                        wrapper.style.alignItems = 'center';
+                        wrapper.appendChild(span);
+                        container.appendChild(wrapper);
+                    }
+                });
+                
+                observer.unobserve(container);
+            }
+        });
+    }, { threshold: 0.5 }); // Start when 50% visible
+
+    statNumbers.forEach(stat => observer.observe(stat));
+
+    // CV Button
+    const downloadCvBtn = document.getElementById('downloadCvBtn');
+    if(downloadCvBtn) {
+        downloadCvBtn.addEventListener('click', function() {
+            alert('CV download started! If it doesn\'t start automatically, check your downloads folder.');
+        });
+    }
+    
+    // View Work Button
+    const viewWorkBtn = document.getElementById('viewWorkBtn');
+    if(viewWorkBtn) {
+        viewWorkBtn.addEventListener('click', function() {
+            // Just a fallback if anchor smooth scroll doesn't work
+            const portfolioSection = document.querySelector('#portfolio');
+            if (portfolioSection) portfolioSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+});
+</script>

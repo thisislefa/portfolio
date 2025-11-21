@@ -44,15 +44,16 @@
             </p>
             <div class="hero-stats">
                 <div class="stat-item">
-                    <span class="stat-number">50+</span>
+                    <!-- Added data-target for the animation script -->
+                    <span class="stat-number" data-target="50+">0</span>
                     <span class="stat-label">Projects Delivered</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">3+</span>
+                    <span class="stat-number" data-target="3+">0</span>
                     <span class="stat-label">Years of Experience</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">15+</span>
+                    <span class="stat-number" data-target="15+">0</span>
                     <span class="stat-label">Satisfied Clients</span>
                 </div>
             </div>
@@ -101,7 +102,7 @@
         </div>
         <div class="hero-image">
             <div class="image-container">
-                <img src="images/Untitled.png" alt="Lefa Mofokeng - Full Stack Developer">
+                <img src="images/Untitled.png" alt="Lefa Mofokeng - Full Stack Developer" onerror="this.src='https://placehold.co/450x500/e0e0e0/000000?text=Profile+Image';">
                 <div class="image-overlay"></div>
             </div>
         </div>
@@ -113,42 +114,12 @@
     <div class="expertise-container">
         <div class="expertise-header">
             <h2 class="expertise-title" style="position: relative; margin-bottom: 2rem;">What I Do
-
                 <svg class="underline-svg" viewBox="0 0 186 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3 16.9998C30.4988 9.39999 91.2223 -6.38075 193 11.0002"/>
                 </svg>
             </h2>
             <p class="expertise-subtitle">Crafting digital solutions that drive business growth and user engagement</p>
         </div>
-
-
-        <style>
-            .underline-svg {
-    position: absolute;
-    bottom: -15px;
-    left: -5%;
-    width: 110%;
-    height: 25px;
-    overflow: visible;
-  }
-
-  .underline-svg path {
-    stroke: #000;
-    stroke-width: 5;
-    stroke-linecap: round;
-    fill: none;
-    stroke-dasharray: 300;
-    stroke-dashoffset: 300;
-    animation: draw 1.5s ease-out 0.5s forwards;
-  }
-
-   @keyframes draw {
-    to {
-        stroke-dashoffset: 0;
-    }
-  }
-
-        </style>
         
         <div class="expertise-grid">
             <!-- Frontend Development -->
@@ -504,16 +475,49 @@
 }
 
 .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     text-align: left;
 }
 
+/* --- NEW TICKER ANIMATION STYLES --- */
 .stat-number {
-    display: block;
+    display: inline-flex;
+    align-items: flex-start;
     font-size: clamp(32px, 4vw, 44px);
     font-weight: 700;
     margin-bottom: 4px;
     color: #000;
+    /* Set a fixed height equal to line height to mask the rolling numbers */
+    height: 1.1em;
+    line-height: 1.1em;
+    overflow: hidden;
+    position: relative;
 }
+
+.ticker-column {
+    display: flex;
+    flex-direction: column;
+    /* We will animate the transform property */
+    transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1); 
+    /* Use hardware acceleration */
+    will-change: transform;
+    transform: translateY(-100%); /* Initial state: show '0' at the bottom of strip */
+}
+
+/* When the active class is added, we slide to 0% */
+.ticker-column.active {
+    transform: translateY(0);
+}
+
+.ticker-digit {
+    height: 1.1em; /* Match parent height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* ----------------------------------- */
 
 .stat-label {
     font-size: 14px;
@@ -704,6 +708,31 @@
     border: 1px solid #e0e0e0;
 }
 
+.underline-svg {
+    position: absolute;
+    bottom: -15px;
+    left: -5%;
+    width: 110%;
+    height: 25px;
+    overflow: visible;
+}
+
+.underline-svg path {
+    stroke: #000;
+    stroke-width: 5;
+    stroke-linecap: round;
+    fill: none;
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: draw 1.5s ease-out 0.5s forwards;
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     .hero-container {
@@ -836,6 +865,7 @@ body {
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // --- FLOATING NAVIGATION LOGIC ---
     const floatingNav = document.getElementById('floatingNav');
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
     const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
@@ -844,32 +874,25 @@ document.addEventListener('DOMContentLoaded', function() {
     let lastScrollY = window.scrollY;
     let ticking = false;
 
-    // Scroll-based header behavior
     function updateHeader() {
         const currentScrollY = window.scrollY;
-        
         if (currentScrollY > lastScrollY && currentScrollY > 100) {
-            // Scrolling down - hide header
             floatingNav.classList.add('hidden');
         } else {
-            // Scrolling up - show header
             floatingNav.classList.remove('hidden');
         }
-        
         lastScrollY = currentScrollY;
         ticking = false;
     }
 
-    function onScroll() {
+    window.addEventListener('scroll', () => {
         if (!ticking) {
             requestAnimationFrame(updateHeader);
             ticking = true;
         }
-    }
+    });
 
-    window.addEventListener('scroll', onScroll);
-
-    // Mobile menu functionality
+    // Mobile Menu
     function toggleMobileMenu() {
         mobileMenuToggle.classList.toggle('active');
         mobileMenuOverlay.classList.toggle('active');
@@ -877,81 +900,42 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     mobileMenuToggle.addEventListener('click', toggleMobileMenu);
-
-    // Close mobile menu when clicking on links
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenuToggle.classList.remove('active');
-            mobileMenuOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-    });
-
-    // Close mobile menu when clicking outside
+    mobileNavLinks.forEach(link => link.addEventListener('click', () => {
+        mobileMenuToggle.classList.remove('active');
+        mobileMenuOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }));
     mobileMenuOverlay.addEventListener('click', (e) => {
-        if (e.target === mobileMenuOverlay) {
-            toggleMobileMenu();
-        }
+        if (e.target === mobileMenuOverlay) toggleMobileMenu();
     });
 
-    // Floating navigation active state management
+    // Active State logic
     navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function() {
             navLinks.forEach(l => l.classList.remove('active'));
             this.classList.add('active');
         });
     });
 
-    // Download CV Button Functionality
-    const downloadCvBtn = document.getElementById('downloadCvBtn');
-    downloadCvBtn.addEventListener('click', function() {
-        const link = document.createElement('a');
-        link.href = 'path/to/your-cv.pdf';
-        link.download = 'Lefa-Mofokeng-CV.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        
-        alert('CV download started! If it doesn\'t start automatically, check your downloads folder.');
-    });
-
-    // View Work Button
-    const viewWorkBtn = document.getElementById('viewWorkBtn');
-    viewWorkBtn.addEventListener('click', function() {
-        document.querySelector('#portfolio').scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-
-    // Scroll-based active state for navigation
     window.addEventListener('scroll', function() {
         const sections = document.querySelectorAll('section');
         let current = '';
-        
         sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (window.scrollY >= sectionTop - 100) {
+            if (window.scrollY >= section.offsetTop - 100) {
                 current = section.getAttribute('id');
             }
         });
-        
         navLinks.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href').substring(1) === current) {
-                link.classList.add('active');
-            }
+            if (link.getAttribute('href').substring(1) === current) link.classList.add('active');
         });
-        
         mobileNavLinks.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href').substring(1) === current) {
-                link.classList.add('active');
-            }
+            if (link.getAttribute('href').substring(1) === current) link.classList.add('active');
         });
     });
 
-    // Handle window resize
+    // Window resize
     window.addEventListener('resize', function() {
         if (window.innerWidth > 768) {
             mobileMenuToggle.classList.remove('active');
@@ -959,10 +943,141 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.style.overflow = '';
         }
     });
+
+    // --- ANIMATED STATS (TICKER / ODOMETER) LOGIC ---
+    
+    // Function to build the strip for a digit
+    function createTickerColumn(targetDigit) {
+        const column = document.createElement('div');
+        column.className = 'ticker-column';
+        
+        // We want the numbers to appear from TOP.
+        // Standard visual: |2| -> |5|
+        // Animation: The strip moves DOWN. 
+        // DOM Order: 
+        // [Target Digit]
+        // [Target - 1]
+        // ...
+        // [0]
+        //
+        // Initial Transform: translateY(-100% + 1 digit height). 
+        // Actually, if we put '0' at the bottom, and 'Target' at the top.
+        // And we want to start seeing '0'.
+        // We translate Y to show the bottom element.
+        // Then we animate translate Y to 0 (showing top element).
+        
+        const digit = parseInt(targetDigit, 10);
+        
+        // Build numbers from Target down to 0
+        for (let i = digit; i >= 0; i--) {
+            const span = document.createElement('span');
+            span.className = 'ticker-digit';
+            span.textContent = i;
+            column.appendChild(span);
+        }
+        
+        // Calculate initial offset to show '0' (which is the last child)
+        // Total children = digit + 1. 
+        // We want to shift up by (digit) heights to show the last one?
+        // No, translateY percent is based on the column height.
+        // If we want to show the bottom-most element (0), we translate -((N-1)/N * 100)%?
+        // Simpler: Just use a calculation in JS or standard CSS.
+        // Let's do it via inline style for the start position.
+        
+        // Actually, simpler CSS trick:
+        // transform: translateY( calc(-100% + 1.1em) ); // Show the last item
+        // Transition to translateY(0); // Show the first item (Target)
+        
+        // Note: 1.1em is the height of one digit.
+        // Since the number of items varies, percentage is tricky.
+        // Let's set initial transform via JS.
+        const count = digit + 1;
+        const initialTranslate = -100 + (100 / count); // This moves it so the last item is visible? 
+        // Example: 2 items (1, 0). Height 200%.
+        // Translate -50% moves it up half way. Shows bottom half. Correct.
+        
+        column.style.transform = `translateY(${initialTranslate}%)`;
+        
+        return { column, initialTranslate };
+    }
+
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const container = entry.target;
+                const targetString = container.getAttribute('data-target');
+                
+                // If already animated, skip
+                if (container.hasAttribute('data-animated')) return;
+                container.setAttribute('data-animated', 'true');
+                
+                container.innerHTML = ''; // Clear loading text
+                
+                // Parse string (e.g., "50+") into characters
+                const chars = targetString.split('');
+                
+                chars.forEach((char, index) => {
+                    if (/\d/.test(char)) {
+                        // It's a digit
+                        const { column, initialTranslate } = createTickerColumn(char);
+                        container.appendChild(column);
+                        
+                        // Force Reflow
+                        column.offsetHeight;
+                        
+                        // Animate
+                        // Stagger delays based on index for a "rolling" effect
+                        setTimeout(() => {
+                            column.style.transform = 'translateY(0)';
+                            // Add class for any specific CSS overrides
+                            column.classList.add('active'); 
+                        }, index * 100);
+                        
+                    } else {
+                        // It's a symbol (e.g., +), just append static
+                        const span = document.createElement('span');
+                        span.className = 'ticker-digit'; // Re-use class for alignment
+                        span.textContent = char;
+                        // Symbols don't roll, they just fade in or stay static. 
+                        // To align with the rolling numbers which are 1.1em height containers...
+                        // We wrap the symbol in a container of same height
+                        const wrapper = document.createElement('div');
+                        wrapper.style.height = '1.1em';
+                        wrapper.style.display = 'flex';
+                        wrapper.style.alignItems = 'center';
+                        wrapper.appendChild(span);
+                        container.appendChild(wrapper);
+                    }
+                });
+                
+                observer.unobserve(container);
+            }
+        });
+    }, { threshold: 0.5 }); // Start when 50% visible
+
+    statNumbers.forEach(stat => observer.observe(stat));
+
+    // CV Button
+    const downloadCvBtn = document.getElementById('downloadCvBtn');
+    if(downloadCvBtn) {
+        downloadCvBtn.addEventListener('click', function() {
+            alert('CV download started! If it doesn\'t start automatically, check your downloads folder.');
+        });
+    }
+    
+    // View Work Button
+    const viewWorkBtn = document.getElementById('viewWorkBtn');
+    if(viewWorkBtn) {
+        viewWorkBtn.addEventListener('click', function() {
+            // Just a fallback if anchor smooth scroll doesn't work
+            const portfolioSection = document.querySelector('#portfolio');
+            if (portfolioSection) portfolioSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
 });
 </script>
-
-
 
 
 
@@ -1634,9 +1749,9 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="webapps-projects-grid">
     <div class="webapps-project-card" data-category="ecommerce">
       <div class="webapps-project-image">
-        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="E-commerce Store">
+        <img src="images/hyperion-enterprise.png" alt="E-commerce Store">
         <div class="webapps-project-overlay">
-          <div class="webapps-project-preview">Live Preview</div>
+          <a href="https://thisislefa.github.io/web-project" class="title-link"><div class="webapps-project-preview">Live Preview</div></a>
         </div>
       </div>
       <div class="webapps-project-badge">WEB - JUST LAUNCHED</div>
@@ -1735,6 +1850,13 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <style>
+
+.title-link {
+    text-decoration: none;      /* removes underline */
+    color: inherit;             /* keeps same text color as the H3 */
+    display: inline-block;      /* avoids weird spacing issues */
+}
+
 /* Portfolio Projects Section Styles */
 .portfolio-projects-section {
   font-family:'Inter' ,-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -1855,7 +1977,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 .portfolio-project-title {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   color: #000;
   margin: 0 15px 15px;
   line-height: 1.4;
@@ -2037,7 +2159,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 .webapps-project-title {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   color: #000;
   margin: 0 15px 15px;
   line-height: 1.4;
@@ -2852,7 +2974,7 @@ document.addEventListener('DOMContentLoaded', function() {
             --qa-color-accent: #000000;
             --qa-color-light-bg: #f4f4f4;
             --qa-color-white: #fff;
-            --qa-color-line: #9d9d9d;
+            --qa-color-line: #cccccc;
             --qa-font-family: 'Inter', sans-serif;
         }
 
