@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Agency Statistics Section</title>
+
+    <!-- Inter Font Family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- GLOBAL & BASE STYLES --- */
+        :root {
+            --font-primary: 'Inter', sans-serif;
+            --color-background-dark: #000000;
+            --color-text-light: #ffffff;
+            --color-text-muted: #aaaaaa;
+            --color-card-background: #101010;
+            --color-card-border: #333333;
+            --highlight-color: #ffffff;
+            --number-size: 4rem; /* Base size for numbers */
+            --animation-duration: 2500ms; /* Total animation time for the count */
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--color-background-dark);
+            color: var(--color-text-light);
+            margin: 0;
+            padding: 5rem 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Ensures the content is centered */
+        }
+
+        /* --- SECTION STRUCTURE --- */
+        .cirka-section-wrapper {
+            max-width: 1280px;
+            width: 100%;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        /* --- HEADER STYLES --- */
+        .header-tag-area {
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-text-light);
+        }
+
+        .header-tag-area::before {
+            content: "\273B"; /* Stylized asterix/snowflake icon */
+            font-size: 1.1em;
+            margin-right: 0.75rem;
+            color: var(--highlight-color);
+        }
+
+        .section-statement {
+            font-size: 2.25rem;
+            font-weight: 600;
+            line-height: 1.4;
+            max-width: 800px;
+            margin: 0 auto 5rem;
+        }
+
+        .inline-team-icon {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 0.5rem;
+        }
+        
+        .team-image {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid var(--color-background-dark);
+            object-fit: cover;
+            margin-left: -15px; /* Overlap effect */
+            background-color: #222;
+        }
+
+        .team-image:first-child {
+            margin-left: 0;
+        }
+
+        /* --- STATS GRID --- */
+        .stats-grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* --- INDIVIDUAL STAT CARD --- */
+        .stat-card-item {
+            border: 1px solid var(--color-card-border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: left;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .stat-category-label {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--color-text-muted);
+            margin-bottom: 3.5rem; /* Space before the number */
+        }
+
+        .stat-description-text {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+            margin-top: 1.5rem;
+        }
+
+        /* --- SIMPLE COUNTER STYLES --- */
+
+        .number-display-wrapper {
+            display: flex;
+            align-items: flex-start;
+            font-size: var(--number-size);
+            font-weight: 900;
+            line-height: 1;
+            color: var(--color-text-light);
+            height: var(--number-size);
+            overflow: visible; /* No need to clip the reel now */
+        }
+
+        /* Element that holds the number being counted */
+        .animated-counter-value {
+            display: inline-block;
+            min-width: 1ch; /* Ensures space for the first digit */
+            font-weight: 500;
+            font-size: 5rem;
+        }
+        
+        /* Static characters like '+' or '%' */
+        .static-char {
+            display: inline-block;
+            height: var(--number-size);
+            line-height: 1;
+            font-weight: 600;
+        }
+
+        /* --- RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            :root {
+                --number-size: 3rem; /* Smaller digits on mobile */
+            }
+            .section-statement {
+                font-size: 1.5rem;
+                margin-bottom: 3rem;
+            }
+            .stat-card-item {
+                padding: 2rem;
+            }
+            .stat-category-label {
+                margin-bottom: 2rem;
+            }
+            .stats-grid-container {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cirka-section-wrapper" id="stats-section-observer">
+        
+        <!-- Header Content -->
+        <header>
+            <div class="header-tag-area">ABOUT US</div>
+            <h2 class="section-statement">
+                At Hype, we don't just follow trends - we 
+                <span class="inline-team-icon">
+                    <!-- Placeholder images mimicking the small group of people -->
+                    <img src="https://images.unsplash.com/photo-1596215143922-eedeaba0d91c?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="team-image" alt="Team member 1">
+                    <img src="https://images.unsplash.com/photo-1701450707710-23c24144c983?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="team-image" alt="Team member 2">
+                    <img src="https://plus.unsplash.com/premium_photo-1678197937465-bdbc4ed95815?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="team-image" alt="Team member 3">
+                </span>
+                challenge them. We create bold, strategic work that helps brands find their voice and connect with people in meaningful ways.
+            </h2>
+        </header>
+
+        <!-- Statistics Grid -->
+        <section class="stats-grid-container">
+            
+            <!-- Stat Card 1: Projects (160+) -->
+            <div class="stat-card-item">
+                <p class="stat-category-label">Projects</p>
+                <!-- data-target holds the final value -->
+                <div class="number-display-wrapper" data-target="160" data-suffix="+">
+                    <!-- The value will be inserted into the span below by JavaScript -->
+                    <span class="animated-counter-value">0</span>
+                    <span class="static-char">+</span>
+                </div>
+                <p class="stat-description-text">Delivered across various Client Satisfaction Rate based on worldwide.</p>
+            </div>
+
+            <!-- Stat Card 2: Team Members (50+) -->
+            <div class="stat-card-item">
+                <p class="stat-category-label">Team Members</p>
+                <div class="number-display-wrapper" data-target="50" data-suffix="+">
+                    <span class="animated-counter-value">0</span>
+                    <span class="static-char">+</span>
+                </div>
+                <p class="stat-description-text">Professionals dedicated to delivering excellence and creative solutions.</p>
+            </div>
+
+            <!-- Stat Card 3: Success Rate (99%) -->
+            <div class="stat-card-item">
+                <p class="stat-category-label">Success</p>
+                <div class="number-display-wrapper" data-target="99" data-suffix="%">
+                    <span class="animated-counter-value">0</span>
+                    <span class="static-char">%</span>
+                </div>
+                <p class="stat-description-text">High client satisfaction based on worldwide reviews and feedback.</p>
+            </div>
+
+            <!-- Stat Card 4: Awards (50+) -->
+            <div class="stat-card-item">
+                <p class="stat-category-label">Awards</p>
+                <div class="number-display-wrapper" data-target="50" data-suffix="+">
+                    <span class="animated-counter-value">0</span>
+                    <span class="static-char">+</span>
+                </div>
+                <p class="stat-description-text">Recognized with numerous awards from top industry leaders.</p>
+            </div>
+
+        </section>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const statWrappers = document.querySelectorAll('.number-display-wrapper');
+            const sectionObserverTarget = document.getElementById('stats-section-observer');
+            const DURATION = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--animation-duration'));
+            let hasAnimated = false; 
+
+            /**
+             * Performs the counting animation for a single element.
+             * @param {HTMLElement} element The span holding the counter value.
+             * @param {number} target The final numerical value.
+             */
+            function animateCount(element, target) {
+                const startTime = performance.now();
+                const startValue = 0;
+                
+                function updateCount(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(1, elapsed / DURATION); // Ensure progress doesn't exceed 1
+                    
+                    // Use a smooth easing function (easeOutQuad)
+                    const easedProgress = progress * progress;
+                    
+                    const currentValue = Math.floor(startValue + (target - startValue) * easedProgress);
+
+                    element.textContent = currentValue.toLocaleString();
+
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        // Ensure the final value is exactly the target, to account for rounding errors
+                        element.textContent = target.toLocaleString();
+                    }
+                }
+
+                requestAnimationFrame(updateCount);
+            }
+
+
+            /**
+             * Intersection Observer Callback: Starts animation when the section is visible.
+             */
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !hasAnimated) {
+                        hasAnimated = true; 
+                        
+                        statWrappers.forEach((wrapper, index) => {
+                            // Find the span element inside the wrapper
+                            const counterElement = wrapper.querySelector('.animated-counter-value');
+                            const targetValueStr = wrapper.getAttribute('data-target');
+                            const targetValue = parseInt(targetValueStr, 10);
+
+                            if (counterElement && !isNaN(targetValue)) {
+                                // Add a staggered start delay for a nicer effect
+                                setTimeout(() => {
+                                    animateCount(counterElement, targetValue);
+                                }, index * 100); 
+                            }
+                        });
+
+                        observer.unobserve(sectionObserverTarget);
+                    }
+                });
+            };
+
+            // Create and start the observer
+            const observer = new IntersectionObserver(observerCallback, {
+                root: null, 
+                threshold: 0.2 // Trigger when 20% of the target is visible
+            });
+
+            // Start observing the main section container
+            observer.observe(sectionObserverTarget);
+        });
+    </script>
+
+</body>
+</html>

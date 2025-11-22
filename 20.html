@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us Feature Section</title>
+    <!-- Import Inter font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset and Global Styles */
+        :root {
+            /* Define brand colors */
+            --color-primary-text: #000000;
+            --color-accent-red: #ea4335;
+            --font-family-Inter: 'Inter', sans-serif; /* Best alternative would be Poppins */
+        }
+
+        * {
+            font-family: 'Inter',sans-serif;
+        }
+        body {
+            font-family: var(--font-famil-inter);
+            color: var(--color-primary-text);
+            margin: 0;
+            padding: 40px; /* Add some padding around the page */
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* ------------------------------------------- */
+        /* Main Section Container */
+        /* ------------------------------------------- */
+        .design-section {
+            max-width: 1200px;
+            width: 90%;
+            padding: 60px 40px;
+            box-sizing: border-box;
+        }
+
+        /* Two-Column Layout (The Grid) */
+        .content-grid {
+            display: flex;
+            gap: 80px; /* Space between the two columns */
+        }
+
+        /* Media query for responsiveness: Stack columns on smaller screens */
+        @media (max-width: 900px) {
+            .content-grid {
+                flex-direction: column;
+                gap: 40px;
+            }
+        }
+
+        /* ------------------------------------------- */
+        /* Left Column - Metric / Visual */
+        /* ------------------------------------------- */
+        .metric-column {
+            flex: 0 0 35%; /* Fixed width for the left side on desktop */
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* The 'ABOUT US' tag pill */
+        .tag-pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 14px;
+            background-color: var(--color-accent-red);
+            color: #ffffff;
+            border-radius: 9999px; /* Fully rounded pill shape */
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            width: fit-content; /* Only take up the necessary width */
+        }
+
+        /* The icon inside the tag */
+        .tag-icon {
+            font-size: 14px;
+            margin-right: 6px;
+            line-height: 1; /* Aligns the icon nicely */
+        }
+
+        /* The huge number '05' */
+        .huge-number {
+            font-size: 180px;
+            font-weight: 600;
+            line-height: 1; /* Ensures the number doesn't take up excessive vertical space */
+            margin-top: 10px;
+            letter-spacing: -0.02em;
+            margin-bottom: 5px;
+        }
+
+        /* The metric description text */
+        .metric-label {
+            font-size: 19px;
+            font-weight: 500;
+            color: #555555;
+            margin-top: 0;
+        }
+
+        /* ------------------------------------------- */
+        /* Right Column - Main Content */
+        /* ------------------------------------------- */
+        .content-column {
+            flex: 1; /* Takes up the remaining space */
+            padding-top: 20px; /* Aligns content better with the huge number */
+        }
+
+        /* Styling for the main paragraphs */
+        .main-copy p {
+            margin: 0 0 30px 0;
+            line-height: 1.3;
+        }
+        
+        /* First paragraph styling (slightly larger/bolder) */
+        .main-copy p:first-child {
+            font-size: 29px;
+            font-weight: 600;
+            color: var(--color-primary-text);
+        }
+
+        /* Second paragraph styling */
+        .main-copy p:last-child {
+            font-size: 29px;
+            font-weight: 600;
+            color: var(--color-primary-text);
+        }
+
+        /* Responsive adjustments for fonts */
+        @media (max-width: 600px) {
+            .huge-number {
+                font-size: 100px;
+            }
+            .main-copy p:first-child {
+                font-size: 20px;
+            }
+            .main-copy p:last-child {
+                font-size: 18px;
+            }
+            .design-section {
+                padding: 20px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="design-section">
+        <div class="content-grid">
+            
+            <!-- Left Column: Metric Card -->
+            <div class="metric-column">
+                
+                <div class="tag-pill">
+                    <!-- Using a simple Unicode character for the person icon to avoid external libraries -->
+                    <span class="tag-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20.75a1 1 0 0 0 1-1v-1.246c.004-2.806-3.974-5.004-8-5.004s-8 2.198-8 5.004v1.246a1 1 0 0 0 1 1zM15.604 6.854a3.604 3.604 0 1 1-7.208 0a3.604 3.604 0 0 1 7.208 0"/></svg>
+                    </span>
+                    ABOUT US
+                </div>
+
+                <div class="huge-number">05</div>
+
+                <p class="metric-label">Years in advertising industry</p>
+            </div>
+
+            <!-- Right Column: Main Text Content -->
+            <div class="content-column">
+                <div class="main-copy">
+                    <p>
+                        Our group of innovative experts is committed to assisting companies in thriving in the cutthroat industry of today. Using our knowledge of design and marketing tactics, we want to develop memorable campaigns that raise brand awareness and provide tangible outcomes.
+                    </p>
+                    <p>
+                        Every meaningful connection begins with great design — and we're here to help you make that first impression count.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>

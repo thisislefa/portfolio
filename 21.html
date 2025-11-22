@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trusted Partners Marquee</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --color-bg: #ffffff;
+            --color-text-dark: #111111;
+            --color-text-gray: #666666;
+            --color-border: #e5e5e5;
+            --color-accent-red: #ff4d4f;
+            --card-bg: #ffffff;
+            
+            --font-primary: 'Inter', sans-serif;
+            
+            --gap-size: 24px;
+            --card-width: 220px;
+            --card-height: 100px;
+            --scroll-duration: 40s;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--color-bg);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden; /* Prevent horizontal scrollbar from marquee */
+        }
+
+        /* --- Main Section --- */
+        .partners-section {
+            width: 100%;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        /* --- Header Area --- */
+        .partners-header {
+            margin-bottom: 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .partners-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: #fff;
+            border: 1px solid var(--color-border);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: var(--color-text-dark);
+            text-transform: uppercase;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+
+        .partners-badge__icon {
+            color: var(--color-accent-red);
+            display: flex;
+            align-items: center;
+        }
+
+        .partners-header__title {
+            font-size: 5.1rem;
+            font-weight: 600;
+            color: var(--color-text-dark);
+            letter-spacing: -0.03em;
+        }
+
+        /* --- Marquee Container --- */
+        .marquee-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap-size);
+            position: relative;
+        }
+
+        /* Add fade mask to edges */
+        .marquee-container::before,
+        .marquee-container::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 150px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .marquee-container::before {
+            left: 0;
+            background: linear-gradient(to right, var(--color-bg), transparent);
+        }
+
+        .marquee-container::after {
+            right: 0;
+            background: linear-gradient(to left, var(--color-bg), transparent);
+        }
+
+        /* --- Marquee Rows --- */
+        .marquee-row {
+            display: flex;
+            width: 100%;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        .marquee-row__track {
+            display: flex;
+            gap: var(--gap-size);
+            width: max-content; /* Ensures track fits all items */
+        }
+
+        /* Animation Directions */
+        .marquee-row--left .marquee-row__track {
+            animation: scrollLeft var(--scroll-duration) linear infinite;
+        }
+
+        .marquee-row--right .marquee-row__track {
+            animation: scrollRight var(--scroll-duration) linear infinite;
+        }
+
+        /* Pause on hover for accessibility/interaction */
+        .marquee-row:hover .marquee-row__track {
+            animation-play-state: paused;
+        }
+
+        /* --- Logo Cards --- */
+        .brand-card {
+            width: var(--card-width);
+            height: var(--card-height);
+            background-color: var(--card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 1px; /* Slightly rounded corners like image */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 0 1.5rem;
+            flex-shrink: 0; /* Prevent squishing */
+            transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+            color: #777; /* Base logo color */
+        }
+
+        .brand-card:hover {
+            border-color: #d1d1d1;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            color: #333; /* Darken on hover */
+           
+        }
+
+        .brand-card__logo {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .brand-card__name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: inherit;
+            letter-spacing: -0.02em;
+        }
+
+        /* --- Keyframes --- */
+        @keyframes scrollLeft {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-50% - (var(--gap-size) / 2))); }
+        }
+
+        @keyframes scrollRight {
+            0% { transform: translateX(calc(-50% - (var(--gap-size) / 2))); }
+            100% { transform: translateX(0); }
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .partners-header__title {
+                font-size: 2.5rem;
+            }
+            
+            :root {
+                --card-width: 180px;
+                --card-height: 64px;
+                --gap-size: 16px;
+            }
+
+            .brand-card__name {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="partners-section">
+        
+        <!-- Header -->
+        <header class="partners-header">
+            <div class="partners-badge">
+                <div class="partners-badge__icon">
+                    <!-- Target Icon SVG -->
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                </div>
+                <span>Trusted Brands</span>
+            </div>
+            <h2 class="partners-header__title">Trusted Partner</h2>
+        </header>
+
+        <!-- Marquee Area -->
+        <div class="marquee-container">
+            
+            <!-- Row 1: Moving Left -->
+            <div class="marquee-row marquee-row--left">
+                <div class="marquee-row__track">
+                    <!-- First Set of Items -->
+                    <div class="brand-card">
+                        <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" opacity="0.5"><path fill="#000000" d="M32 1c-8.56 0-16.31 3.47-21.92 9.08S1 23.44 1 32s3.47 16.31 9.08 21.92S23.44 63 32 63s16.31-3.47 21.92-9.08S63 40.56 63 32C63 14.88 49.12 1 32 1m-.54 16.82a2.746 2.746 0 0 1 3.91 0l7.61 7.69a2.83 2.83 0 0 1 0 3.95a2.734 2.734 0 0 1-3.9 0l-7.62-7.7a2.8 2.8 0 0 1 0-3.94m1.37 28.36a2.734 2.734 0 0 1-3.9 0l-7.62-7.69a2.813 2.813 0 0 1 0-3.95a2.746 2.746 0 0 1 3.91 0l7.61 7.7a2.8 2.8 0 0 1 0 3.94m10.65-2.72a2.764 2.764 0 0 1-3.91 0L20.81 24.5a2.813 2.813 0 0 1 0-3.95a2.75 2.75 0 0 1 3.9 0l18.77 18.96a2.83 2.83 0 0 1 0 3.95"/></svg>
+                        <span class="brand-card__name">ZestyBite</span>
+                    </div>
+                    <div class="brand-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 14 14" opacity="0.5"><path fill="#000000" fill-rule="evenodd" d="M5.047.757a.5.5 0 0 1 .5-.5h2.906a.5.5 0 0 1 .5.5v2.86l2.478-1.43a.5.5 0 0 1 .683.183l1.452 2.517a.5.5 0 0 1-.183.683L10.906 7l2.477 1.43a.5.5 0 0 1 .183.684l-1.453 2.516a.5.5 0 0 1-.683.183l-2.477-1.43v2.86a.5.5 0 0 1-.5.5H5.547a.5.5 0 0 1-.5-.5v-2.86l-2.477 1.43a.5.5 0 0 1-.683-.183L.434 9.114a.5.5 0 0 1 .183-.683L3.095 7L.617 5.57a.5.5 0 0 1-.183-.683L1.887 2.37a.5.5 0 0 1 .683-.183l2.477 1.43V.758Z" clip-rule="evenodd"/></svg>
+                        <span class="brand-card__name">CozyNest</span>
+                    </div>
+                    <div class="brand-card">
+                        <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" opacity="0.5"><path fill="#000000" fill-rule="evenodd" d="M5 1a4 4 0 0 0-4 4v14a4 4 0 0 0 4 4h14a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4zm5.439 4.609a3.07 3.07 0 0 1 4.202 1.08l4.432 7.5a3.068 3.068 0 0 1-5.283 3.122l-4.432-7.5a3.07 3.07 0 0 1 1.08-4.202Zm.197 10.141a3.068 3.068 0 1 1-6.136 0a3.068 3.068 0 0 1 6.136 0" clip-rule="evenodd"/></svg>
+                        <span class="brand-card__name">VitalFit</span>
+                    </div>
+                    <div class="brand-card">
+                        <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" opacity="0.5"><path fill="#000000" fill-rule="evenodd" d="M5 1a4 4 0 0 0-4 4v14a4 4 0 0 0 4 4h14a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4zm1.061 6.141a1.023 1.023 0 0 0-1.561.87v6.957a.341.341 0 0 0 .558.263l5.795-4.724a.34.34 0 0 0-.037-.552L6.06 7.14Zm13.439.87a1.023 1.023 0 0 0-1.583-.855L5.32 16.398a.341.341 0 0 0 .202.616h12.954c.565 0 1.023-.458 1.023-1.023v-7.98Z" clip-rule="evenodd"/></svg>
+                        <span class="brand-card__name">Eleganza</span>
+                    </div>
+                    <div class="brand-card">
+                        <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" opacity="0.5"><path fill="#000000" fill-rule="evenodd" d="M5 1a4 4 0 0 0-4 4v14a4 4 0 0 0 4 4h14a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4zm6.15 4.422a.711.711 0 1 0 0-1.422a.711.711 0 0 0 0 1.422m9.033 1.067c0-.478-.366-.744-.652-.855c-.3-.116-.66-.139-.996-.083a1.9 1.9 0 0 0-.995.474c-.3.283-.49.68-.49 1.175c0 .395.107.835.344 1.198c.243.374.639.682 1.186.723a1.93 1.93 0 0 0 1.092-.218a1.5 1.5 0 0 0 .365-.281l.025-.029l.01-.011l.003-.005l.002-.002v-.001l-.394-.307l-.394-.307v-.002l.002-.001l.002-.003l.004-.005l.002-.002l-.013.012a.5.5 0 0 1-.098.069a.94.94 0 0 1-.534.096c-.175-.013-.313-.104-.422-.272l-.025-.039c.135.011.28.016.426.012c.302-.01.674-.065.985-.262c.347-.22.565-.585.565-1.074m-1.583.336a3 3 0 0 1-.423-.02l.05-.053a.9.9 0 0 1 .472-.214a.95.95 0 0 1 .47.028l.009.004c-.015.088-.054.122-.096.148c-.089.057-.25.1-.482.107m.623-.231l-.006-.005l.007.005ZM9.729 10.4a.711.711 0 1 1-1.422 0a.711.711 0 0 1 1.422 0m8.889 2.278c-.244 0-.567.258-.567.744s.323.745.567.745s.566-.258.566-.745c0-.486-.323-.744-.566-.744m-1.567.744c0-.888.632-1.744 1.567-1.744s1.566.856 1.566 1.744c0 .889-.632 1.745-1.566 1.745c-.935 0-1.567-.856-1.567-1.745M12.072 15.2v-.148a1.4 1.4 0 0 1-.566.115c-.935 0-1.567-.856-1.567-1.745c0-.888.632-1.744 1.567-1.744q.307.002.566.114V10.4h1v4.8zm0-1.778c0 .486-.323.744-.566.744c-.244 0-.567-.258-.567-.745c0-.486.323-.744.567-.744s.566.258.566.744m-6.357 1.803l-1.422-3.2l.914-.406l.965 2.172l.966-2.172l.913.406l-1.422 3.2a.5.5 0 0 1-.914 0m2.802-3.403V15.2h1v-3.378zm7.459-.032c.286.111.652.377.652.855c0 .396-.196.69-.466.877c-.245.168-.542.246-.8.287a5 5 0 0 1-.764.054q.035.078.078.145c.11.168.247.259.422.272a.95.95 0 0 0 .535-.096a.5.5 0 0 0 .11-.082l-.002.003l-.003.005l-.002.003l-.002.001v.001l.394.308c.395.306.395.306.394.307v.001l-.002.002l-.004.005l-.01.011a1 1 0 0 1-.104.108c-.067.06-.16.133-.285.202a1.93 1.93 0 0 1-1.093.218c-.547-.041-.943-.35-1.186-.723a2.24 2.24 0 0 1-.344-1.198c0-.494.191-.892.49-1.175c.289-.272.655-.417.995-.474c.337-.056.697-.033.997.083m-1.248 1.07a4 4 0 0 0 .477-.039c.184-.029.304-.071.372-.111a1 1 0 0 0-.434-.016a.96.96 0 0 0-.415.167Zm.94-.11l-.006-.005l.006.004ZM5.293 16.766c1.357.604 4.068 1.81 6.924 1.81c1.803 0 3.472-.473 4.661-.81c.92-.261 1.554-.44 1.739-.256c.424.424-2.49 2.133-6.4 2.133c-4.722 0-7.966-2.99-7.823-3.2c.041-.059.365.085.899.323m13.698 2.336c.372.142 1.529-2.227 1.008-2.747s-2.898.087-2.802.52c.031.14.411.106.84.067c.488-.045 1.038-.095 1.21.1c.161.184-.002.672-.154 1.127c-.149.446-.288.861-.102.933M10.65 8.978v-3.2h1v3.2zm-2.489 0V5.6h1v.092c.297-.06.622-.059.88-.059h.042v1c-.384 0-.646.006-.82.063a.3.3 0 0 0-.07.032l-.015.012s-.003.004-.007.016a.3.3 0 0 0-.01.088v2.134zM4.25 5.6v4.444h1V8.792c.25.205.564.33.922.33c.935 0 1.567-.856 1.567-1.744c0-.889-.632-1.745-1.567-1.745c-.358 0-.671.126-.922.33V5.6zm1.356 1.778c0-.487.323-.745.566-.745c.244 0 .567.258.567.745c0 .486-.323.744-.567.744s-.566-.258-.566-.744m6.461 1.614V5.607h1.003v.083c.172-.048.367-.083.575-.083c.339 0 .603.092.798.223h.001c.23-.105.57-.223.954-.223c.4 0 .695.129.898.297a1.1 1.1 0 0 1 .264.324a.5.5 0 0 1 .065.256v2.493h-.996V6.685a1 1 0 0 0-.231-.026a1.3 1.3 0 0 0-.519.128l-.007.003v2.187H13.82V6.685a.5.5 0 0 0-.175-.026a1.3 1.3 0 0 0-.575.155v2.178z" clip-rule="evenodd"/></svg>
+                        <span class="brand-card__name">Prime Video</span>
+                    </div>
+                    <div class="brand-card">
+                        <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" opacity="0.5"><path fill="#000000" fill-rule="evenodd" d="M17.776 5.922c.421-.473 1.03-.672 1.724-.672c.855 0 1.448.177 1.852.347c.11.047.166.168.137.283l-.248.99a.252.252 0 0 1-.355.162c-.296-.14-.706-.282-1.386-.282c-.413 0-.553.112-.605.17c-.207.232-.212.561.046.72c.38.235.807.38 1.234.524c.395.134.79.268 1.15.474c.38.216.925.634.925 1.362c0 .673-.213 1.31-.779 1.743c-.526.402-1.23.524-1.988.507c-.946-.022-1.61-.231-2.004-.409a.234.234 0 0 1-.102-.33l.485-.875c.067-.12.219-.164.348-.114c.249.096.675.213 1.307.228c.618.015.914-.1 1.043-.199c.224-.17.262-.474.021-.611c-.367-.21-.765-.346-1.164-.482c-.434-.149-.87-.298-1.264-.541c-.405-.25-.903-.694-.903-1.417c0-.535.119-1.122.526-1.578m-4.718-.628h-1.616l-1.17 4.355l-1.048-4.302H7.687l1.74 6.903h1.631l1.192-3.973l1.192 3.973h1.63l1.785-6.903h-1.58l-1.05 4.302zm8.773 9.318c-.155-.175-.868-.115-1.553-.056c-.68.057-1.332.113-1.384-.067c-.105-.361 3.165-1.198 3.973-.543c.703.57-1.112 3.936-1.612 3.664c-.1-.054.05-.46.232-.963c.274-.75.626-1.715.344-2.035m-9.824 2.314c-4.527 0-7.771-1.568-9.447-2.378c-.701-.34-1.127-.545-1.258-.447c-.441.33 4.724 4.414 10.705 4.414c5.231 0 9.756-2.825 9.094-3.2c-.237-.134-.733.033-1.534.303c-1.442.487-3.872 1.308-7.56 1.308M4.5 6.75c.504 0 .877.106 1.096.224c.23.123.198.458.17.742a3 3 0 0 0-.016.237c-.377-.105-.836-.203-1.25-.203c-.843 0-1.557.281-2.054.82c-.49.53-.696 1.227-.696 1.93c0 .38.097.728.306 1.017c.205.285.477.454.728.554c.45.18.949.18 1.187.179H4c.747 0 1.505-.321 2.013-.583l.114-.06a3.3 3.3 0 0 0 .425.552c.776-.105 1.02-.313 1.06-1.061a2 2 0 0 1-.342-.538a.4.4 0 0 1-.02-.067V7c0-.666-.506-1.113-.946-1.349c-.48-.257-1.108-.401-1.804-.401c-.414 0-1.11.177-1.633.346a.48.48 0 0 0-.325.506l.034.353c.036.367.46.599.814.494c.399-.118.835-.199 1.11-.199m1.25 2.772v.573a7 7 0 0 1-.424.238c-.461.238-.953.417-1.326.417c-.128 0-.25 0-.374-.012c-.632-.06-.502-.691-.078-1.15c.166-.18.452-.338.952-.338c.28 0 .687.094 1.076.216z" clip-rule="evenodd"/></svg>
+                        <span class="brand-card__name">AWS</span>
+                    </div>
+                    <div class="brand-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 32 32" opacity="0.5"><path fill="#000000" d="M25.7 7.1C23.9 6.3 22 5.7 20 5.3h-.1c-.2.4-.5 1-.7 1.5c-2.2-.3-4.3-.3-6.4 0c-.2-.5-.5-1-.7-1.5H12c-2 .3-3.9.9-5.7 1.8C2.7 12.5 1.7 17.8 2.2 23v.1c2.4 1.8 4.7 2.8 7 3.5h.1c.5-.7 1-1.5 1.4-2.3v-.1c-.8-.3-1.5-.6-2.2-1c-.1 0-.1-.1 0-.1c.1-.1.3-.2.4-.3H9c4.6 2.1 9.5 2.1 14.1 0h.1c.1.1.3.2.4.3c.1 0 0 .1 0 .1c-.7.4-1.4.8-2.2 1c0 0-.1.1 0 .1c.4.8.9 1.6 1.4 2.3h.1c2.3-.7 4.6-1.8 7-3.5V23c.6-6-1-11.2-4.2-15.9zM11.4 19.9c-1.4 0-2.5-1.3-2.5-2.8s1.1-2.8 2.5-2.8s2.5 1.3 2.5 2.8c0 1.5-1.1 2.8-2.5 2.8zm9.3 0c-1.4 0-2.5-1.3-2.5-2.8s1.1-2.8 2.5-2.8s2.5 1.3 2.5 2.8c0 1.5-1.1 2.8-2.5 2.8z"/></svg>
+                        <span class="brand-card__name">Discord</span>
+                    </div>
+
+                    <!-- DUPLICATE Set (for seamless loop) -->
+                    <div class="brand-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 512 512" opacity="0.5"><path fill="#000000" d="M256 32C132.33 32 32 132.33 32 256s100.33 224 224 224s224-100.22 224-224S379.67 32 256 32m142.22 103.25a186.36 186.36 0 0 1 44 108.38c-40.37-2.1-88.67-2.1-127.4 1.52c-4.9-12.37-9.92-24.5-15.4-36.17c44.66-19.36 79.08-44.8 98.8-73.73M256 69.33a185.8 185.8 0 0 1 119.12 42.94c-20.3 25.66-52.15 48-91.82 64.86C261.6 137 236.63 102.47 210 75.28a187.5 187.5 0 0 1 46-5.95m-84.47 20.42c26.95 26.83 52.27 61 74.44 101C203.85 203.62 155.55 211 104 211c-9.8 0-19.36-.35-28.81-.94a186.78 186.78 0 0 1 96.34-120.31M69.68 247.13c10.62.47 21.35.7 32.2.59c58.8-.7 113.52-9.92 160.54-25q6.65 13.83 12.6 28.35a115.4 115.4 0 0 0-16.69 5c-64.28 27-114.91 70.51-142.33 123.13A186 186 0 0 1 69.33 256c0-3 .12-5.95.35-8.87M256 442.67a185.57 185.57 0 0 1-114.45-39.32c24.85-49.23 69.18-90 125.07-115.27c5.25-2.45 12.25-4.43 20.3-6.18q10 27.64 17.85 57.4A678 678 0 0 1 322 430.42a185.1 185.1 0 0 1-66 12.25m100.92-29.75a673 673 0 0 0-17.39-92.05c-4-15.17-8.51-29.87-13.41-44.22c36.63-3 80.5-2.57 115.38 0a186.5 186.5 0 0 1-84.58 136.27"/></svg>      
+                        <span class="brand-card__name">Dribbble</span>
+                    </div>
+
+                    <div class="brand-card">
+                        <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" opacity="0.5"><path fill="#000000" fill-rule="evenodd" d="M9.17 1.165a.75.75 0 0 0-1.34.67l.837 1.675a6 6 0 0 0-2.568 3.9L5.99 8h12.02l-.109-.59a6 6 0 0 0-2.568-3.9l.838-1.675a.75.75 0 0 0-1.342-.67l-.837 1.674A6 6 0 0 0 12 2.5a6 6 0 0 0-1.992.339zM3.5 9A1.5 1.5 0 0 0 2 10.5v5a1.5 1.5 0 0 0 3 0v-5A1.5 1.5 0 0 0 3.5 9m17 0a1.5 1.5 0 0 0-1.5 1.5v5a1.5 1.5 0 0 0 3 0v-5A1.5 1.5 0 0 0 20.5 9M18 9H6v8.5A1.5 1.5 0 0 0 7.5 19H8v2.5a1.5 1.5 0 0 0 3 0V19h2v2.5a1.5 1.5 0 0 0 3 0V19h.5a1.5 1.5 0 0 0 1.5-1.5z" clip-rule="evenodd"/></svg>
+                        <span class="brand-card__name">Android</span>
+                    </div>
+                    <div class="brand-card">
+                        <svg class="brand-card__logo" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                        <span class="brand-card__name">VitalFit</span>
+                    </div>
+                    <div class="brand-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" opacity="0.5"><path fill="#000000" d="M9.456 10.772q-.378.278-.964.278l-2.219.002V8.72h2.051q.286 0 .566.049q.272.048.482.174q.21.125.335.35q.125.223.126.571q0 .628-.377.907m-.224 4.447a3 3 0 0 1-.614.063H6.273v-2.736H8.66q.713 0 1.145.328t.433 1.096q0 .39-.133.642q-.132.25-.356.398a1.5 1.5 0 0 1-.517.21m7.115-4.336q.726 0 1.083.39q.355.392.496 1.145h-3.225q.014-.21.09-.474a1.45 1.45 0 0 1 .768-.9q.313-.16.788-.16"/><path fill="#000000" d="M23 12c0 6.075-4.925 11-11 11S1 18.075 1 12S5.925 1 12 1s11 4.925 11 11M10.07 7.141a6.2 6.2 0 0 0-1.299-.125h-4.69v9.97h4.831c.44 0 .88-.056 1.305-.168q.635-.167 1.131-.517q.496-.348.79-.9q.292-.552.292-1.306q0-.936-.454-1.599q-.453-.662-1.375-.928q.67-.321 1.012-.824t.342-1.256q0-.699-.23-1.173a1.9 1.9 0 0 0-.65-.762a2.8 2.8 0 0 0-1.005-.412m6.403 8.363q-.838 0-1.285-.433t-.487-1.393h5.208a5.1 5.1 0 0 0-.14-1.606a3.9 3.9 0 0 0-.636-1.368a3.2 3.2 0 0 0-1.123-.957q-.685-.356-1.606-.356q-.825 0-1.502.293t-1.166.802t-.754 1.208a4.2 4.2 0 0 0-.265 1.507q0 .837.258 1.536q.258.697.733 1.2t1.16.775t1.535.272q1.229 0 2.094-.559q.866-.557 1.285-1.856h-1.745q-.098.335-.53.635q-.434.3-1.034.3m1.918-7.982h-4.03v1.117h4.03z"/></svg>
+                        <span class="brand-card__name">Behance</span>
+                    </div>
+                    <div class="brand-card">
+                        <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" opacity="0.5"><path fill="#000000" fill-rule="evenodd" d="M22.25 12.75v10.674l-11.5-2.42V12.75zm0-1.5V.576l-11.5 2.42v8.254zm-13-7.937L1.75 4.89v6.359h7.5zm-7.5 9.437h7.5v7.938l-7.5-1.58z" clip-rule="evenodd"/></svg>
+                        <span class="brand-card__name">Windows</span>
+                    </div>
+                    <div class="brand-card">
+                        <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" opacity="0.5"><path fill="#000000" fill-rule="evenodd" d="M22.25 12.75v10.674l-11.5-2.42V12.75zm0-1.5V.576l-11.5 2.42v8.254zm-13-7.937L1.75 4.89v6.359h7.5zm-7.5 9.437h7.5v7.938l-7.5-1.58z" clip-rule="evenodd"/></svg>
+                        <span class="brand-card__name">Patreon</span>
+                    </div>
+                    <div class="brand-card">
+                        <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" opacity="0.5"><path fill="#000000" d="M9.2 6.9c2.7 2.1 5.7 6.3 6.8 8.5c1.1-2.2 4-6.4 6.8-8.5c2-1.5 5.2-2.6 5.2 1s-.4 6.2-.7 7c-.9 3.1-4 3.8-6.8 3.4c4.8.8 6.1 3.6 3.4 6.3c-5.1 5.2-7.3-1.3-7.8-3c0-.3-.1-.5-.1-.3c0-.1 0 0-.1.3c-.6 1.7-2.8 8.2-7.8 3c-2.7-2.7-1.4-5.5 3.4-6.3c-2.8.5-5.9-.3-6.8-3.4c-.2-.9-.7-6.3-.7-7c0-3.7 3.2-2.5 5.2-1"/></svg>
+                        <span class="brand-card__name">Bluesky</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: Moving Right (Opposite) -->
+            <div class="marquee-row marquee-row--right">
+                <div class="marquee-row__track">
+                    <!-- Second Set of Items -->
+                    <div class="brand-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 56 56" opacity="0.5"><path fill="#000000" fill-rule="evenodd" d="M28.458 5c6.167 0 11.346 2.2 15.368 5.804l.323.295l-6.62 6.464c-1.695-1.59-4.666-3.493-9.07-3.493c-6.204 0-11.47 4.093-13.372 9.749c-.47 1.46-.756 3.023-.756 4.64c0 1.615.287 3.18.782 4.639c1.877 5.656 7.142 9.748 13.345 9.748c3.347 0 5.928-.886 7.881-2.176l.251-.17l.307-.222c2.813-2.108 4.144-5.084 4.46-7.169l.03-.22h-12.93v-8.705h22.025c.339 1.46.495 2.867.495 4.795c0 7.142-2.554 13.163-6.985 17.255c-3.884 3.597-9.201 5.682-15.535 5.682c-9.031 0-16.85-5.102-20.772-12.57l-.184-.358l-.222-.457A23.45 23.45 0 0 1 5 28.458c0-3.6.827-7.01 2.28-10.073l.222-.457l.184-.357C11.608 10.1 19.426 5 28.458 5"/></svg>
+                        <span class="brand-card__name">Google</span>
+                    </div>
+                    <div class="brand-card">
+                        <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" opacity="0.5"><path fill="#000000" fill-rule="evenodd" d="M11.156 2.235c1.546-1.594 4.12-1.635 5.68-.027c1.537 1.586 1.537 4.21 0 5.796c-.908.935-2.008 1.026-2.907 1.096c-.942.073-1.643.128-2.213.69l-.004.003c-.502.484-.627 1.086-.718 1.863l-.026.238c-.076.696-.167 1.535-.646 2.275c-1.352 2.088-4.385 2.451-6.157.623c-1.743-1.798-1.474-4.875.605-6.308c.792-.546 1.694-.598 2.43-.641l.163-.01c.81-.05 1.417-.13 1.908-.6c.572-.552.682-1.257.802-2.176L10.08 5c.113-.864.25-1.914 1.076-2.766ZM10.5 19a4 4 0 1 1 8 0a4 4 0 0 1-8 0" clip-rule="evenodd"/></svg>
+                        <span class="brand-card__name">DigiMinds</span>
+                    </div>
+                    <div class="brand-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 512 512" opacity="0.5"><path fill="#000000" d="M256 32C132.3 32 32 134.9 32 261.7c0 101.5 64.2 187.5 153.2 217.9a17.56 17.56 0 0 0 3.8.4c8.3 0 11.5-6.1 11.5-11.4c0-5.5-.2-19.9-.3-39.1a102.4 102.4 0 0 1-22.6 2.7c-43.1 0-52.9-33.5-52.9-33.5c-10.2-26.5-24.9-33.6-24.9-33.6c-19.5-13.7-.1-14.1 1.4-14.1h.1c22.5 2 34.3 23.8 34.3 23.8c11.2 19.6 26.2 25.1 39.6 25.1a63 63 0 0 0 25.6-6c2-14.8 7.8-24.9 14.2-30.7c-49.7-5.8-102-25.5-102-113.5c0-25.1 8.7-45.6 23-61.6c-2.3-5.8-10-29.2 2.2-60.8a18.64 18.64 0 0 1 5-.5c8.1 0 26.4 3.1 56.6 24.1a208.21 208.21 0 0 1 112.2 0c30.2-21 48.5-24.1 56.6-24.1a18.64 18.64 0 0 1 5 .5c12.2 31.6 4.5 55 2.2 60.8c14.3 16.1 23 36.6 23 61.6c0 88.2-52.4 107.6-102.3 113.3c8 7.1 15.2 21.1 15.2 42.5c0 30.7-.3 55.5-.3 63c0 5.4 3.1 11.5 11.4 11.5a19.35 19.35 0 0 0 4-.4C415.9 449.2 480 363.1 480 261.7C480 134.9 379.7 32 256 32Z"/></svg>                        <span class="brand-card__name">Github</span>
+                    </div>
+                    <div class="brand-card">
+                        <svg class="brand-card__logo" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M16 12l-4-4-4 4m8 4l-4-4-4 4"/></svg>
+                        <span class="brand-card__name">UpScale</span>
+                    </div>
+                    <div class="brand-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 16 16" opacity="0.5"><g fill="none"><g clip-path="url(#gravityUiLogoAcrobat0)"><path fill="#000000" fill-rule="evenodd" d="M7.363 1.5c-.094.007-.377.122-.377.622c0 .593.12 1.248.337 1.927c.209-.799.319-1.463.319-1.927c0-.359-.097-.513-.144-.565a.155.155 0 0 0-.135-.057m.885 4.637c.061-.175.12-.347.174-.518c.431-1.326.72-2.587.72-3.497c0-.625-.173-1.173-.53-1.57A1.653 1.653 0 0 0 7.265.004c-.984.064-1.779.933-1.779 2.118c0 1.314.44 2.758 1.126 4.13a31.082 31.082 0 0 1-1.465 3.305c-.9.302-1.745.648-2.475 1.025c-.714.368-1.352.783-1.822 1.24c-.46.448-.85 1.026-.85 1.714c0 .465.157.91.488 1.243c.33.332.776.491 1.242.491c.541 0 1.038-.242 1.458-.547c.428-.311.844-.738 1.24-1.225c.604-.744 1.203-1.683 1.758-2.699a24.497 24.497 0 0 1 3.143-.739a11.26 11.26 0 0 0 1.606 1.369c.925.639 1.945 1.086 2.943 1.086c.507 0 1.034-.126 1.45-.46c.438-.353.672-.871.672-1.47c0-.758-.412-1.313-.983-1.66c-.535-.327-1.231-.49-1.958-.563c-.925-.092-2.02-.047-3.167.1a14.055 14.055 0 0 1-1.644-2.325m-.675 1.76a32.96 32.96 0 0 1-.481 1.095a26.209 26.209 0 0 1 1.093-.246a15.666 15.666 0 0 1-.612-.849m3.734 1.938c.16.13.321.25.481.36c.802.554 1.521.82 2.09.82c.277 0 .436-.07.51-.13c.052-.041.112-.113.112-.3c0-.129-.04-.244-.263-.38c-.258-.156-.695-.288-1.327-.35a10.518 10.518 0 0 0-1.603-.02m-7.374 1.803c-.2.09-.391.183-.574.277c-.645.333-1.14.668-1.463.982c-.334.326-.396.54-.396.639c0 .126.039.172.05.184c.013.012.057.05.18.05c.095 0 .284-.047.576-.26c.285-.207.608-.528.957-.957c.221-.273.446-.58.67-.915" clip-rule="evenodd"/></g><defs><clipPath id="gravityUiLogoAcrobat0"><path fill="#000000" d="M0 0h16v16H0z"/></clipPath></defs></g></svg>
+                        <span class="brand-card__name">Acrobat</span>
+                    </div>
+                    <div class="brand-card">
+                        <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" opacity="0.5"><path fill="#000000" fill-rule="evenodd" d="M5 1a4 4 0 0 0-4 4v14a4 4 0 0 0 4 4h14a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4zm9.046 4.09L17.317 4v16h-3.273v-1.361c-.884.85-2.026 1.361-3.272 1.361c-2.812 0-5.091-2.605-5.091-5.818s2.28-5.818 5.09-5.818c1.247 0 2.389.511 3.274 1.361V5.091Zm0 9.092a2.545 2.545 0 1 1-5.091 0a2.545 2.545 0 0 1 5.09 0Z" clip-rule="evenodd"/></svg>
+                        <span class="brand-card__name">DataFlow</span>
+                    </div>
+                    <div class="brand-card">
+                        <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" opacity="0.5"><path fill="#000000" fill-rule="evenodd" d="M5 1a4 4 0 0 0-4 4v14a4 4 0 0 0 4 4h14a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4zm10.344 3h-2.679l-1.177 1.177h-1.407c-.65 0-1.177.527-1.177 1.177v5.1c0 .65.527 1.177 1.177 1.177h7.847c.65 0 1.177-.527 1.177-1.177v-5.1c0-.65-.527-1.177-1.177-1.177h-1.407zm-3.693 4.708a2.354 2.354 0 1 1 4.708 0a2.354 2.354 0 0 1-4.708 0m2.354-1.57a1.57 1.57 0 1 0 0 3.14a1.57 1.57 0 0 0 0-3.14M6.55 4.786H4.196v7.846H6.55zm1.177 9.722H4V20h1.177v-1.962h1.766v-1.177H5.177v-1.177h2.55zm-.196 3.335c0-1.115.807-2.158 1.962-2.158s1.961 1.043 1.961 2.158c0 1.116-.806 2.158-1.961 2.158S7.53 18.958 7.53 17.842Zm7.847 0c0 1.116-.807 2.158-1.962 2.158s-1.962-1.042-1.962-2.158s.807-2.158 1.962-2.158s1.962 1.043 1.962 2.158m0 0c0-1.115.807-2.158 1.962-2.158c.285 0 .548.064.784.176v-1.353h1.177V20h-1.177v-.176a1.8 1.8 0 0 1-.784.176c-1.155 0-1.962-1.042-1.962-2.158Zm-5.885-.98c-.362 0-.785.362-.785.98s.423.981.785.981s.784-.363.784-.98c0-.619-.422-.982-.784-.982Zm3.138.98c0-.618.423-.98.785-.98s.785.362.785.98s-.423.981-.785.981s-.785-.363-.785-.98Zm5.493 0c0-.618-.422-.98-.784-.98s-.785.362-.785.98s.422.981.785.981c.361 0 .784-.363.784-.98Z" clip-rule="evenodd"/></svg>
+                        <span class="brand-card__name">Foodie</span>
+                    </div>
+
+                     <!-- DUPLICATE Set (for seamless loop) -->
+                     <div class="brand-card">
+                        <svg class="brand-card__logo" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                        <span class="brand-card__name">Energetix</span>
+                    </div>
+                    <div class="brand-card">
+                        <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" opacity="0.5"><path fill="#000000" fill-rule="evenodd" d="M21.479 1.89a3 3 0 0 1 1.131 4.09l-7.195 12.697a4 4 0 0 0-1.857-2.607l-2.659-1.595L17.39 3.02a3 3 0 0 1 4.09-1.131ZM7 15a3 3 0 1 1-6 0a3 3 0 0 1 6 0m-2.274 3.934a4 4 0 0 0 3.088-5.144l5.23 3.137a3 3 0 0 1-3.087 5.146l-5.23-3.139Z" clip-rule="evenodd"/></svg>
+                        <span class="brand-card__name">DigiMinds</span>
+                    </div>
+                    <div class="brand-card">
+                        <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" opacity="0.5"><path fill="#000000" d="M3.776 14.017c3.323-1.111 7.219-1.269 9.658-.209c0 0-3.588.5-6.468 2.086a.49.49 0 0 0-.23.573l.807 2.72c.106.358.555.485.853.259c2.302-1.75 6.437-3.311 10.41-2.751a.52.52 0 0 0 .535-.267l1.427-2.685a.49.49 0 0 0-.128-.62C16.4 9.885 9.23 9.914 6.938 10.16c4.025-1.911 9.076-1.854 14.4-.612a.51.51 0 0 0 .594-.312l1.034-2.672a.497.497 0 0 0-.288-.648c-3.477-1.287-7.343-1.747-11.14-1.321c-3.822.428-7.407 1.735-10.327 3.76a.5.5 0 0 0-.168.61l2.093 4.774a.52.52 0 0 0 .64.278"/></svg>
+                        <span class="brand-card__name">PolyGrid</span>
+                    </div>
+                    <div class="brand-card">
+                        <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" opacity="0.5"><path fill="#000000" fill-rule="evenodd" d="M3.5 6a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5M6 23V8H1v15zM8 8h4.5v1.946C13.216 9.005 14.746 8 17.5 8c4.33 0 5.5 4.32 5.5 7v8h-5v-8c0-1-.5-3-2.5-3c-1.42 0-2.42 1.008-3 1.951V23H8z" clip-rule="evenodd"/></svg>
+                        <span class="brand-card__name">LinkedIn</span>
+                    </div>
+                    <div class="brand-card">
+                        <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" opacity="0.5"><path fill="#000000" fill-rule="evenodd" d="M6.5 3.5L1 7l5.5 3.5L1 14l5.5 3.5L12 14l5.5 3.5L23 14l-5.5-3.5L23 7l-5.5-3.5L12 7zM12 7l5.5 3.5L12 14l-5.5-3.5zM6.5 19l5.5-3.5l5.5 3.5l-5.5 3.5z" clip-rule="evenodd"/></svg>
+                        <span class="brand-card__name">Dropbox</span>
+                    </div>
+                    <div class="brand-card">
+                        <svg class="brand-card__logo" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                        <span class="brand-card__name">DataFlow</span>
+                    </div>
+                    <div class="brand-card">
+                        <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" opacity="0.5"><path fill="#000000" fill-rule="evenodd" d="M9 20V4a3 3 0 0 0-6 0v16a3 3 0 1 0 6 0M20 4a3 3 0 1 1-6 0a3 3 0 0 1 6 0m-7.875 12.479l4.853 5.662a3.051 3.051 0 0 0 4.689-3.906l-4.693-5.796a3.156 3.156 0 1 0-4.85 4.04Z" clip-rule="evenodd"/></svg>
+                        <span class="brand-card__name">Kaima</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>

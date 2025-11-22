@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Reviews Component</title>
+    
+    <!-- Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons: FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- Reset & Base Styles --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F8F5; /* Matches the beige background in image */
+            color: #111827;
+            -webkit-font-smoothing: antialiased;
+            padding: 60px 20px;
+            min-height: 100vh;
+        }
+
+        /* --- Component Container --- */
+        .bs-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* --- Header Section --- */
+        .bs-header {
+            margin-bottom: 30px;
+            padding-left: 4px;
+        }
+
+        .bs-title {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #000000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .bs-bullet {
+            width: 6px;
+            height: 6px;
+            background-color: #000000;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        /* --- Grid Layout --- */
+        .bs-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 Cards per row */
+            gap: 20px;
+        }
+
+        /* --- Card Styles --- */
+        .bs-card {
+            background-color: #FFFFFF;
+            aspect-ratio: 1 / 1; /* Perfect square */
+            position: relative;
+            perspective: 1000px; /* For flip effect */
+            cursor: default;
+        }
+
+        .bs-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        /* State: Flipped */
+        .bs-card.flipped .bs-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* --- Front & Back Faces --- */
+        .bs-card-front, .bs-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        /* Front: Logo Side */
+        .bs-card-front {
+            background-color: #FFFFFF;
+        }
+
+        /* Back: Review Side */
+        .bs-card-back {
+            background-color: #FFFFFF;
+            transform: rotateY(180deg);
+            text-align: left;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        /* --- Toggle Button (+ / x) --- */
+        .bs-toggle-btn {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            width: 32px;
+            height: 32px;
+            border: 1px solid #E5E7EB;
+            border-radius: 50%;
+            background: transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #6B7280;
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+
+        .bs-toggle-btn:hover {
+            border-color: #000000;
+            color: #000000;
+            transform: scale(1.1);
+        }
+
+        /* --- Content Styling --- */
+        
+        /* Logos (simulated with FontAwesome + Text) */
+        .bs-logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #000000;
+            pointer-events: none; /* Allow clicks to pass through if needed */
+        }
+
+        .bs-logo-icon {
+            font-size: 32px;
+        }
+
+        /* Review Text */
+        .bs-review-text {
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.4;
+            color: #6B7280; /* Grey text */
+            text-transform: uppercase;
+            margin-top: 40px; /* Push down slightly */
+        }
+
+        .bs-author-info {
+            margin-top: auto;
+        }
+
+        .bs-author-name {
+            display: block;
+            font-size: 16px;
+            font-weight: 800;
+            color: #000000;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .bs-author-role {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #6B7280;
+            text-transform: uppercase;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 1200px) {
+            .bs-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .bs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .bs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .bs-card {
+                aspect-ratio: auto;
+                height: 350px; /* Fixed height for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="bs-container">
+        
+        <!-- Header -->
+        <div class="bs-header">
+            <h2 class="bs-title"><span class="bs-bullet"></span> What Brands Says</h2>
+        </div>
+
+        <!-- Grid -->
+        <div class="bs-grid">
+
+            <!-- Card 1: Darwin Karl (Starts Flipped/Active based on image) -->
+            <div class="bs-card flipped" id="card-1">
+                <div class="bs-card-inner">
+                    <!-- Front (Logo) -->
+                    <div class="bs-card-front">
+                        <button class="bs-toggle-btn" onclick="toggleCard('card-1')">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                        <div class="bs-logo-wrapper">
+                            <i class="fa-brands fa-codepen bs-logo-icon"></i>
+                            <span>codot.</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Back (Review) -->
+                    <div class="bs-card-back">
+                        <button class="bs-toggle-btn" onclick="toggleCard('card-1')">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                        <p class="bs-review-text">
+                            "Every thriving brand experience is based on the of a refined strategy and visual aesthetic."
+                        </p>
+                        <div class="bs-author-info">
+                            <span class="bs-author-name">Darwin Karl</span>
+                            <span class="bs-author-role">Youtube Influencer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Logo (Flower) -->
+            <div class="bs-card" id="card-2">
+                <div class="bs-card-inner">
+                    <div class="bs-card-front">
+                        <button class="bs-toggle-btn" onclick="toggleCard('card-2')">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                        <div class="bs-logo-wrapper">
+                            <i class="fa-solid fa-asterisk bs-logo-icon" style="color: #9CA3AF;"></i>
+                            <span>Logo</span>
+                        </div>
+                    </div>
+                    <div class="bs-card-back">
+                        <button class="bs-toggle-btn" onclick="toggleCard('card-2')">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                        <p class="bs-review-text">
+                            "Simple, elegant, and incredibly effective. Our rebranding process was seamless."
+                        </p>
+                        <div class="bs-author-info">
+                            <span class="bs-author-name">Sarah Jenkins</span>
+                            <span class="bs-author-role">Art Director</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Logoipsum -->
+            <div class="bs-card" id="card-3">
+                <div class="bs-card-inner">
+                    <div class="bs-card-front">
+                        <button class="bs-toggle-btn" onclick="toggleCard('card-3')">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                        <div class="bs-logo-wrapper">
+                            <i class="fa-solid fa-bolt bs-logo-icon"></i>
+                            <span>Logoipsum</span>
+                        </div>
+                    </div>
+                    <div class="bs-card-back">
+                        <button class="bs-toggle-btn" onclick="toggleCard('card-3')">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                        <p class="bs-review-text">
+                            "The attention to detail is unmatched. Highly recommended for enterprise solutions."
+                        </p>
+                        <div class="bs-author-info">
+                            <span class="bs-author-name">Mark Chen</span>
+                            <span class="bs-author-role">CTO, TechFlow</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Another Logo -->
+            <div class="bs-card" id="card-4">
+                <div class="bs-card-inner">
+                    <div class="bs-card-front">
+                        <button class="bs-toggle-btn" onclick="toggleCard('card-4')">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                        <div class="bs-logo-wrapper">
+                            <i class="fa-solid fa-cube bs-logo-icon"></i>
+                            <span>Brands</span>
+                        </div>
+                    </div>
+                    <div class="bs-card-back">
+                        <button class="bs-toggle-btn" onclick="toggleCard('card-4')">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                        <p class="bs-review-text">
+                            "Transformed our digital presence completely. The ROI was visible within weeks."
+                        </p>
+                        <div class="bs-author-info">
+                            <span class="bs-author-name">Emma Watson</span>
+                            <span class="bs-author-role">Marketing Head</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+             <!-- Row 2 Card 1: Logoipsum (Box) -->
+            <div class="bs-card" id="card-5">
+                <div class="bs-card-inner">
+                    <div class="bs-card-front">
+                        <button class="bs-toggle-btn" onclick="toggleCard('card-5')">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                        <div class="bs-logo-wrapper">
+                            <i class="fa-solid fa-box-open bs-logo-icon"></i>
+                            <span>Logoipsum</span>
+                        </div>
+                    </div>
+                    <div class="bs-card-back">
+                        <button class="bs-toggle-btn" onclick="toggleCard('card-5')">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                        <p class="bs-review-text">
+                            "A delight to work with. They understood our vision immediately."
+                        </p>
+                        <div class="bs-author-info">
+                            <span class="bs-author-name">David Miller</span>
+                            <span class="bs-author-role">CEO, StartUp</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2 Card 2: Logoipsum (Circle) -->
+            <div class="bs-card" id="card-6">
+                <div class="bs-card-inner">
+                    <div class="bs-card-front">
+                        <button class="bs-toggle-btn" onclick="toggleCard('card-6')">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                        <div class="bs-logo-wrapper">
+                            <i class="fa-regular fa-circle-dot bs-logo-icon"></i>
+                            <span>Logoipsum</span>
+                        </div>
+                    </div>
+                    <div class="bs-card-back">
+                        <button class="bs-toggle-btn" onclick="toggleCard('card-6')">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                        <p class="bs-review-text">
+                            "Innovative designs that actually convert. We are thrilled with the results."
+                        </p>
+                        <div class="bs-author-info">
+                            <span class="bs-author-name">Lisa Ray</span>
+                            <span class="bs-author-role">Founder</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Row 2 Card 3: 1000 -->
+             <div class="bs-card" id="card-7">
+                <div class="bs-card-inner">
+                    <div class="bs-card-front">
+                        <button class="bs-toggle-btn" onclick="toggleCard('card-7')">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                        <div class="bs-logo-wrapper">
+                            <span>1000+</span>
+                        </div>
+                    </div>
+                    <div class="bs-card-back">
+                        <button class="bs-toggle-btn" onclick="toggleCard('card-7')">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                        <p class="bs-review-text">
+                            "Over 1000 successful projects delivered with consistency and style."
+                        </p>
+                        <div class="bs-author-info">
+                            <span class="bs-author-name">Team Metric</span>
+                            <span class="bs-author-role">Internal Stat</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2 Card 4: Logo (Leaf) -->
+            <div class="bs-card" id="card-8">
+                <div class="bs-card-inner">
+                    <div class="bs-card-front">
+                        <button class="bs-toggle-btn" onclick="toggleCard('card-8')">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                        <div class="bs-logo-wrapper">
+                            <i class="fa-brands fa-pagelines bs-logo-icon"></i>
+                            <span>Agol</span>
+                        </div>
+                    </div>
+                    <div class="bs-card-back">
+                        <button class="bs-toggle-btn" onclick="toggleCard('card-8')">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                        <p class="bs-review-text">
+                            "Sustainable design practices meets modern aesthetics. Perfect match."
+                        </p>
+                        <div class="bs-author-info">
+                            <span class="bs-author-name">John Green</span>
+                            <span class="bs-author-role">Eco Systems</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        function toggleCard(cardId) {
+            const card = document.getElementById(cardId);
+            card.classList.toggle('flipped');
+        }
+    </script>
+
+</body>
+</html>

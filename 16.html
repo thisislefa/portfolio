@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Component</title>
+    
+    <!-- Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons: FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- Reset & Base Styles --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #111827;
+            -webkit-font-smoothing: antialiased;
+            padding: 60px 20px;
+        }
+
+        /* --- Component Container --- */
+        .faq-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- Header Section --- */
+        .faq-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .faq-title {
+            font-size: 48px;
+            font-weight: 600; /* Matches the bold/clean look */
+            letter-spacing: -0.02em;
+            color: #000000;
+        }
+
+        .faq-cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #111827;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .faq-cta-button:hover {
+            background-color: #f9fafb;
+            border-color: #d1d5db;
+        }
+
+        .faq-cta-icon {
+            font-size: 14px;
+        }
+
+        /* --- Grid Layout for FAQs --- */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two equal columns */
+            gap: 0 60px; /* 0 vertical gap (handled by padding), 60px horizontal gap */
+            align-items: start; /* Align items to top */
+        }
+
+        /* --- Individual FAQ Item --- */
+        .faq-item {
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        /* Button Style (Question) */
+        .faq-question-btn {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 32px 0; /* Generous vertical padding */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            text-align: left;
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #000000;
+            transition: color 0.2s ease;
+        }
+
+        .faq-question-btn:hover {
+            color: #374151;
+        }
+
+        .faq-icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon-wrapper {
+            transform: rotate(45deg); /* Rotate + to become x */
+        }
+
+        /* Answer Panel */
+        .faq-answer-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .faq-answer-content {
+            padding-bottom: 32px;
+            color: #4B5563;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 900px) {
+            .faq-grid {
+                grid-template-columns: 1fr; /* Stack into 1 column */
+                gap: 0;
+            }
+            
+            .faq-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 24px;
+            }
+
+            .faq-title {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="faq-container">
+        
+        <!-- Header -->
+        <header class="faq-header">
+            <h2 class="faq-title">FAQ</h2>
+            <a href="#" class="faq-cta-button">
+                Get Template <i class="fa-solid fa-arrow-right faq-cta-icon"></i>
+            </a>
+        </header>
+
+        <!-- FAQ Grid -->
+        <div class="faq-grid">
+
+            <!-- Left Column -->
+            <div class="faq-column">
+                <!-- Item 1 -->
+                <div class="faq-item">
+                    <button class="faq-question-btn" aria-expanded="false">
+                        Can you work with wireframes or our existing designs?
+                        <span class="faq-icon-wrapper">
+                            <i class="fa-solid fa-plus"></i>
+                        </span>
+                    </button>
+                    <div class="faq-answer-panel">
+                        <div class="faq-answer-content">
+                            Yes, absolutely. We can seamlessly integrate with your existing workflows, whether you have rough wireframes or polished designs that need implementation.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="faq-item">
+                    <button class="faq-question-btn" aria-expanded="false">
+                        What happens after the design is ready & I approve it?
+                        <span class="faq-icon-wrapper">
+                            <i class="fa-solid fa-plus"></i>
+                        </span>
+                    </button>
+                    <div class="faq-answer-panel">
+                        <div class="faq-answer-content">
+                            Once approved, we prepare all final assets and source files for delivery. We can also collaborate with your development team to ensure a smooth handoff.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="faq-item">
+                    <button class="faq-question-btn" aria-expanded="false">
+                        Do you charge for additional revisions?
+                        <span class="faq-icon-wrapper">
+                            <i class="fa-solid fa-plus"></i>
+                        </span>
+                    </button>
+                    <div class="faq-answer-panel">
+                        <div class="faq-answer-content">
+                            We include a standard round of revisions in our initial quote. Significant changes outside the original scope may incur additional fees, which we will discuss upfront.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="faq-column">
+                <!-- Item 4 -->
+                <div class="faq-item">
+                    <button class="faq-question-btn" aria-expanded="false">
+                        I have an agency. Can I outsource work to you?
+                        <span class="faq-icon-wrapper">
+                            <i class="fa-solid fa-plus"></i>
+                        </span>
+                    </button>
+                    <div class="faq-answer-panel">
+                        <div class="faq-answer-content">
+                            Yes, we frequently partner with agencies to provide white-label design services. We act as an extension of your team while maintaining your brand standards.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="faq-item">
+                    <button class="faq-question-btn" aria-expanded="false">
+                        What do I need to give you to get started?
+                        <span class="faq-icon-wrapper">
+                            <i class="fa-solid fa-plus"></i>
+                        </span>
+                    </button>
+                    <div class="faq-answer-panel">
+                        <div class="faq-answer-content">
+                            A brief overview of your project, target audience, and any brand guidelines you have are a great start. We'll guide you through a discovery process if you're unsure.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="faq-item">
+                    <button class="faq-question-btn" aria-expanded="false">
+                        Can I outsource work to you? I have an agency
+                        <span class="faq-icon-wrapper">
+                            <i class="fa-solid fa-plus"></i>
+                        </span>
+                    </button>
+                    <div class="faq-answer-panel">
+                        <div class="faq-answer-content">
+                            Absolutely. We understand agency timelines and requirements well. Contact us to discuss how we can support your overflow work or specific projects.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        // Simple accordion functionality
+        const faqButtons = document.querySelectorAll('.faq-question-btn');
+
+        faqButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const panel = button.nextElementSibling;
+                const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+                // Optional: Close other items in the same column or everywhere
+                // Remove this block if you want multiple items open at once
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem && item.classList.contains('active')) {
+                        item.classList.remove('active');
+                        item.querySelector('.faq-question-btn').setAttribute('aria-expanded', 'false');
+                        item.querySelector('.faq-answer-panel').style.maxHeight = null;
+                    }
+                });
+
+                // Toggle current item
+                faqItem.classList.toggle('active');
+                button.setAttribute('aria-expanded', !isExpanded);
+
+                if (faqItem.classList.contains('active')) {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                } else {
+                    panel.style.maxHeight = null;
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
