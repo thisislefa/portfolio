@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Delight Wellness</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        /* --- Shared Styles (Copied from Index for Consistency) --- */
+        :root {
+            --dl-primary: #56CC8A;
+            --dl-primary-hover: #45ad73;
+            --dl-dark: #121212;
+            --dl-dark-secondary: #1E1E1E;
+            --dl-text-main: #0A0A0A;
+            --dl-text-muted: #555555;
+            --dl-text-light: #999999;
+            --dl-bg-white: #FFFFFF;
+            --dl-bg-offwhite: #F7F9FB;
+            --dl-border: #E5E5E5;
+            --dl-radius-sm: 8px;
+            --dl-radius-md: 16px;
+            --dl-radius-lg: 24px;
+            --dl-radius-full: 999px;
+            --dl-container: 1200px;
+            --dl-transition: all 0.3s ease;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--dl-bg-white); color: var(--dl-text-main); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; color: var(--dl-dark); }
+        p { color: var(--dl-text-muted); margin-bottom: 1rem; }
+        a { text-decoration: none; color: inherit; transition: var(--dl-transition); }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; object-fit: cover; }
+
+        /* Utilities */
+        .dl-container { max-width: var(--dl-container); margin: 0 auto; padding: 0 20px; }
+        .dl-btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 28px; border-radius: var(--dl-radius-full); font-weight: 600; font-size: 15px; cursor: pointer; transition: var(--dl-transition); border: none; gap: 8px; }
+        .dl-btn--primary { background-color: var(--dl-primary); color: var(--dl-dark); }
+        .dl-btn--primary:hover { background-color: var(--dl-primary-hover); transform: translateY(-2px); }
+        .dl-btn--outline { background: transparent; border: 1px solid var(--dl-border); color: var(--dl-text-main); }
+        .dl-btn--outline:hover { border-color: var(--dl-dark); }
+        .dl-btn--dark { background-color: var(--dl-dark); color: white; }
+        .dl-badge { display: inline-block; background: rgba(86, 204, 138, 0.15); color: #2E8B57; padding: 6px 12px; border-radius: var(--dl-radius-full); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px; }
+        
+        /* Header (Same as Index) */
+        .dl-header { position: sticky; top: 0; z-index: 1000; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--dl-border); padding: 16px 0; }
+        .dl-nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
+        .dl-logo { font-size: 24px; font-weight: 800; display: flex; align-items: center; gap: 8px; color: var(--dl-dark); }
+        .dl-nav-links { display: flex; gap: 32px; }
+        .dl-nav-link { font-size: 15px; font-weight: 500; color: var(--dl-text-muted); }
+        .dl-nav-link:hover, .dl-nav-link.active { color: var(--dl-primary); }
+        .dl-nav-actions { display: flex; align-items: center; gap: 16px; }
+
+        /* Footer (Same as Index) */
+        .dl-footer { background-color: var(--dl-dark); color: white; padding: 80px 0 40px 0; margin-top: 80px; }
+        .dl-footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+        .dl-footer-links a { color: #999; font-size: 14px; }
+        .dl-footer-links a:hover { color: var(--dl-primary); }
+        .dl-footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; color: #666; font-size: 13px; }
+
+        /* --- About Page Specific Styles --- */
+        
+        /* Page Header */
+        .dl-page-header {
+            padding: 100px 0 60px 0;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .dl-page-header h1 {
+            font-size: 56px;
+            margin-bottom: 24px;
+            letter-spacing: -1.5px;
+        }
+        .dl-page-header p {
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+        /* Story Section */
+        .dl-story-section {
+            padding: 60px 0;
+        }
+        .dl-story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .dl-story-img {
+            border-radius: var(--dl-radius-lg);
+            height: 500px;
+            width: 100%;
+        }
+        .dl-story-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .dl-story-content p {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        /* Stats Row */
+        .dl-stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 60px 0;
+            border-top: 1px solid var(--dl-border);
+            border-bottom: 1px solid var(--dl-border);
+            margin: 60px 0;
+        }
+        .dl-stat-item {
+            text-align: center;
+        }
+        .dl-stat-number {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--dl-primary);
+            margin-bottom: 8px;
+            display: block;
+        }
+        .dl-stat-label {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--dl-text-muted);
+            letter-spacing: 1px;
+        }
+
+        /* Values Grid */
+        .dl-values-section {
+            padding: 80px 0;
+            background-color: var(--dl-bg-offwhite);
+        }
+        .dl-values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .dl-value-card {
+            background: white;
+            padding: 40px;
+            border-radius: var(--dl-radius-md);
+            border: 1px solid var(--dl-border);
+            transition: var(--dl-transition);
+        }
+        .dl-value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .dl-value-icon {
+            font-size: 32px;
+            color: var(--dl-primary);
+            margin-bottom: 20px;
+            display: inline-block;
+            background: rgba(86, 204, 138, 0.1);
+            padding: 12px;
+            border-radius: 12px;
+        }
+        .dl-value-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        /* Full Team Grid */
+        .dl-team-full {
+            padding: 100px 0;
+        }
+        .dl-team-grid-layout {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .dl-team-member {
+            text-align: center;
+        }
+        .dl-team-member img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: var(--dl-radius-md);
+            margin-bottom: 16px;
+            filter: grayscale(20%);
+            transition: var(--dl-transition);
+        }
+        .dl-team-member:hover img {
+            filter: grayscale(0%);
+        }
+        .dl-team-member h4 {
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+        .dl-team-member span {
+            color: var(--dl-primary);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .dl-story-grid { grid-template-columns: 1fr; }
+            .dl-stats-row { grid-template-columns: 1fr 1fr; gap: 40px; }
+            .dl-values-grid { grid-template-columns: 1fr; }
+            .dl-team-grid-layout { grid-template-columns: 1fr 1fr; }
+            .dl-page-header h1 { font-size: 40px; }
+        }
+        @media (max-width: 768px) {
+            .dl-nav-links, .dl-nav-actions { display: none; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="dl-header">
+        <div class="dl-container dl-nav-wrapper">
+            <a href="index.html" class="dl-logo">
+                <i class="ph-fill ph-plant" style="color: var(--dl-primary);"></i> Delight
+            </a>
+            <nav>
+                <ul class="dl-nav-links">
+                    <li><a href="index.html" class="dl-nav-link">Home</a></li>
+                    <li><a href="about.html" class="dl-nav-link active">About</a></li>
+                    <li><a href="#" class="dl-nav-link">Therapists</a></li>
+                    <li><a href="#" class="dl-nav-link">Services</a></li>
+                    <li><a href="#" class="dl-nav-link">Pricing</a></li>
+                </ul>
+            </nav>
+            <div class="dl-nav-actions">
+                <a href="#" class="dl-nav-link">Sign In</a>
+                <button class="dl-btn dl-btn--primary">Get Started</button>
+            </div>
+            <i class="ph ph-list" style="display: none; font-size: 24px;" id="mobile-menu-btn"></i>
+        </div>
+    </header>
+
+    <!-- Page Title -->
+    <section class="dl-page-header">
+        <div class="dl-badge">Our Mission</div>
+        <h1>Democratizing access to mental wellness for everyone.</h1>
+        <p>Delight was founded on the belief that mental healthcare should be accessible, affordable, and stigma-free. We are bridging the gap between patients and the care they deserve.</p>
+    </section>
+
+    <!-- Story Section -->
+    <section class="dl-story-section">
+        <div class="dl-container dl-story-grid">
+            <div class="dl-story-image-col">
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80" alt="Team working together" class="dl-story-img">
+            </div>
+            <div class="dl-story-content">
+                <h2>Our Story</h2>
+                <p>Founded in 2021 by Dr. Emily Stone and Mark Alen, Delight began as a small community clinic in Seattle. Witnessing the barriers patients faced—long waitlists, high costs, and confusing insurance policies—they set out to build a digital-first solution.</p>
+                <p>Today, Delight connects thousands of individuals with licensed therapists through a secure, easy-to-use platform. We believe that technology, when paired with human empathy, can solve the mental health crisis.</p>
+                <p>Our goal isn't just to treat illness, but to foster proactive wellness and resilience in every community we serve.</p>
+                
+                <div style="margin-top: 30px;">
+                    <img src="https://fontmeme.com/permalink/240101/signature_placeholder.png" alt="Signature" style="height: 50px; opacity: 0.6;">
+                    <div style="font-weight: 600; margin-top: 10px;">Dr. Emily Stone, Co-Founder</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="dl-container">
+        <div class="dl-stats-row">
+            <div class="dl-stat-item">
+                <span class="dl-stat-number">50k+</span>
+                <span class="dl-stat-label">Sessions Completed</span>
+            </div>
+            <div class="dl-stat-item">
+                <span class="dl-stat-number">1,200+</span>
+                <span class="dl-stat-label">Licensed Therapists</span>
+            </div>
+            <div class="dl-stat-item">
+                <span class="dl-stat-number">4.9/5</span>
+                <span class="dl-stat-label">Patient Satisfaction</span>
+            </div>
+            <div class="dl-stat-item">
+                <span class="dl-stat-number">24/7</span>
+                <span class="dl-stat-label">Support Available</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Values -->
+    <section class="dl-values-section">
+        <div class="dl-container">
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <h2>Core Values</h2>
+                <p>These principles guide every decision we make and every interaction we have.</p>
+            </div>
+            <div class="dl-values-grid">
+                <div class="dl-value-card">
+                    <div class="dl-value-icon"><i class="ph-fill ph-heart"></i></div>
+                    <h3>Radical Empathy</h3>
+                    <p>We approach every user with kindness and understanding, recognizing that everyone's journey is unique.</p>
+                </div>
+                <div class="dl-value-card">
+                    <div class="dl-value-icon"><i class="ph-fill ph-shield-check"></i></div>
+                    <h3>Uncompromising Safety</h3>
+                    <p>Privacy and clinical safety are our top priorities. We adhere to the strictest standards of data protection.</p>
+                </div>
+                <div class="dl-value-card">
+                    <div class="dl-value-icon"><i class="ph-fill ph-lightbulb"></i></div>
+                    <h3>Continuous Innovation</h3>
+                    <p>We are constantly improving our platform and tools to provide better outcomes for patients and providers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="dl-team-full">
+        <div class="dl-container">
+            <div style="text-align: center;">
+                <div class="dl-badge">Leadership</div>
+                <h2>Meet the Team</h2>
+            </div>
+            <div class="dl-team-grid-layout">
+                <div class="dl-team-member">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&q=80" alt="Emily Stone">
+                    <h4>Dr. Emily Stone</h4>
+                    <span>Co-Founder & CEO</span>
+                </div>
+                <div class="dl-team-member">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80" alt="Mark Alen">
+                    <h4>Mark Alen</h4>
+                    <span>Co-Founder & CTO</span>
+                </div>
+                <div class="dl-team-member">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" alt="Sarah James">
+                    <h4>Sarah James</h4>
+                    <span>Head of Clinical Ops</span>
+                </div>
+                <div class="dl-team-member">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80" alt="David Chen">
+                    <h4>David Chen</h4>
+                    <span>VP of Product</span>
+                </div>
+                <!-- Row 2 -->
+                 <div class="dl-team-member">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80" alt="Anita Roy">
+                    <h4>Anita Roy</h4>
+                    <span>Lead Psychiatrist</span>
+                </div>
+                <div class="dl-team-member">
+                    <img src="https://images.unsplash.com/photo-1531384441138-2736e62e0919?auto=format&fit=crop&w=400&q=80" alt="James Wilson">
+                    <h4>James Wilson</h4>
+                    <span>Head of Marketing</span>
+                </div>
+                <div class="dl-team-member">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Maria Garcia">
+                    <h4>Maria Garcia</h4>
+                    <span>Customer Success</span>
+                </div>
+                <div class="dl-team-member">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" alt="Tom Baker">
+                    <h4>Tom Baker</h4>
+                    <span>Engineering Lead</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="dl-footer">
+        <div class="dl-container">
+            <div class="dl-footer-top">
+                <div class="dl-footer-brand">
+                    <a href="index.html" class="dl-logo" style="color: white;">
+                        <i class="ph-fill ph-plant" style="color: var(--dl-primary);"></i> Delight
+                    </a>
+                    <p style="color: #999; font-size: 14px; margin-top: 16px;">
+                        Making mental healthcare accessible, affordable, and convenient for everyone, everywhere.
+                    </p>
+                </div>
+                <div class="dl-footer-col">
+                    <h4>Company</h4>
+                    <ul class="dl-footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div class="dl-footer-col">
+                    <h4>Support</h4>
+                    <ul class="dl-footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Support</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="dl-footer-col">
+                    <h4>For Therapists</h4>
+                    <ul class="dl-footer-links">
+                        <li><a href="#">Join Network</a></li>
+                        <li><a href="#">Requirements</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="dl-footer-bottom">
+                <div>&copy; 2025 Delight Wellness Inc. All rights reserved.</div>
+                <div class="dl-socials">
+                    <i class="ph-fill ph-instagram-logo"></i>
+                    <i class="ph-fill ph-twitter-logo"></i>
+                    <i class="ph-fill ph-linkedin-logo"></i>
+                    <i class="ph-fill ph-facebook-logo"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const navLinks = document.querySelector('.dl-nav-links');
+        const navActions = document.querySelector('.dl-nav-actions');
+
+        if(window.innerWidth <= 768) {
+            mobileBtn.style.display = 'block';
+        }
+
+        mobileBtn.addEventListener('click', () => {
+            const isHidden = navLinks.style.display === 'none' || getComputedStyle(navLinks).display === 'none';
+            
+            if(isHidden) {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '70px';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.background = 'white';
+                navLinks.style.padding = '20px';
+                navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+                navActions.style.display = 'flex';
+                navActions.style.flexDirection = 'column';
+                navActions.style.position = 'absolute';
+                navActions.style.top = '280px';
+                navActions.style.width = '100%';
+                navActions.style.left = '0';
+                navActions.style.background = 'white';
+                navActions.style.padding = '20px';
+            } else {
+                navLinks.style.display = 'none';
+                navActions.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

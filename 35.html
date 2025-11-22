@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Delight Wellness</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        /* --- Shared Styles --- */
+        :root {
+            --dl-primary: #56CC8A;
+            --dl-primary-hover: #45ad73;
+            --dl-dark: #121212;
+            --dl-dark-secondary: #1E1E1E;
+            --dl-text-main: #0A0A0A;
+            --dl-text-muted: #555555;
+            --dl-text-light: #999999;
+            --dl-bg-white: #FFFFFF;
+            --dl-bg-offwhite: #F7F9FB;
+            --dl-border: #E5E5E5;
+            --dl-radius-sm: 8px;
+            --dl-radius-md: 16px;
+            --dl-radius-lg: 24px;
+            --dl-radius-full: 999px;
+            --dl-container: 1200px;
+            --dl-transition: all 0.3s ease;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--dl-bg-white); color: var(--dl-text-main); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; color: var(--dl-dark); }
+        p { color: var(--dl-text-muted); margin-bottom: 1rem; }
+        a { text-decoration: none; color: inherit; transition: var(--dl-transition); }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; object-fit: cover; }
+
+        .dl-container { max-width: var(--dl-container); margin: 0 auto; padding: 0 20px; }
+        .dl-btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 28px; border-radius: var(--dl-radius-full); font-weight: 600; font-size: 15px; cursor: pointer; transition: var(--dl-transition); border: none; gap: 8px; }
+        .dl-btn--primary { background-color: var(--dl-primary); color: var(--dl-dark); }
+        .dl-btn--primary:hover { background-color: var(--dl-primary-hover); transform: translateY(-2px); }
+        .dl-btn--outline { background: transparent; border: 1px solid var(--dl-border); color: var(--dl-text-main); }
+        .dl-btn--outline:hover { border-color: var(--dl-dark); }
+        .dl-btn--dark { background-color: var(--dl-dark); color: white; }
+        .dl-badge { display: inline-block; background: rgba(86, 204, 138, 0.15); color: #2E8B57; padding: 6px 12px; border-radius: var(--dl-radius-full); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px; }
+
+        /* Header & Footer (Consistent) */
+        .dl-header { position: sticky; top: 0; z-index: 1000; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--dl-border); padding: 16px 0; }
+        .dl-nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
+        .dl-logo { font-size: 24px; font-weight: 800; display: flex; align-items: center; gap: 8px; color: var(--dl-dark); }
+        .dl-nav-links { display: flex; gap: 32px; }
+        .dl-nav-link { font-size: 15px; font-weight: 500; color: var(--dl-text-muted); }
+        .dl-nav-link:hover, .dl-nav-link.active { color: var(--dl-primary); }
+        .dl-nav-actions { display: flex; align-items: center; gap: 16px; }
+
+        .dl-footer { background-color: var(--dl-dark); color: white; padding: 80px 0 40px 0; margin-top: 80px; }
+        .dl-footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+        .dl-footer-links a { color: #999; font-size: 14px; }
+        .dl-footer-links a:hover { color: var(--dl-primary); }
+        .dl-footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; color: #666; font-size: 13px; }
+        .dl-socials { display: flex; gap: 16px; }
+        .dl-socials i { font-size: 20px; color: white; cursor: pointer; }
+
+        /* --- Services Specific Styles --- */
+        
+        /* Page Header */
+        .dl-page-header {
+            padding: 80px 0 60px 0;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .dl-page-header h1 {
+            font-size: 56px;
+            margin-bottom: 24px;
+            letter-spacing: -1.5px;
+        }
+
+        /* Main Grid */
+        .dl-services-grid-large {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding-bottom: 100px;
+        }
+        .dl-service-card-large {
+            background: white;
+            border: 1px solid var(--dl-border);
+            border-radius: var(--dl-radius-md);
+            padding: 40px 30px;
+            transition: var(--dl-transition);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .dl-service-card-large:hover {
+            border-color: var(--dl-primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .dl-service-icon-lg {
+            width: 60px;
+            height: 60px;
+            background: rgba(86, 204, 138, 0.1);
+            color: var(--dl-primary);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 24px;
+        }
+        .dl-service-card-large h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+        .dl-service-card-large ul {
+            margin-top: 20px;
+            margin-bottom: 24px;
+        }
+        .dl-service-card-large li {
+            font-size: 14px;
+            color: var(--dl-text-muted);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .dl-service-card-large li i {
+            color: var(--dl-primary);
+            font-size: 16px;
+        }
+
+        /* Conditions Cloud */
+        .dl-conditions {
+            padding: 100px 0;
+            background-color: var(--dl-bg-offwhite);
+        }
+        .dl-tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 40px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .dl-condition-tag {
+            background: white;
+            border: 1px solid var(--dl-border);
+            padding: 10px 20px;
+            border-radius: var(--dl-radius-full);
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--dl-text-muted);
+            transition: var(--dl-transition);
+        }
+        .dl-condition-tag:hover {
+            border-color: var(--dl-dark);
+            color: var(--dl-dark);
+            transform: scale(1.05);
+        }
+
+        /* Process Steps */
+        .dl-process {
+            padding: 100px 0;
+        }
+        .dl-process-steps {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+            margin-top: 60px;
+            position: relative;
+        }
+        /* Dotted line connector */
+        .dl-process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 100px;
+            right: 100px;
+            height: 2px;
+            border-top: 2px dashed var(--dl-border);
+            z-index: -1;
+        }
+        .dl-step-card {
+            background: white; /* To cover line behind */
+            text-align: center;
+            padding: 20px;
+        }
+        .dl-step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--dl-dark);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 auto 24px auto;
+            border: 8px solid white; /* Creates gap from line */
+        }
+        .dl-step-card h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .dl-services-grid-large { grid-template-columns: 1fr 1fr; }
+            .dl-process-steps { grid-template-columns: 1fr; gap: 60px; }
+            .dl-process-steps::before { display: none; } /* Hide line on mobile */
+            .dl-page-header h1 { font-size: 40px; }
+        }
+        @media (max-width: 768px) {
+            .dl-services-grid-large { grid-template-columns: 1fr; }
+            .dl-nav-links, .dl-nav-actions { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="dl-header">
+        <div class="dl-container dl-nav-wrapper">
+            <a href="index.html" class="dl-logo">
+                <i class="ph-fill ph-plant" style="color: var(--dl-primary);"></i> Delight
+            </a>
+            <nav>
+                <ul class="dl-nav-links">
+                    <li><a href="index.html" class="dl-nav-link">Home</a></li>
+                    <li><a href="about.html" class="dl-nav-link">About</a></li>
+                    <li><a href="#" class="dl-nav-link">Therapists</a></li>
+                    <li><a href="services.html" class="dl-nav-link active">Services</a></li>
+                    <li><a href="#" class="dl-nav-link">Pricing</a></li>
+                </ul>
+            </nav>
+            <div class="dl-nav-actions">
+                <a href="#" class="dl-nav-link">Sign In</a>
+                <button class="dl-btn dl-btn--primary">Get Started</button>
+            </div>
+            <i class="ph ph-list" style="display: none; font-size: 24px;" id="mobile-menu-btn"></i>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="dl-page-header">
+        <div class="dl-badge">Our Specialties</div>
+        <h1>Comprehensive care tailored to your unique needs.</h1>
+        <p>From individual counseling to specialized psychiatric care, our holistic approach ensures you receive the support that fits your life.</p>
+    </section>
+
+    <!-- Main Services Grid -->
+    <div class="dl-container dl-services-grid-large">
+        <!-- 1 -->
+        <div class="dl-service-card-large">
+            <div class="dl-service-icon-lg"><i class="ph-fill ph-user"></i></div>
+            <h3>Individual Therapy</h3>
+            <p>One-on-one sessions providing a safe space to explore personal challenges, manage stress, and foster self-growth.</p>
+            <ul>
+                <li><i class="ph-bold ph-check"></i> Cognitive Behavioral Therapy (CBT)</li>
+                <li><i class="ph-bold ph-check"></i> Psychodynamic Therapy</li>
+                <li><i class="ph-bold ph-check"></i> Mindfulness-Based</li>
+            </ul>
+            <a href="#" style="color: var(--dl-primary); font-weight: 600; margin-top: auto;">Book Session &rarr;</a>
+        </div>
+
+        <!-- 2 -->
+        <div class="dl-service-card-large">
+            <div class="dl-service-icon-lg"><i class="ph-fill ph-users-three"></i></div>
+            <h3>Couples & Family</h3>
+            <p>Guidance to navigate relationship dynamics, improve communication, and resolve conflicts constructively.</p>
+            <ul>
+                <li><i class="ph-bold ph-check"></i> Conflict Resolution</li>
+                <li><i class="ph-bold ph-check"></i> Premarital Counseling</li>
+                <li><i class="ph-bold ph-check"></i> Parenting Support</li>
+            </ul>
+            <a href="#" style="color: var(--dl-primary); font-weight: 600; margin-top: auto;">Book Session &rarr;</a>
+        </div>
+
+        <!-- 3 -->
+        <div class="dl-service-card-large">
+            <div class="dl-service-icon-lg"><i class="ph-fill ph-pill"></i></div>
+            <h3>Psychiatry & Meds</h3>
+            <p>Medical support when needed. Our psychiatrists work alongside therapists to provide comprehensive medication management.</p>
+            <ul>
+                <li><i class="ph-bold ph-check"></i> Psychiatric Evaluations</li>
+                <li><i class="ph-bold ph-check"></i> Medication Monitoring</li>
+                <li><i class="ph-bold ph-check"></i> Holistic Integration</li>
+            </ul>
+            <a href="#" style="color: var(--dl-primary); font-weight: 600; margin-top: auto;">Book Consultation &rarr;</a>
+        </div>
+
+        <!-- 4 -->
+        <div class="dl-service-card-large">
+            <div class="dl-service-icon-lg"><i class="ph-fill ph-baby"></i></div>
+            <h3>Teen Counseling</h3>
+            <p>Specialized support for adolescents navigating the complexities of growing up, academic pressure, and identity.</p>
+            <ul>
+                <li><i class="ph-bold ph-check"></i> Social Anxiety</li>
+                <li><i class="ph-bold ph-check"></i> Academic Stress</li>
+                <li><i class="ph-bold ph-check"></i> Self-Esteem Building</li>
+            </ul>
+            <a href="#" style="color: var(--dl-primary); font-weight: 600; margin-top: auto;">Book Session &rarr;</a>
+        </div>
+
+        <!-- 5 -->
+        <div class="dl-service-card-large">
+            <div class="dl-service-icon-lg"><i class="ph-fill ph-heart-break"></i></div>
+            <h3>Trauma Recovery</h3>
+            <p>Trauma-informed care to help you process past experiences and build resilience for the future.</p>
+            <ul>
+                <li><i class="ph-bold ph-check"></i> EMDR Therapy</li>
+                <li><i class="ph-bold ph-check"></i> Somatic Experiencing</li>
+                <li><i class="ph-bold ph-check"></i> PTSD Treatment</li>
+            </ul>
+            <a href="#" style="color: var(--dl-primary); font-weight: 600; margin-top: auto;">Book Session &rarr;</a>
+        </div>
+
+        <!-- 6 -->
+        <div class="dl-service-card-large">
+            <div class="dl-service-icon-lg"><i class="ph-fill ph-briefcase"></i></div>
+            <h3>Career Coaching</h3>
+            <p>Mental wellness in the workplace. Overcome burnout, imposter syndrome, and find fulfillment in your professional life.</p>
+            <ul>
+                <li><i class="ph-bold ph-check"></i> Burnout Recovery</li>
+                <li><i class="ph-bold ph-check"></i> Leadership Coaching</li>
+                <li><i class="ph-bold ph-check"></i> Work-Life Balance</li>
+            </ul>
+            <a href="#" style="color: var(--dl-primary); font-weight: 600; margin-top: auto;">Book Session &rarr;</a>
+        </div>
+    </div>
+
+    <!-- Conditions Treated -->
+    <section class="dl-conditions">
+        <div class="dl-container" style="text-align: center;">
+            <h2>What We Treat</h2>
+            <p style="max-width: 600px; margin: 0 auto;">Our licensed professionals are experienced in treating a wide range of mental health conditions and life challenges.</p>
+            
+            <div class="dl-tag-cloud">
+                <span class="dl-condition-tag">Anxiety</span>
+                <span class="dl-condition-tag">Depression</span>
+                <span class="dl-condition-tag">Stress Management</span>
+                <span class="dl-condition-tag">ADHD</span>
+                <span class="dl-condition-tag">Insomnia</span>
+                <span class="dl-condition-tag">Grief & Loss</span>
+                <span class="dl-condition-tag">Eating Disorders</span>
+                <span class="dl-condition-tag">Obsessive-Compulsive Disorder (OCD)</span>
+                <span class="dl-condition-tag">Bipolar Disorder</span>
+                <span class="dl-condition-tag">Anger Management</span>
+                <span class="dl-condition-tag">Life Transitions</span>
+                <span class="dl-condition-tag">Relationship Issues</span>
+                <span class="dl-condition-tag">Postpartum Depression</span>
+                <span class="dl-condition-tag">Addiction Recovery</span>
+                <span class="dl-condition-tag">Phobias</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="dl-process">
+        <div class="dl-container">
+            <div style="text-align: center;">
+                <div class="dl-badge">How It Works</div>
+                <h2>Your Journey to Wellness</h2>
+            </div>
+            
+            <div class="dl-process-steps">
+                <div class="dl-step-card">
+                    <div class="dl-step-number">1</div>
+                    <h3>Get Matched</h3>
+                    <p>Answer a few simple questions about your needs, and our algorithm will pair you with the perfect therapist.</p>
+                </div>
+                <div class="dl-step-card">
+                    <div class="dl-step-number">2</div>
+                    <h3>Meet Your Way</h3>
+                    <p>Schedule sessions that fit your life. Connect via high-quality video calls, phone, or secure messaging.</p>
+                </div>
+                <div class="dl-step-card">
+                    <div class="dl-step-number">3</div>
+                    <h3>Start Healing</h3>
+                    <p>Begin your therapy journey with a dedicated professional who is committed to your long-term growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="padding-bottom: 100px;">
+        <div class="dl-container">
+            <div style="background: var(--dl-dark); border-radius: var(--dl-radius-lg); padding: 80px; text-align: center; color: white;">
+                <h2 style="color: white; font-size: 48px; margin-bottom: 24px;">Ready to feel better?</h2>
+                <p style="color: #999; max-width: 600px; margin: 0 auto 40px auto; font-size: 18px;">Take the first step today. Browse our therapist directory or let us match you with a specialist.</p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <button class="dl-btn dl-btn--primary">Match Me</button>
+                    <button class="dl-btn" style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2);">Browse Directory</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="dl-footer">
+        <div class="dl-container">
+            <div class="dl-footer-top">
+                <div class="dl-footer-brand">
+                    <a href="index.html" class="dl-logo" style="color: white;">
+                        <i class="ph-fill ph-plant" style="color: var(--dl-primary);"></i> Delight
+                    </a>
+                    <p style="color: #999; font-size: 14px; margin-top: 16px;">
+                        Making mental healthcare accessible, affordable, and convenient for everyone, everywhere.
+                    </p>
+                </div>
+                <div class="dl-footer-col">
+                    <h4>Company</h4>
+                    <ul class="dl-footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div class="dl-footer-col">
+                    <h4>Support</h4>
+                    <ul class="dl-footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Support</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="dl-footer-col">
+                    <h4>For Therapists</h4>
+                    <ul class="dl-footer-links">
+                        <li><a href="#">Join Network</a></li>
+                        <li><a href="#">Requirements</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="dl-footer-bottom">
+                <div>&copy; 2025 Delight Wellness Inc. All rights reserved.</div>
+                <div class="dl-socials">
+                    <i class="ph-fill ph-instagram-logo"></i>
+                    <i class="ph-fill ph-twitter-logo"></i>
+                    <i class="ph-fill ph-linkedin-logo"></i>
+                    <i class="ph-fill ph-facebook-logo"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Logic
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const navLinks = document.querySelector('.dl-nav-links');
+        const navActions = document.querySelector('.dl-nav-actions');
+
+        if(window.innerWidth <= 768) {
+            mobileBtn.style.display = 'block';
+        }
+
+        mobileBtn.addEventListener('click', () => {
+            const isHidden = navLinks.style.display === 'none' || getComputedStyle(navLinks).display === 'none';
+            
+            if(isHidden) {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '70px';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.background = 'white';
+                navLinks.style.padding = '20px';
+                navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+                navActions.style.display = 'flex';
+                navActions.style.flexDirection = 'column';
+                navActions.style.position = 'absolute';
+                navActions.style.top = '280px';
+                navActions.style.width = '100%';
+                navActions.style.left = '0';
+                navActions.style.background = 'white';
+                navActions.style.padding = '20px';
+            } else {
+                navLinks.style.display = 'none';
+                navActions.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
