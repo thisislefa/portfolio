@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Plans - CreditCore</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        /* --- RESET & SHARED VARIABLES --- */
+        :root {
+            --font-family: 'Inter', sans-serif;
+            --color-lime: #d3f36b;
+            --color-lime-light: #e9f8b3;
+            --color-dark-green: #0b3928;
+            --color-darker-green: #06251a;
+            --color-white: #ffffff;
+            --color-off-white: #f8fcf9;
+            --color-black: #111111;
+            --color-text-gray: #555555;
+            --color-border: #e0e0e0;
+            
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 40px;
+            
+            --container-width: 1200px;
+            --spacing-section: 100px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-family); color: var(--color-black); background-color: var(--color-white); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; object-fit: cover; }
+
+        /* --- UTILITIES --- */
+        .container { max-width: var(--container-width); margin: 0 auto; padding: 0 24px; }
+        .section { padding: var(--spacing-section) 0; }
+        .text-center { text-align: center; }
+        .text-gray { color: var(--color-text-gray); }
+        
+        /* Buttons */
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 28px; border-radius: 100px; font-weight: 600; font-size: 15px; transition: transform 0.2s ease; cursor: pointer; border: none; }
+        .btn:active { transform: scale(0.98); }
+        .btn-primary { background-color: var(--color-black); color: var(--color-white); }
+        .btn-primary:hover { background-color: #333; }
+        .btn-lime { background-color: var(--color-lime); color: var(--color-dark-green); }
+        .btn-lime:hover { background-color: #c2e650; }
+        .btn-outline { border: 1px solid var(--color-border); background: transparent; color: var(--color-black); }
+        .btn-outline:hover { border-color: var(--color-black); }
+
+        /* Badge */
+        .badge { display: inline-block; background-color: var(--color-lime-light); color: var(--color-dark-green); padding: 6px 12px; border-radius: 6px; font-size: 13px; font-weight: 600; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        h1, h2, h3, h4, h5 { font-weight: 700; line-height: 1.2; }
+
+        /* --- HEADER (Shared) --- */
+        .main-header { padding: 20px 0; position: sticky; top: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 20px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+        .logo i { color: var(--color-dark-green); font-size: 24px; }
+        .nav-links { display: flex; gap: 32px; }
+        .nav-link { font-weight: 500; color: var(--color-text-gray); font-size: 15px; }
+        .nav-link:hover { color: var(--color-black); }
+        .nav-link.active { color: var(--color-dark-green); font-weight: 600; }
+        .nav-actions { display: flex; gap: 16px; align-items: center; }
+
+        /* --- PRICING SPECIFIC STYLES --- */
+
+        .pricing-hero {
+            padding: 80px 0 60px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--color-off-white) 0%, var(--color-white) 100%);
+        }
+        .pricing-hero h1 { font-size: 56px; margin-bottom: 24px; letter-spacing: -1px; }
+        .pricing-hero p { font-size: 20px; color: var(--color-text-gray); max-width: 600px; margin: 0 auto 40px; }
+
+        /* Toggle Switch */
+        .pricing-toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 60px;
+        }
+        .toggle-label { font-weight: 600; color: var(--color-text-gray); cursor: pointer; transition: color 0.3s; }
+        .toggle-label.active { color: var(--color-black); }
+        
+        .toggle-switch {
+            width: 56px;
+            height: 32px;
+            background: var(--color-border);
+            border-radius: 100px;
+            position: relative;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            top: 4px; left: 4px;
+            width: 24px; height: 24px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        /* Active State for Toggle (Yearly) */
+        .pricing-toggle-container[data-period="yearly"] .toggle-switch { background: var(--color-dark-green); }
+        .pricing-toggle-container[data-period="yearly"] .toggle-switch::after { transform: translateX(24px); }
+        
+        .discount-pill {
+            background: var(--color-lime-light);
+            color: var(--color-dark-green);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 100px;
+            text-transform: uppercase;
+        }
+
+        /* Pricing Cards */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 100px;
+        }
+        .pricing-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+        .pricing-card.popular {
+            border: 2px solid var(--color-dark-green);
+            background: var(--color-off-white);
+        }
+        .popular-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-dark-green);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .plan-header { margin-bottom: 30px; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 30px; }
+        .plan-name { font-size: 20px; font-weight: 700; display: block; margin-bottom: 10px; }
+        .plan-price { font-size: 48px; font-weight: 800; color: var(--color-dark-green); display: flex; align-items: baseline; }
+        .plan-price span { font-size: 16px; color: var(--color-text-gray); font-weight: 500; margin-left: 4px; }
+        .plan-desc { color: var(--color-text-gray); margin-top: 12px; font-size: 15px; }
+
+        .plan-features { list-style: none; margin-bottom: 40px; flex-grow: 1; }
+        .plan-features li { display: flex; gap: 12px; margin-bottom: 16px; font-size: 15px; color: var(--color-text-gray); }
+        .plan-features li i { color: var(--color-lime-dark); font-size: 20px; flex-shrink: 0; }
+        .plan-features li i.check { color: var(--color-dark-green); }
+        .plan-features li i.cross { color: #ccc; }
+
+        /* Comparison Table */
+        .comparison-section { background-color: var(--color-off-white); padding: 80px 0; border-radius: var(--radius-xl); }
+        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 40px; }
+        
+        .comparison-table th { text-align: left; padding: 20px; border-bottom: 2px solid var(--color-border); font-size: 18px; color: var(--color-black); }
+        .comparison-table th.feature-head { width: 40%; }
+        .comparison-table th.tier-head { width: 20%; text-align: center; }
+        
+        .comparison-table td { padding: 20px; border-bottom: 1px solid #eee; font-size: 15px; color: var(--color-text-gray); }
+        .comparison-table td.tier-data { text-align: center; font-weight: 500; color: var(--color-black); }
+        .comparison-table tr:last-child td { border-bottom: none; }
+        
+        .comparison-table i.check { color: var(--color-dark-green); font-size: 20px; }
+        .comparison-table i.cross { color: #ccc; font-size: 20px; }
+
+        /* FAQ specific */
+        .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+        .accordion-item { border-bottom: 1px solid var(--color-border); padding: 24px 0; }
+        .accordion-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-size: 18px; font-weight: 600; }
+        .accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; color: var(--color-text-gray); font-size: 15px; }
+        .accordion-item.active .accordion-body { max-height: 200px; padding-top: 16px; }
+
+        /* Footer (Shared) */
+        .cta-banner { background: var(--color-dark-green); border-radius: var(--radius-lg); padding: 80px; text-align: center; color: white; margin-bottom: 80px; position: relative; overflow: hidden; }
+        .cta-banner h2 { font-size: 48px; margin-bottom: 30px; position: relative; z-index: 2; }
+        .cta-banner::before { content: ''; position: absolute; top: -50%; left: -20%; width: 50%; height: 200%; background: radial-gradient(circle, rgba(211, 243, 107, 0.1) 0%, transparent 70%); z-index: 1; }
+        .site-footer { background-color: var(--color-off-white); padding-top: 80px; padding-bottom: 40px; border-top: 1px solid var(--color-border); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+        .footer-brand p { margin-top: 20px; color: var(--color-text-gray); max-width: 250px; }
+        .footer-col h4 { margin-bottom: 20px; font-size: 16px; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col a { color: var(--color-text-gray); font-size: 14px; transition: color 0.2s; }
+        .footer-col a:hover { color: var(--color-lime); }
+        .footer-bottom { border-top: 1px solid var(--color-border); padding-top: 30px; display: flex; justify-content: space-between; font-size: 14px; color: var(--color-text-gray); }
+        .designer-credit { font-weight: 600; color: var(--color-dark-green); }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .pricing-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto 60px; }
+            .comparison-table { display: block; overflow-x: auto; white-space: nowrap; }
+            .faq-grid { grid-template-columns: 1fr; }
+            .pricing-hero h1 { font-size: 42px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header class="main-header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="ph-fill ph-wallet"></i>
+                CreditCore
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="#" class="nav-link active">Pricing</a></li>
+                </ul>
+            </nav>
+            <div class="nav-actions">
+                <a href="#" style="font-weight: 600; font-size: 14px;">Log in</a>
+                <a href="#" class="btn btn-primary">Get App</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero & Toggle -->
+    <section class="pricing-hero">
+        <div class="container">
+            <span class="badge">Plans & Pricing</span>
+            <h1>Choose the right plan for your wealth</h1>
+            <p>Transparent pricing. No hidden fees. Switch or cancel anytime.</p>
+
+            <!-- Toggle -->
+            <div class="pricing-toggle-container" id="pricingToggle" data-period="monthly">
+                <span class="toggle-label active" id="monthlyLabel">Monthly</span>
+                <div class="toggle-switch" onclick="togglePricing()"></div>
+                <span class="toggle-label" id="yearlyLabel">Yearly</span>
+                <span class="discount-pill">Save 20%</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Cards -->
+    <div class="container pricing-grid">
+        <!-- Standard Plan -->
+        <div class="pricing-card">
+            <div class="plan-header">
+                <span class="plan-name">Standard</span>
+                <div class="plan-price" data-monthly="0" data-yearly="0">$0<span>/mo</span></div>
+                <p class="plan-desc">Essential banking features for your daily needs.</p>
+            </div>
+            <ul class="plan-features">
+                <li><i class="ph-fill ph-check-circle check"></i> Free IBAN account</li>
+                <li><i class="ph-fill ph-check-circle check"></i> Standard plastic card</li>
+                <li><i class="ph-fill ph-check-circle check"></i> 0.5% Cashback on spending</li>
+                <li><i class="ph-fill ph-check-circle check"></i> Free local transfers</li>
+                <li><i class="ph-fill ph-x-circle cross"></i> Travel insurance</li>
+                <li><i class="ph-fill ph-x-circle cross"></i> Priority support</li>
+            </ul>
+            <a href="#" class="btn btn-outline" style="margin-top: auto;">Get Standard</a>
+        </div>
+
+        <!-- Premium Plan -->
+        <div class="pricing-card popular">
+            <div class="popular-badge">Most Popular</div>
+            <div class="plan-header">
+                <span class="plan-name">Premium</span>
+                <div class="plan-price" data-monthly="9" data-yearly="86">$9<span>/mo</span></div>
+                <p class="plan-desc">Unlock global spending and higher limits.</p>
+            </div>
+            <ul class="plan-features">
+                <li><i class="ph-fill ph-check-circle check"></i> Everything in Standard</li>
+                <li><i class="ph-fill ph-check-circle check"></i> 2 Premium cards</li>
+                <li><i class="ph-fill ph-check-circle check"></i> 1.5% Cashback on spending</li>
+                <li><i class="ph-fill ph-check-circle check"></i> Unlimited FX exchange</li>
+                <li><i class="ph-fill ph-check-circle check"></i> Travel medical insurance</li>
+                <li><i class="ph-fill ph-x-circle cross"></i> Lounge access</li>
+            </ul>
+            <a href="#" class="btn btn-lime" style="margin-top: auto;">Get Premium</a>
+        </div>
+
+        <!-- Metal Plan -->
+        <div class="pricing-card">
+            <div class="plan-header">
+                <span class="plan-name">Metal</span>
+                <div class="plan-price" data-monthly="19" data-yearly="182">$19<span>/mo</span></div>
+                <p class="plan-desc">The ultimate power user experience with exclusive perks.</p>
+            </div>
+            <ul class="plan-features">
+                <li><i class="ph-fill ph-check-circle check"></i> Everything in Premium</li>
+                <li><i class="ph-fill ph-check-circle check"></i> 18g Stainless Steel card</li>
+                <li><i class="ph-fill ph-check-circle check"></i> 3% Cashback on spending</li>
+                <li><i class="ph-fill ph-check-circle check"></i> LoungeKey™ Pass Access</li>
+                <li><i class="ph-fill ph-check-circle check"></i> Car hire excess insurance</li>
+                <li><i class="ph-fill ph-check-circle check"></i> 24/7 Dedicated concierge</li>
+            </ul>
+            <a href="#" class="btn btn-primary" style="margin-top: auto;">Get Metal</a>
+        </div>
+    </div>
+
+    <!-- Detailed Comparison -->
+    <div class="container">
+        <section class="comparison-section">
+            <div class="text-center">
+                <h2>Compare features</h2>
+                <p class="text-gray">A detailed look at what you get with each tier.</p>
+            </div>
+            
+            <div class="container" style="max-width: 1000px;">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th class="feature-head">Features</th>
+                            <th class="tier-head">Standard</th>
+                            <th class="tier-head">Premium</th>
+                            <th class="tier-head">Metal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Monthly Cost</td>
+                            <td class="tier-data">$0</td>
+                            <td class="tier-data">$9</td>
+                            <td class="tier-data">$19</td>
+                        </tr>
+                        <tr>
+                            <td>Physical Cards</td>
+                            <td class="tier-data">Standard Plastic</td>
+                            <td class="tier-data">Premium Design</td>
+                            <td class="tier-data">18g Solid Metal</td>
+                        </tr>
+                        <tr>
+                            <td>Virtual Cards</td>
+                            <td class="tier-data">1</td>
+                            <td class="tier-data">Unlimited</td>
+                            <td class="tier-data">Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>ATM Withdrawals</td>
+                            <td class="tier-data">$200/mo free</td>
+                            <td class="tier-data">$400/mo free</td>
+                            <td class="tier-data">$800/mo free</td>
+                        </tr>
+                        <tr>
+                            <td>Foreign Exchange</td>
+                            <td class="tier-data">$1,000/mo</td>
+                            <td class="tier-data">Unlimited</td>
+                            <td class="tier-data">Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Crypto Exchange Fee</td>
+                            <td class="tier-data">2.5%</td>
+                            <td class="tier-data">1.5%</td>
+                            <td class="tier-data">0.5%</td>
+                        </tr>
+                        <tr>
+                            <td>Travel Insurance</td>
+                            <td class="tier-data"><i class="ph-bold ph-x cross"></i></td>
+                            <td class="tier-data"><i class="ph-bold ph-check check"></i></td>
+                            <td class="tier-data"><i class="ph-bold ph-check check"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Lounge Access</td>
+                            <td class="tier-data"><i class="ph-bold ph-x cross"></i></td>
+                            <td class="tier-data"><i class="ph-bold ph-x cross"></i></td>
+                            <td class="tier-data"><i class="ph-bold ph-check check"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Billing & Subscriptions</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="accordion-group">
+                    <div class="accordion-item active">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            Can I upgrade or downgrade my plan?
+                            <i class="ph ph-plus accordion-icon"></i>
+                        </div>
+                        <div class="accordion-body">
+                            Yes, you can change your plan at any time directly from the app. Upgrades happen instantly, while downgrades take effect at the end of your current billing cycle.
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            Is there a commitment period?
+                            <i class="ph ph-plus accordion-icon"></i>
+                        </div>
+                        <div class="accordion-body">
+                            For monthly plans, there is no commitment; cancel anytime. Yearly plans are billed upfront for a 20% discount, but if you cancel early, the remaining months are not refunded.
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            How does the Metal card work?
+                            <i class="ph ph-plus accordion-icon"></i>
+                        </div>
+                        <div class="accordion-body">
+                            The Metal card is shipped to you via express delivery within 3 days of upgrading. It is contactless enabled and weighs 18g.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-visual">
+                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80" alt="Financial Planning">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner & Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="cta-banner">
+                <h2>Join the bank of the future</h2>
+                <p style="margin-bottom: 30px; position: relative; z-index: 2;">30-day money-back guarantee on all paid plans.</p>
+                <button class="btn btn-lime" style="position: relative; z-index: 2;">Get Started Now</button>
+            </div>
+
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <i class="ph-fill ph-wallet"></i>
+                        CreditCore
+                    </a>
+                    <p>Empowering your financial journey with technology and trust.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="services.html">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Credit Cards</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Status</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>&copy; 2025 CreditCore Inc. All rights reserved.</span>
+                <span class="designer-credit">Designed by Lefa Mofokeng</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Toggle Monthly/Yearly Logic
+        function togglePricing() {
+            const container = document.getElementById('pricingToggle');
+            const currentPeriod = container.getAttribute('data-period');
+            const newPeriod = currentPeriod === 'monthly' ? 'yearly' : 'monthly';
+            
+            // Update State
+            container.setAttribute('data-period', newPeriod);
+            
+            // Update Labels
+            document.getElementById('monthlyLabel').classList.toggle('active');
+            document.getElementById('yearlyLabel').classList.toggle('active');
+            
+            // Update Prices
+            const priceElements = document.querySelectorAll('.plan-price');
+            priceElements.forEach(el => {
+                const amount = el.getAttribute(`data-${newPeriod}`);
+                // Only show span /mo or /yr
+                const suffix = newPeriod === 'monthly' ? '/mo' : '/yr';
+                el.innerHTML = `$${amount}<span>${suffix}</span>`;
+            });
+        }
+
+        // FAQ Logic
+        function toggleAccordion(element) {
+            const item = element.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            document.querySelectorAll('.accordion-item').forEach(acc => {
+                acc.classList.remove('active');
+            });
+
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
